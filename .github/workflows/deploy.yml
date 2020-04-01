@@ -26,7 +26,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm test
     - run: echo "openWeatherAPI=b64be6c9affed1a44a690cca5805a008" > .env
       env:
         CI: true
