@@ -7,7 +7,7 @@ Le scelte devono essere motivate e non strumentali (e.g. "l'ho fatto perchè era
 
 *   Il servizio REST implementato deve offrire delle API documentate (e.g. GET /sanlorenzo fornisce tutti i cinema di sanlorenzo)
 *   SERV si deve interfacciare con almeno due servizi REST “esterni”, cioè non su localhost
-*   Almeno uno dei servizi REST esterni deve essere “commerciale” (es: twitter, google, facebook, pubnub, parse, firbase etc)
+*   Almeno uno dei servizi REST esterni deve essere “commerciale” (es: twitter, google, facebook, parse, firbase etc)
 *   Almeno uno dei servizi REST esterni deve richiedere oauth
 *   Si devono usare Websocket e/o AMQP (o simili es MQTT)
 *   Il progetto deve essere su GIT e documentato don un README
