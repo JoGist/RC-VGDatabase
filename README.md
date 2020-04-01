@@ -3,7 +3,7 @@ Il progetto consiste nella realizzazione di un servizio REST accessibile via Web
 
 Le scelte devono essere motivate e non strumentali (e.g. "l'ho fatto perchè era un requisito"). Il progetto in altre parole deve avere un senso e deve essere armonico. 
 
-## REQUISITI:
+## Requisiti:
 
 1. Il servizio REST che implementate (lo chiameremo SERV) deve offrire delle API documentate (e.g. GET /sanlorenzo fornisce tutti i cinema di sanlorenzo)
 2. SERV si deve interfacciare con almeno due servizi REST “esterni”, cioè non su localhost
@@ -13,8 +13,7 @@ Le scelte devono essere motivate e non strumentali (e.g. "l'ho fatto perchè era
 6. Il progetto deve essere su GIT (GITHUB, GITLAB ...) e documentato don un README
 7. Le API  REST implementate in SERV devono essere documentate su GIT e devono essere validate con un caso di test 
 
-
-## Nella presentazione si deve fornire
+Altri requisiti:
 
 1. 5-7 slides sul progetto
 2. il link al codice e alla documentazione su git
