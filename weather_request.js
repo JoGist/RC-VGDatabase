@@ -7,20 +7,27 @@
 
 require('dotenv').config()
 
-var request = require ('request');
+var request = require('request');
 
 var options = {
-    url: 'http://api.openweathermap.org/data/2.5/weather?q=Rome,IT&units=metric&appid='+process.env.openWeatherAPI,
+    url: 'http://api.openweathermap.org/data/2.5/weather?q=Rome,IT&units=metric&appid=' + process.env.openWeatherAPI,
 }
 
+var fs = require('fs');
+
 function callback(error, response, body) {
-    console.log('Code '+response.statusCode);
-    if(!error && response.statusCode == 200) {
+    if (!error && response.statusCode == 200) {
         var info = JSON.parse(body);
         console.log('##############################');
         console.log(info);
         console.log('##############################');
+        fs.writeFile('weather.json', JSON.stringify(info), function (err) {
+            if (err) throw err;
+            console.log('Saved!');
+        });
     }
+    else
+        console.log('Error. Code ' + response.statusCode);
 }
 
 request.get(options, callback);
