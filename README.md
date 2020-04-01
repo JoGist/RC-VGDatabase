@@ -5,18 +5,18 @@ Le scelte devono essere motivate e non strumentali (e.g. "l'ho fatto perchè era
 
 ## Requisiti:
 
-1. Il servizio REST che implementate deve offrire delle API documentate (e.g. GET /sanlorenzo fornisce tutti i cinema di sanlorenzo)
-2. SERV si deve interfacciare con almeno due servizi REST “esterni”, cioè non su localhost
-3. Almeno uno dei servizi REST esterni deve essere “commerciale” (es: twitter, google, facebook, pubnub, parse, firbase etc)
-4. Almeno uno dei servizi REST esterni deve richiedere oauth
-5. Si devono usare Websocket e/o AMQP (o simili es MQTT)
-6. Il progetto deve essere su GIT e documentato don un README
-7. Le API  REST implementate devono essere documentate su GIT e devono essere validate con un caso di test 
+*   *   Il servizio REST che implementate deve offrire delle API documentate (e.g. GET /sanlorenzo fornisce tutti i cinema di sanlorenzo)
+*   SERV si deve interfacciare con almeno due servizi REST “esterni”, cioè non su localhost
+*   Almeno uno dei servizi REST esterni deve essere “commerciale” (es: twitter, google, facebook, pubnub, parse, firbase etc)
+*   Almeno uno dei servizi REST esterni deve richiedere oauth
+*   Si devono usare Websocket e/o AMQP (o simili es MQTT)
+*   Il progetto deve essere su GIT e documentato don un README
+*   Le API  REST implementate devono essere documentate su GIT e devono essere validate con un caso di test 
 
 Altri requisiti:
 
-1. 5-7 slides sul progetto
-2. il link al codice e alla documentazione su git
+*   5-7 slides sul progetto
+*   il link al codice e alla documentazione su git
 
  
 ## Authors
