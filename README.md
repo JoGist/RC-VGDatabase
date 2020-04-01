@@ -5,7 +5,7 @@ Le scelte devono essere motivate e non strumentali (e.g. "l'ho fatto perchè era
 
 ## Requisiti:
 
-*   *   Il servizio REST che implementate deve offrire delle API documentate (e.g. GET /sanlorenzo fornisce tutti i cinema di sanlorenzo)
+*   Il servizio REST che implementate deve offrire delle API documentate (e.g. GET /sanlorenzo fornisce tutti i cinema di sanlorenzo)
 *   SERV si deve interfacciare con almeno due servizi REST “esterni”, cioè non su localhost
 *   Almeno uno dei servizi REST esterni deve essere “commerciale” (es: twitter, google, facebook, pubnub, parse, firbase etc)
 *   Almeno uno dei servizi REST esterni deve richiedere oauth
@@ -15,8 +15,8 @@ Le scelte devono essere motivate e non strumentali (e.g. "l'ho fatto perchè era
 
 Altri requisiti:
 
-*   5-7 slides sul progetto
-*   il link al codice e alla documentazione su git
+*   *   5-7 slides sul progetto
+*   *   il link al codice e alla documentazione su git
 
  
 ## Authors
