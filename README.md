@@ -1,5 +1,5 @@
 # Progetto Reti di Calcolatori
-Our projects for 
+Our projects for Reti di Calcolatori
 
 ## Authors
 
