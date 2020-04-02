@@ -11,10 +11,10 @@ function wait() {
 }
 
 async function query() {
-  console.log('calling');
-  const result = await sql` //await wait();
-  select * from citta
-`;
+  console.log('computing query');
+  const result = await sql` 
+    select * from citta`;
+    await wait();
   console.log(result);
 }
 query();
