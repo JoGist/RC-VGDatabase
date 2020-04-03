@@ -22,7 +22,7 @@ function callback(error, response, body) {
         console.log('##############################');
         console.log(info);
         console.log('##############################');
-        console.log("TRAP IS NOT GAY")
+        console.log("TRAP IS NOT GAY? SCHRODINGER'S PARADOX")
         fs.writeFile('weather.json', JSON.stringify(info), function (err) {
             if (err) throw err;
             console.log('Saved!');
