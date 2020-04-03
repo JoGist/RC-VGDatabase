@@ -24,7 +24,7 @@ function callback(error, response, body) {
         console.log('##############################');
         fs.writeFile('weather.json', JSON.stringify(info), function (err) {
             if (err) throw err;
-            console.log('Saved!rip');
+            console.log('Saved!');
         });
     }
     else
