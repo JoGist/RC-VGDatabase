@@ -4,6 +4,8 @@ const postgres = require('postgres')
 
 const sql = postgres('postgres://postgres:biar@localhost:5432/centraline_rilevamento')
 
+var x=0;
+
 var query = async function () {
   console.log('computing query');
   const result = await sql` 

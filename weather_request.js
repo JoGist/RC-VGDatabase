@@ -3,6 +3,7 @@
 //   npm init --yes
 //   npm install request --save
 //   npm install dotenv --save
+//   npm install fs --save
 //2. create a .env file with openWeatherAPI={yourAPIkey}
 
 require('dotenv').config()
@@ -23,7 +24,7 @@ function callback(error, response, body) {
         console.log('##############################');
         fs.writeFile('weather.json', JSON.stringify(info), function (err) {
             if (err) throw err;
-            console.log('Saved2!');
+            console.log('Saved!');
         });
     }
     else
