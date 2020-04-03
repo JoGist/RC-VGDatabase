@@ -15,7 +15,7 @@ var options = {
 }
 
 var fs = require('fs');
-var x = 0;
+var y = 0;
 function callback(error, response, body) {
     if (!error && response.statusCode == 200) {
         var info = JSON.parse(body);
