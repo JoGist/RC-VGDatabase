@@ -25,6 +25,26 @@ function callback(error, response, body) {
         fs.writeFile('weather.json', JSON.stringify(info), function (err) {
             if (err) throw err;
             console.log('Saved!');
+        console.log('##############################');
+
+        request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+info.coord.lat+','+info.coord.lon+'&radius=500&types=food&key='+process.env.staticMapsAPI, function optionalCallback(err, httpResponse, body) {
+            
+            /*function initMap() {
+                var myLatLng = {lat: info.coord.lat, lng: info.coord.lon};
+              
+                var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 4,
+                  center: myLatLng
+                });
+              
+                var marker = new google.maps.Marker({
+                  position: myLatLng,
+                  map: map,
+                  title: 'Weather'
+                });
+              }
+        //console.log(body);*/
+    });
         });
     }
     else
