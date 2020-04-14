@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--<script src="weather_request.js"></script> -->
+    <title id='title'>Maps test</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta charset="utf-8" />
+    <style>
+      /* Set the size of the div element that contains the map */
+      #map {
+        height: 100%; /* The height is 400 pixels */
+        /*width: 100%; The width is the width of the web page */
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #description {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+      }
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <h3>Google Maps test</h3> -->
+    <input
+      id="pac-input"
+      class="controls"
+      type="text"
+      placeholder="Search Box"
+    />
+
+    <div id="map"></div>
+    <script>
+
+      var options = {
+          url: 'http://api.openweathermap.org/data/2.5/weather?q=Rome,IT&units=metric&appid=4149ce2d7232486f803ca6a89957b638',
+      }
+
+      // Initialize and add the map
+      function initMap() {
+        // The location of coords
+        var coords = { lat: 41.89, lng: 12.48 };
+        // The map, centered at coords
+
+        var iconBase = "/res/";
+        /*var icons = {
+          clear: {
+            icon: iconBase + "parking_lot_maps.png",
+          },
+          cloudy: {
+            icon: iconBase + "cloudy.png",
+          },
+          covered: {
+            icon: iconBase + "info-i_maps.png",
+          },
+        };*/
+
+        var infoWindow;
+        var map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 9,
+          center: coords,
+          mapTypeControl: false,
+          streetViewControl: false,
+          styles: [
+            {
+              featureType: "administrative.land_parcel",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "administrative.neighborhood",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "poi",
+              elementType: "labels.text",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "poi.business",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "road",
+              elementType: "labels",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "road",
+              elementType: "labels.icon",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "road.arterial",
+              elementType: "labels",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "road.highway",
+              elementType: "labels",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "road.local",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "transit",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "water",
+              elementType: "labels.text",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+          ],
+        });
+
+        infoWindow = new google.maps.InfoWindow();
+
+        /*if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(currPosition) {
+            var pos = {
+              lat: currPosition.coords.latitude,
+              lng: currPosition.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');*/
+
+        // The marker, positioned at coords
+        var marker = new google.maps.Marker({
+          position: coords,
+          map: map,
+          icon: iconBase + "cloudy.png",
+        });
+        /*map.addListener("center_changed", function () {
+          window.setTimeout(function () {
+            map.panTo(marker.getPosition());
+          }, 1000);
+        });*/
+
+        marker.addListener("click", function () {
+          infoWindow.setPosition(coords);
+          infoWindow.setContent('Current weather in Rome');
+          infoWindow.open(map);
+          map.setCenter(pos);
+          /*window.open(
+            "https://openweathermap.org/city/3169070",
+            "Rome Weather",
+            "width=800,height=600"
+          );
+          if (window.focus) newWindow.focus();*/
+          map.setCenter(marker.getPosition());
+        });
+
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById("pac-input");
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener("bounds_changed", function () {
+          searchBox.setBounds(map.getBounds());
+        });
+
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener("places_changed", function () {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+
+          // Clear out the old markers.
+          markers.forEach(function (marker) {
+            marker.setMap(null);
+          });
+          markers = [];
+
+          // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function (place) {
+            if (!place.geometry) {
+              console.log("Returned place contains no geometry");
+              return;
+            }
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25),
+            };
+
+            // Create a marker for each place.
+            markers.push(
+              new google.maps.Marker({
+                map: map,
+                icon: icon,
+                title: place.name,
+                position: place.geometry.location,
+              })
+            );
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+        });
+      }
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbYZOtMzWFR_9TrZ7lH_CFMgJJdHn2oZ0&libraries=places&callback=initMap"
+    ></script>
+  </body>
+</html>
+
+<!--https://medium.com/jeremy-keeshin/hello-world-for-javascript-with-npm-modules-in-the-browser-6020f82d1072 
+    https://developers.google.com/maps/documentation/javascript/custom-markers
+    https://developers.google.com/maps/documentation/javascript/custom-markers#customizing_a_map_marker
+    https://developers.google.com/maps/documentation/javascript/examples/event-simple
+    https://developers.google.com/maps/documentation/javascript/examples/map-geolocation 
+    https://developers.google.com/maps/documentation/javascript/examples/overlay-popup
+    https://developers.google.com/maps/documentation/javascript/controls
+-->
