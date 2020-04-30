@@ -4,27 +4,22 @@ skip_before_action :verify_authenticity_token
     def homepage
         @user = User.find(session[:user_id])
         @games = Game.all
-        @library = Mylibrary.where(:user_id => @user.id)
+        @library = Store.where(:user_id => @user.id)
     end
 
-    def myLibrary
-        @library = Mylibrary.all
+    def myStore
+        @library = Store.all
         @user = User.find(session[:user_id])
     end
 
-    def myLibraryFavorites
-        @library = Mylibrary.where(:favorite => "true")
+    def myStoreEdit
+        @mylibrary = Store.all
         @user = User.find(session[:user_id])
     end
 
-    def myLibraryEdit
-        @mylibrary = Mylibrary.all
+    def selling
         @user = User.find(session[:user_id])
-    end
-
-    def myLibraryFavoritesEdit
-        @mylibrary = Mylibrary.where(:favorite => "true")
-        @user = User.find(session[:user_id])
+        @library = Store.all
     end
 
     def search
@@ -105,7 +100,7 @@ skip_before_action :verify_authenticity_token
     def show
         id = params[:id]
         @games = Game.find(id)
-        @library = Mylibrary.where(:user_id => session[:user_id])
+        @library = Store.where(:user_id => session[:user_id])
         @user = session[:user_id]
         @aux = Review.where(:game_id => @games)
         @aux = @aux.where('user_id != ?', @user)
@@ -133,7 +128,7 @@ skip_before_action :verify_authenticity_token
         @review.each do |review|
             review.delete
         end
-        @library = Mylibrary.where(:user_id => name)
+        @library = Store.where(:user_id => name)
         @library.each do |library|
             library.delete
         end
@@ -248,8 +243,24 @@ skip_before_action :verify_authenticity_token
         else
             if User.exists?(User.where(:username => name))
                 @user = User.where(:username => name)[0].id
+                @friends = Friend.where(:user_id => @user)
+                @friends.each do |friend|
+                    friend.delete
+                end
+                @friends1 = Friend.where(:friend_id => @user)
+                @friends1.each do |friend|
+                    friend.delete
+                end
+                @review = Review.where(:user_id => @user)
+                @review.each do |review|
+                    review.delete
+                end
+                @library = Store.where(:user_id => @user)
+                @library.each do |library|
+                    library.delete
+                end
                 User.delete(@user)
-                redirect_to deletingUser_success_path
+                redirect_to deletingUser_succes_path
             else
                 redirect_to deletingUser_error_path
             end

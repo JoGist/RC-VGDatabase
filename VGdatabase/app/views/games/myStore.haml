@@ -18,7 +18,7 @@
               %i.mdi.mdi-library-movie
               %span.sidebar__nav__text My library
           %li
-            %a.sidebar__nav__link{:href => myLibraryFavorites_path, "data-method" => "get"}
+            %a.sidebar__nav__link{:href => selling_path, "data-method" => "get"}
               %i.mdi.mdi-star
               %span.sidebar__nav__text  Favorites
           %li
@@ -53,7 +53,7 @@
       %a.sort{:href => "#"}
         %span Sort
         %i.mdi.mdi-filter-variant
-      %a.editText{:href => editLibrary_path, "data-method" => "get"}
+      %a.editText{:href => editStore_path, "data-method" => "get"}
         %span Start editing
         %i.mdi.mdi-pencil
       - @library.each do |game|
@@ -61,10 +61,10 @@
           - @games = Game.find(game.game_id)
           /%h2 Il gioco cercato ha id #{@games.id}, si chiama #{@games.title} ed appartiene a #{@user.username} 
           .card
-            - if (game.favorite == "true")
+            - if (game.selling == "true")
               %a.mdi.mdi-star.dot
             - else             
-              %a.mdi.mdi-star-outline.dotCard{:href => game_mylibrary_path(@games.id,game.id), "data-method" => "put"}
+              %a.mdi.mdi-star-outline.dotCard{:href => game_store_path(@games.id,game.id), "data-method" => "put"}
             .content.cardPadding
               %p.description Genre: #{@games.genre}
               %p.description Platforms: #{@games.platform}

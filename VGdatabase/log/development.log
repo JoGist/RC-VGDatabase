@@ -56242,3 +56242,809 @@ Processing by SessionsController#signup as HTML
 Completed 200 OK in 71ms (Views: 69.3ms | ActiveRecord: 0.0ms)
 
 
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (8.6ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20200430142715)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "username" varchar, "password" varchar, "avatar" varchar, "background" varchar, "location" varchar, "social1" varchar, "social2" varchar, "social3" varchar)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200430142715"]]
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friends_on_friend_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friends_on_friend_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friends_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friends_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_mylibraries_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_mylibraries_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_mylibraries_on_game_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_mylibraries_on_game_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_game_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_game_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateStore (20200430143148)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "stores" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "game_id" integer, "user_id" integer, "selling" varchar, "condition" varchar, "price" integer)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_stores_on_game_id" ON "stores" ("game_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_stores_on_game_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_stores_on_game_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_stores_on_user_id" ON "stores" ("user_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200430143148"]]
+  [1m[35m (7.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friends_on_friend_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friends_on_friend_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friends_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friends_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_mylibraries_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_mylibraries_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_mylibraries_on_game_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_mylibraries_on_game_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_game_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_game_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_stores_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_stores_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_stores_on_game_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_stores_on_game_id' AND type='index'
+[0m
+  [1m[36mStore Load (1.3ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (8.2ms)[0m  [1m[35mDROP TABLE "mylibraries"[0m
+  [1m[36mMylibrary Load (0.6ms)[0m  [1m[34mSELECT  "mylibraries".* FROM "mylibraries" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mMylibrary Load (0.7ms)[0m  [1m[34mSELECT  "mylibraries".* FROM "mylibraries" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/homepage" for ::1 at 2020-04-30 17:13:07 +0200
+  [1m[35m (4.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by GamesController#homepage as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :set_current_user rendered or redirected
+Completed 302 Found in 11ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2020-04-30 17:13:08 +0200
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.haml within layouts/application
+  Rendered sessions/login.haml within layouts/application (582.4ms)
+Completed 200 OK in 708ms (Views: 706.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/callback?utf8=%E2%9C%93&user%5Bname%5D=marco&user%5Bpassword%5D=[FILTERED]" for ::1 at 2020-04-30 17:13:12 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"marco", "password"=>"[FILTERED]"}}
+  [1m[36mUser Exists (4.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" IN (SELECT "users"."id" FROM "users" WHERE "users"."username" = ?) LIMIT ?[0m  [["username", "marco"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/login_error
+Completed 302 Found in 46ms (ActiveRecord: 10.3ms)
+
+
+Started GET "/login_error" for ::1 at 2020-04-30 17:13:12 +0200
+Processing by SessionsController#login_error as HTML
+  Rendering sessions/login_error.haml within layouts/application
+  Rendered sessions/login_error.haml within layouts/application (41.1ms)
+Completed 200 OK in 100ms (Views: 98.1ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/login" for ::1 at 2020-04-30 17:13:14 +0200
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"4P3CQ8+J9BMa1TkONdoEXfplmfPSM4dpVukUxtPFYR4RbfHpv632cXdi5WcMntog+EPZAXbkfLEx237S+lOmfQ=="}
+Redirected to http://localhost:3000/login
+Completed 302 Found in 6ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2020-04-30 17:13:14 +0200
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.haml within layouts/application
+  Rendered sessions/login.haml within layouts/application (43.7ms)
+Completed 200 OK in 106ms (Views: 104.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for ::1 at 2020-04-30 17:13:17 +0200
+Processing by SessionsController#signup as HTML
+  Rendering sessions/signup.haml within layouts/application
+  Rendered sessions/signup.haml within layouts/application (29.8ms)
+Completed 200 OK in 111ms (Views: 109.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/signup?method=get" for ::1 at 2020-04-30 17:13:29 +0200
+Processing by SessionsController#signin as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Uxs49SCdrK60pwOxC8Y+D2WT0nM3XF9n7QQcmdNz7085nQ2WcnwbmK10E/Eb/sXrhjN7F3hrNmFE5GafMtgPWQ==", "user"=>{"name"=>"ciao@co", "name1"=>"marco", "password"=>"[FILTERED]", "password1"=>"[FILTERED]"}, "method"=>"get"}
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ciao@co"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "marco"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "username", "password", "avatar") VALUES (?, ?, ?, ?)[0m  [["email", "ciao@co"], ["username", "marco"], ["password", "ciao"], ["avatar", "Avatars/avatar_0"]]
+  [1m[35m (6.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/login
+Completed 302 Found in 48ms (ActiveRecord: 9.4ms)
+
+
+Started GET "/login" for ::1 at 2020-04-30 17:13:29 +0200
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.haml within layouts/application
+  Rendered sessions/login.haml within layouts/application (41.5ms)
+Completed 200 OK in 113ms (Views: 111.4ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/callback?utf8=%E2%9C%93&user%5Bname%5D=marco&user%5Bpassword%5D=[FILTERED]" for ::1 at 2020-04-30 17:14:26 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"marco", "password"=>"[FILTERED]"}}
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" IN (SELECT "users"."id" FROM "users" WHERE "users"."username" = ?) LIMIT ?[0m  [["username", "marco"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ?[0m  [["username", "marco"]]
+Redirected to http://localhost:3000/homepage
+Completed 302 Found in 9ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/homepage" for ::1 at 2020-04-30 17:14:26 +0200
+Processing by GamesController#homepage as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/homepage.haml within layouts/application
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" WHERE "stores"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" WHERE "stores"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" WHERE "stores"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Game Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" WHERE "stores"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" WHERE "stores"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" WHERE "stores"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Game Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" WHERE "stores"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Game Load (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" WHERE "stores"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  Rendered games/homepage.haml within layouts/application (582.1ms)
+Completed 500 Internal Server Error in 624ms (ActiveRecord: 2.4ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `myLibrary_path' for #<#<Class:0x007f975830f8d0>:0x007f975830dc10>):
+    14:               %i.mdi.mdi-home
+    15:               %span.sidebar__nav__text Homepage
+    16:           %li
+    17:             %a.sidebar__nav__link{:href => myLibrary_path, "data-method" => "get"}
+    18:               %i.mdi.mdi-library-movie
+    19:               %span.sidebar__nav__text My library
+    20:           %li
+  
+app/views/games/homepage.haml:17:in `_app_views_games_homepage_haml__1018690464504395017_70143972729640'
+Started GET "/homepage" for ::1 at 2020-04-30 17:15:08 +0200
+Processing by GamesController#homepage as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/homepage.haml within layouts/application
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  [1m[36mStore Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = ? AND "stores"."game_id" = ? LIMIT ?[0m  [["user_id", 1], ["game_id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Store Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = ? AND "stores"."game_id" = ? LIMIT ?[0m  [["user_id", 1], ["game_id", 1], ["LIMIT", 1]]
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" WHERE "stores"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" WHERE "stores"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" WHERE "stores"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" WHERE "stores"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  Rendered games/homepage.haml within layouts/application (341.2ms)
+Completed 500 Internal Server Error in 350ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `game_mylibraries_path' for #<#<Class:0x007f975830f8d0>:0x007f97584ee0c0>
+Did you mean?  game_stores_path):
+    76:               %p.description Genre: #{game.genre}
+    77:               %p.description Platforms: #{game.platform}
+    78:               %a.btn{:href => game_path(game), "data-method" => "get"} View info 
+    79:               %a.btn{:href => game_mylibraries_path(game), "data-method" => "post"}
+    80:                 %i.mdi.mdi-plus
+    81:                 %span.sidebar__nav__text library
+    82:             %img.cover{:alt => "Game image cover", :src => "#{game.cover}"}
+  
+app/views/games/homepage.haml:79:in `block in _app_views_games_homepage_haml__1018690464504395017_70143999178160'
+app/views/games/homepage.haml:50:in `_app_views_games_homepage_haml__1018690464504395017_70143999178160'
+Started GET "/homepage" for ::1 at 2020-04-30 17:15:09 +0200
+Processing by GamesController#homepage as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/homepage.haml within layouts/application
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  [1m[36mStore Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = ? AND "stores"."game_id" = ? LIMIT ?[0m  [["user_id", 1], ["game_id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Store Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = ? AND "stores"."game_id" = ? LIMIT ?[0m  [["user_id", 1], ["game_id", 1], ["LIMIT", 1]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" WHERE "stores"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" WHERE "stores"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" WHERE "stores"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" WHERE "stores"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  Rendered games/homepage.haml within layouts/application (359.1ms)
+Completed 500 Internal Server Error in 369ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `game_mylibraries_path' for #<#<Class:0x007f975830f8d0>:0x007f9755ff08b8>
+Did you mean?  game_stores_path):
+    76:               %p.description Genre: #{game.genre}
+    77:               %p.description Platforms: #{game.platform}
+    78:               %a.btn{:href => game_path(game), "data-method" => "get"} View info 
+    79:               %a.btn{:href => game_mylibraries_path(game), "data-method" => "post"}
+    80:                 %i.mdi.mdi-plus
+    81:                 %span.sidebar__nav__text library
+    82:             %img.cover{:alt => "Game image cover", :src => "#{game.cover}"}
+  
+app/views/games/homepage.haml:79:in `block in _app_views_games_homepage_haml__1018690464504395017_70143979784620'
+app/views/games/homepage.haml:50:in `_app_views_games_homepage_haml__1018690464504395017_70143979784620'
+Started GET "/homepage" for ::1 at 2020-04-30 17:16:19 +0200
+Processing by GamesController#homepage as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/homepage.haml within layouts/application
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  [1m[36mStore Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = ? AND "stores"."game_id" = ? LIMIT ?[0m  [["user_id", 1], ["game_id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Store Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = ? AND "stores"."game_id" = ? LIMIT ?[0m  [["user_id", 1], ["game_id", 1], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = ? AND "stores"."game_id" = ? LIMIT ?[0m  [["user_id", 1], ["game_id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Store Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = ? AND "stores"."game_id" = ? LIMIT ?[0m  [["user_id", 1], ["game_id", 2], ["LIMIT", 1]]
+  Rendered games/homepage.haml within layouts/application (65.3ms)
+Completed 200 OK in 132ms (Views: 128.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/selling" for ::1 at 2020-04-30 17:16:42 +0200
+Processing by GamesController#selling as HTML
+  Parameters: {"authenticity_token"=>"bdzqJIq1aYJypd41lDw6cT+BgJO5ddko3ows5+YnRwGcTNmO+pFr4B8SAlyteOQMPafAYR2iIvC5vkbzz7GAYg=="}
+Completed 406 Not Acceptable in 58ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::UnknownFormat (GamesController#selling is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+  
+actionpack (5.1.7) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
+actionpack (5.1.7) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
+actionpack (5.1.7) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
+actionpack (5.1.7) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.1.7) lib/abstract_controller/base.rb:186:in `process_action'
+actionpack (5.1.7) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.1.7) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.1.7) lib/active_support/callbacks.rb:131:in `run_callbacks'
+actionpack (5.1.7) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.7) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.7) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.7) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.7) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.7) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.7) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.7) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.7) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.7) lib/abstract_controller/base.rb:124:in `process'
+actionview (5.1.7) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.7) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.7) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.7) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.7) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.7) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.7) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.7) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.7) lib/action_dispatch/routing/route_set.rb:844:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+rack (2.2.2) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.2) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.7) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.7) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.7) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.7) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.1.7) lib/rails/engine.rb:522:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/selling" for ::1 at 2020-04-30 17:17:07 +0200
+Processing by GamesController#selling as HTML
+  Parameters: {"authenticity_token"=>"bdzqJIq1aYJypd41lDw6cT+BgJO5ddko3ows5+YnRwGcTNmO+pFr4B8SAlyteOQMPafAYR2iIvC5vkbzz7GAYg=="}
+  Rendering games/selling.haml within layouts/application
+  Rendered games/selling.haml within layouts/application (484.8ms)
+Completed 500 Internal Server Error in 493ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `myLibrary_path' for #<#<Class:0x007f975830f8d0>:0x007f97582896b8>):
+    14:               %i.mdi.mdi-home
+    15:               %span.sidebar__nav__text Homepage
+    16:           %li
+    17:             %a.sidebar__nav__link{:href => myLibrary_path, "data-method" => "get"}
+    18:               %i.mdi.mdi-library-movie
+    19:               %span.sidebar__nav__text My library
+    20:           %li.active
+  
+app/views/games/selling.haml:17:in `_app_views_games_selling_haml__1442052041904609393_70143997923520'
+Started POST "/games/1/stores" for ::1 at 2020-04-30 17:17:24 +0200
+Processing by StoresController#create as HTML
+  Parameters: {"authenticity_token"=>"bdzqJIq1aYJypd41lDw6cT+BgJO5ddko3ows5+YnRwGcTNmO+pFr4B8SAlyteOQMPafAYR2iIvC5vkbzz7GAYg==", "game_id"=>"1"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.6ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'favorite' for Store.):
+  
+app/controllers/stores_controller.rb:8:in `create'
+Started POST "/games/1/stores" for ::1 at 2020-04-30 17:21:33 +0200
+Processing by StoresController#create as HTML
+  Parameters: {"authenticity_token"=>"bdzqJIq1aYJypd41lDw6cT+BgJO5ddko3ows5+YnRwGcTNmO+pFr4B8SAlyteOQMPafAYR2iIvC5vkbzz7GAYg==", "game_id"=>"1"}
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "stores" ("game_id", "user_id", "selling", "price") VALUES (?, ?, ?, ?)[0m  [["game_id", 1], ["user_id", 1], ["selling", "false"], ["price", 0]]
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/myStore
+Completed 302 Found in 81ms (ActiveRecord: 11.6ms)
+
+
+Started GET "/myStore" for ::1 at 2020-04-30 17:21:33 +0200
+Processing by GamesController#myStore as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 406 Not Acceptable in 37ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionController::UnknownFormat (GamesController#myStore is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+  
+actionpack (5.1.7) lib/action_controller/metal/implicit_render.rb:53:in `default_render'
+actionpack (5.1.7) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
+actionpack (5.1.7) lib/action_controller/metal/basic_implicit_render.rb:4:in `tap'
+actionpack (5.1.7) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.1.7) lib/abstract_controller/base.rb:186:in `process_action'
+actionpack (5.1.7) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.1.7) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.1.7) lib/active_support/callbacks.rb:131:in `run_callbacks'
+actionpack (5.1.7) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.7) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.7) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.7) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.7) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.7) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.7) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.7) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.7) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.7) lib/abstract_controller/base.rb:124:in `process'
+actionview (5.1.7) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.7) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.7) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.7) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.7) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.7) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.7) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.7) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.7) lib/action_dispatch/routing/route_set.rb:844:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+rack (2.2.2) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.2) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.7) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.7) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.7) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.7) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.1.7) lib/rails/engine.rb:522:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/myStore" for ::1 at 2020-04-30 17:21:53 +0200
+Processing by GamesController#myStore as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/myStore.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.1ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered games/myStore.haml within layouts/application (427.1ms)
+Completed 500 Internal Server Error in 434ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `myLibraryFavorites_path' for #<#<Class:0x007f973822d518>:0x007f97382277d0>):
+    18:               %i.mdi.mdi-library-movie
+    19:               %span.sidebar__nav__text My library
+    20:           %li
+    21:             %a.sidebar__nav__link{:href => myLibraryFavorites_path, "data-method" => "get"}
+    22:               %i.mdi.mdi-star
+    23:               %span.sidebar__nav__text  Favorites
+    24:           %li
+  
+app/views/games/myStore.haml:21:in `_app_views_games_my_tore_haml___2231498738555667652_70143729299280'
+Started GET "/myStore" for ::1 at 2020-04-30 17:22:13 +0200
+Processing by GamesController#myStore as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/myStore.haml within layouts/application
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mStore Load (1.2ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.1ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT  "stores".* FROM "stores" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered games/myStore.haml within layouts/application (407.5ms)
+Completed 500 Internal Server Error in 414ms (ActiveRecord: 1.7ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `editLibrary_path' for #<#<Class:0x007f973822d518>:0x007f973805e890>
+Did you mean?  editProfile_path):
+    53:       %a.sort{:href => "#"}
+    54:         %span Sort
+    55:         %i.mdi.mdi-filter-variant
+    56:       %a.editText{:href => editLibrary_path, "data-method" => "get"}
+    57:         %span Start editing
+    58:         %i.mdi.mdi-pencil
+    59:       - @library.each do |game|
+  
+app/views/games/myStore.haml:56:in `_app_views_games_my_tore_haml___2231498738555667652_70143728351700'
+Started GET "/myStore" for ::1 at 2020-04-30 17:22:54 +0200
+Processing by GamesController#myStore as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/myStore.haml within layouts/application
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered games/myStore.haml within layouts/application (51.0ms)
+Completed 200 OK in 114ms (Views: 111.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/selling" for ::1 at 2020-04-30 17:22:58 +0200
+Processing by GamesController#selling as HTML
+  Parameters: {"authenticity_token"=>"UhelYPKTYB4u4irfHYGMnKyrE6F7yRPP+VCy8FWJZ1+jh5bKgrdifENV9rYkxVLhro1TU98e6BeeYtjkfB+gPA=="}
+  Rendering games/selling.haml within layouts/application
+  Rendered games/selling.haml within layouts/application (432.8ms)
+Completed 500 Internal Server Error in 437ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `myLibrary_path' for #<#<Class:0x007f973822d518>:0x007f9774923188>):
+    14:               %i.mdi.mdi-home
+    15:               %span.sidebar__nav__text Homepage
+    16:           %li
+    17:             %a.sidebar__nav__link{:href => myLibrary_path, "data-method" => "get"}
+    18:               %i.mdi.mdi-library-movie
+    19:               %span.sidebar__nav__text My library
+    20:           %li.active
+  
+app/views/games/selling.haml:17:in `_app_views_games_selling_haml__1442052041904609393_70144236264860'
+Started GET "/selling" for ::1 at 2020-04-30 17:23:33 +0200
+Processing by GamesController#selling as HTML
+  Parameters: {"authenticity_token"=>"UhelYPKTYB4u4irfHYGMnKyrE6F7yRPP+VCy8FWJZ1+jh5bKgrdifENV9rYkxVLhro1TU98e6BeeYtjkfB+gPA=="}
+  Rendering games/selling.haml within layouts/application
+  Rendered games/selling.haml within layouts/application (415.9ms)
+Completed 500 Internal Server Error in 425ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `myLibrary_path' for #<#<Class:0x007f973822d518>:0x007f9755c672f0>):
+    14:               %i.mdi.mdi-home
+    15:               %span.sidebar__nav__text Homepage
+    16:           %li
+    17:             %a.sidebar__nav__link{:href => myLibrary_path, "data-method" => "get"}
+    18:               %i.mdi.mdi-library-movie
+    19:               %span.sidebar__nav__text My library
+    20:           %li.active
+  
+app/views/games/selling.haml:17:in `_app_views_games_selling_haml__1442052041904609393_70143977955720'
+Started GET "/selling" for ::1 at 2020-04-30 17:23:46 +0200
+Processing by GamesController#selling as HTML
+  Parameters: {"authenticity_token"=>"UhelYPKTYB4u4irfHYGMnKyrE6F7yRPP+VCy8FWJZ1+jh5bKgrdifENV9rYkxVLhro1TU98e6BeeYtjkfB+gPA=="}
+  Rendering games/selling.haml within layouts/application
+  Rendered games/selling.haml within layouts/application (78.7ms)
+Completed 500 Internal Server Error in 87ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `avatar' for nil:NilClass):
+    31:               %span.sidebar__nav__text Friends
+    32:           %li
+    33:             %a.sidebar__nav__link{:href => myProfile_path, "data-method" => "get"}
+    34:               =image_tag (@user.avatar), class: "img3"
+    35:               %span.sidebar__nav__text My account
+    36:           %li
+    37:             %a.sidebar__nav__link{:href => login_path, "data-method" => "delete"}
+  
+app/views/games/selling.haml:34:in `_app_views_games_selling_haml__1442052041904609393_70143969028860'
+Started GET "/selling" for ::1 at 2020-04-30 17:24:14 +0200
+  
+SyntaxError (/home/biar/Progetto-Reti-di-Calcolatori/VGdatabase/app/controllers/games_controller.rb:21: syntax error, unexpected ':', expecting ']'
+        @user = session[:user:id]
+                              ^
+/home/biar/Progetto-Reti-di-Calcolatori/VGdatabase/app/controllers/games_controller.rb:276: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/games_controller.rb:21: syntax error, unexpected ':', expecting ']'
+app/controllers/games_controller.rb:276: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/selling" for ::1 at 2020-04-30 17:24:26 +0200
+Processing by GamesController#selling as HTML
+  Parameters: {"authenticity_token"=>"UhelYPKTYB4u4irfHYGMnKyrE6F7yRPP+VCy8FWJZ1+jh5bKgrdifENV9rYkxVLhro1TU98e6BeeYtjkfB+gPA=="}
+  Rendering games/selling.haml within layouts/application
+  Rendered games/selling.haml within layouts/application (43.9ms)
+Completed 500 Internal Server Error in 52ms
+
+
+  
+ActionView::Template::Error (undefined method `avatar' for 1:Integer):
+    31:               %span.sidebar__nav__text Friends
+    32:           %li
+    33:             %a.sidebar__nav__link{:href => myProfile_path, "data-method" => "get"}
+    34:               =image_tag (@user.avatar), class: "img3"
+    35:               %span.sidebar__nav__text My account
+    36:           %li
+    37:             %a.sidebar__nav__link{:href => login_path, "data-method" => "delete"}
+  
+app/views/games/selling.haml:34:in `_app_views_games_selling_haml__1442052041904609393_70143968959080'
+Started GET "/selling" for ::1 at 2020-04-30 17:24:45 +0200
+Processing by GamesController#selling as HTML
+  Parameters: {"authenticity_token"=>"UhelYPKTYB4u4irfHYGMnKyrE6F7yRPP+VCy8FWJZ1+jh5bKgrdifENV9rYkxVLhro1TU98e6BeeYtjkfB+gPA=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/selling.haml within layouts/application
+  Rendered games/selling.haml within layouts/application (43.6ms)
+Completed 500 Internal Server Error in 77ms (ActiveRecord: 1.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `where' for nil:NilClass):
+    42:               %i.mdi.mdi-information
+    43:               %span.sidebar__nav__text Contact us
+    44:     %br/
+    45:     - @lunghezza = @library.where(:user_id => @user.id).length
+    46:     - if @lunghezza==0
+    47:       %h1 You don't have any game in your favorites
+    48:     - elsif @lunghezza==1
+  
+app/views/games/selling.haml:45:in `_app_views_games_selling_haml__1442052041904609393_70144236181640'
+Started GET "/selling" for ::1 at 2020-04-30 17:25:34 +0200
+Processing by GamesController#selling as HTML
+  Parameters: {"authenticity_token"=>"UhelYPKTYB4u4irfHYGMnKyrE6F7yRPP+VCy8FWJZ1+jh5bKgrdifENV9rYkxVLhro1TU98e6BeeYtjkfB+gPA=="}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/selling.haml within layouts/application
+  [1m[36mStore Load (0.1ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered games/selling.haml within layouts/application (75.8ms)
+Completed 200 OK in 158ms (Views: 123.6ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/myStore" for ::1 at 2020-04-30 17:25:41 +0200
+Processing by GamesController#myStore as HTML
+  Parameters: {"authenticity_token"=>"AeCTwjm3gmI0IiAWx15JO6cjX7twGuKNvw/fxLoLr3nwcKBoSZOAAFmV/H/+GpdGpQUfSdTNGVXYPbXQk51oGg=="}
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/myStore.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered games/myStore.haml within layouts/application (64.5ms)
+Completed 200 OK in 139ms (Views: 127.7ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/selling" for ::1 at 2020-04-30 17:25:43 +0200
+Processing by GamesController#selling as HTML
+  Parameters: {"authenticity_token"=>"Lab+laKMwTvn9vfB++m81OWw8PSKVlPywgXBi6iA9DPcNs0/0qjDWYpBK6jCrWKp55awBi6BqCqlN6ufgRYzUA=="}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/selling.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered games/selling.haml within layouts/application (53.5ms)
+Completed 200 OK in 124ms (Views: 121.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/selling" for ::1 at 2020-04-30 17:26:59 +0200
+Processing by GamesController#selling as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/selling.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered games/selling.haml within layouts/application (61.4ms)
+Completed 200 OK in 119ms (Views: 114.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/myStore" for ::1 at 2020-04-30 17:27:02 +0200
+Processing by GamesController#myStore as HTML
+  Parameters: {"authenticity_token"=>"VwiG6KFK3j32RY8hriu1iYyBfEwB9XZJ+ZxaP2Cj7+emmLVC0W7cX5vyU0iXb2v0jqc8vqUijZGerjArSTUohA=="}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/myStore.haml within layouts/application
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered games/myStore.haml within layouts/application (52.3ms)
+Completed 200 OK in 115ms (Views: 113.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/selling" for ::1 at 2020-04-30 17:27:03 +0200
+Processing by GamesController#selling as HTML
+  Parameters: {"authenticity_token"=>"+icw4Bm3IFntf2bQlrv9MRHdZ/6vOY6aYQ7eiFAX2/wLtwNKaZMiO4DIurmv/yNME/snDAvudUIGPLSceYEcnw=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/selling.haml within layouts/application
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered games/selling.haml within layouts/application (54.1ms)
+Completed 200 OK in 121ms (Views: 117.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/myStore" for ::1 at 2020-04-30 17:27:23 +0200
+Processing by GamesController#myStore as HTML
+  Parameters: {"authenticity_token"=>"X1Z2zmD8rml+hiwhs/vJ/CPhOSwTZhC8agxmq4Vba92uxkVkENisCxMx8EiKvxeBIcd53rex62QNPgy/rM2svg=="}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/myStore.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered games/myStore.haml within layouts/application (69.2ms)
+Completed 200 OK in 136ms (Views: 133.0ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/login" for ::1 at 2020-04-30 17:27:32 +0200
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"wdSXjo60ZNSQFXUp2ui+Pzo4intXxoUTSFOEnuMWHQ0wRKQk/pBmtv2iqUDjrGBCOB7KifMRfssvYe6KyoDabg=="}
+Redirected to http://localhost:3000/login
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2020-04-30 17:27:32 +0200
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.haml within layouts/application
+  Rendered sessions/login.haml within layouts/application (28.8ms)
+Completed 200 OK in 73ms (Views: 71.9ms | ActiveRecord: 0.0ms)
+
+

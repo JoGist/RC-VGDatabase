@@ -1,4 +1,4 @@
-class Mylibrary < ApplicationRecord
+class Store < ApplicationRecord
 belongs_to :games, optional:true
 belongs_to :users, optional:true
 end

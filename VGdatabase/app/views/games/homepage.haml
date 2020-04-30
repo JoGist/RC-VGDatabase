@@ -14,11 +14,11 @@
               %i.mdi.mdi-home
               %span.sidebar__nav__text Homepage
           %li
-            %a.sidebar__nav__link{:href => myLibrary_path, "data-method" => "get"}
+            %a.sidebar__nav__link{:href => myStore_path, "data-method" => "get"}
               %i.mdi.mdi-library-movie
               %span.sidebar__nav__text My library
           %li
-            %a.sidebar__nav__link{:href => myLibraryFavorites_path, "data-method" => "get"}
+            %a.sidebar__nav__link{:href => selling_path, "data-method" => "get"}
               %i.mdi.mdi-star
               %span.sidebar__nav__text  Favorites
           %li
@@ -76,7 +76,7 @@
               %p.description Genre: #{game.genre}
               %p.description Platforms: #{game.platform}
               %a.btn{:href => game_path(game), "data-method" => "get"} View info 
-              %a.btn{:href => game_mylibraries_path(game), "data-method" => "post"}
+              %a.btn{:href => game_stores_path(game), "data-method" => "post"}
                 %i.mdi.mdi-plus
                 %span.sidebar__nav__text library
             %img.cover{:alt => "Game image cover", :src => "#{game.cover}"}

@@ -22,10 +22,9 @@ get '/forgot_password_error_password' => 'sessions#forgot_password_error_passwor
 
 # User routes
 get '/homepage' => 'games#homepage'
-get '/myLibrary' =>  'games#myLibrary'
-get '/myLibraryFavorites' => 'games#myLibraryFavorites'
-get '/editLibrary' => 'games#myLibraryEdit'
-get '/editFavorites' => 'games#myLibraryFavoritesEdit'
+get '/myStore' =>  'games#myStore'
+get '/editStore' => 'games#myStoreEdit'
+get '/selling' => 'games#selling'
 get '/friends' => 'games#friends'
 get '/myProfile' => 'games#myProfile'
 get '/editProfile' => 'games#editProfile'
@@ -74,7 +73,7 @@ get '/deleteReviewsGame_error' => 'games#deleteReviewsGame_error'
 
 resources :games do
   resources :reviews
-  resources :mylibraries
+  resources :stores
 end
 
 namespace :guest do
