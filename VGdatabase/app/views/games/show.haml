@@ -14,13 +14,13 @@
               %i.mdi.mdi-home
               %span.sidebar__nav__text Homepage
           %li
-            %a.sidebar__nav__link{:href => myLibrary_path, "data-method" => "get"}
+            %a.sidebar__nav__link{:href => myStore_path, "data-method" => "get"}
               %i.mdi.mdi-library-movie
-              %span.sidebar__nav__text My library
+              %span.sidebar__nav__text My store
           %li
-            %a.sidebar__nav__link{:href => myLibraryFavorites_path, "data-method" => "get"}
+            %a.sidebar__nav__link{:href => selling_path, "data-method" => "get"}
               %i.mdi.mdi-star
-              %span.sidebar__nav__text  Favorites
+              %span.sidebar__nav__text  Selling
           %li
             %a.sidebar__nav__link{:href => searchGame_path, "data-method" => "get"}
               %i.mdi.mdi-database-search
@@ -51,12 +51,15 @@
             %br
             %br
             %br
-            - score = 0
-            - @review.each do |review|
-              - score = score+review.score
-            - @aux.each do |aux|
-              - score = score+aux.score
-            - score = score/(@review.length+@aux.length) 
+            - if (@review.length != 0 || @aux.length != 0)
+              - score = 0
+              - @review.each do |review|
+                - score = score+review.score
+              - @aux.each do |aux|
+                - score = score+aux.score
+              - score = score/(@review.length+@aux.length) 
+            - else 
+              - score = 0
           %li.gameInfo
             %h2 Title: #{@games.title}
             %h4 Developer: #{@games.developer}
@@ -64,8 +67,7 @@
             %h4 Platform: #{@games.platform}   
             %h4 Score:
             - if (score==0)
-              %h4 Score: 
-              %h5 No review
+              %h4.gameStar No review
             - elsif (score==1)
               %div.gameStar
                 %i.mdi.mdi-star.reviewStar
@@ -97,7 +99,7 @@
               %a.buttonSmall{:href => myLibrary_path, "data-method" => "get"}
                 %span.sidebar__nav__text Already in library
             - else
-              %a.buttonSmall{:href => game_mylibraries_path(@games), "data-method" => "post"}
+              %a.buttonSmall{:href => game_stores_path(@games), "data-method" => "post"}
                 %i.mdi.mdi-plus
                 %span.hidden . 
                 %span.sidebar__nav__text Add to library 

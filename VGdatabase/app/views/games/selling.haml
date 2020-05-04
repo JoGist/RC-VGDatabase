@@ -1,7 +1,7 @@
 !!!
 %html{:lang => "en", class: "container"}
   %head
-    %title Favorites - VGDatabase
+    %title Selling - VGDatabase
   %body.visible
     %aside.sidebar.normal
       %nav
@@ -16,11 +16,11 @@
           %li
             %a.sidebar__nav__link{:href => myStore_path, "data-method" => "get"}
               %i.mdi.mdi-library-movie
-              %span.sidebar__nav__text My library
-          %li.active
-            %a.sidebar__nav__link_plain{}
+              %span.sidebar__nav__text My store
+          %li
+            %a.sidebar__nav__link{:href => selling_path, "data-method" => "get"}
               %i.mdi.mdi-star
-              %span.sidebar__nav__text  Favorites
+              %span.sidebar__nav__text  Selling
           %li
             %a.sidebar__nav__link{:href => searchGame_path, "data-method" => "get"}
               %i.mdi.mdi-database-search
@@ -44,11 +44,11 @@
     %br/
     - @lunghezza = @library.where(:user_id => @user.id).length
     - if @lunghezza==0
-      %h1 You don't have any game in your favorites
+      %h1 You don't have any game in selling
     - elsif @lunghezza==1
-      %h1 You have #{@lunghezza} game in your favorites
+      %h1 You have #{@lunghezza} game in selling
     -else
-      %h1 You have #{@lunghezza} games in your favorites
+      %h1 You have #{@lunghezza} games in selling
     %div.page-content
       %a.sortOnly{:href => "#"}
         %span Sort

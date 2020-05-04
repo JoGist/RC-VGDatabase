@@ -19,7 +19,7 @@ skip_before_action :verify_authenticity_token
 
     def selling
         @user = User.find(session[:user_id])
-        @library = Store.all
+        @library = Store.where(:user_id => @user.id, :selling => 'true')
     end
 
     def search

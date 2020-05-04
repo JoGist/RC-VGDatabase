@@ -15,13 +15,13 @@
               %i.mdi.mdi-home
               %span.sidebar__nav__text Homepage
           %li.active
-            %a.sidebar__nav__link_plain{}
+            %a.sidebar__nav__link{}
               %i.mdi.mdi-library-movie
-              %span.sidebar__nav__text My library
+              %span.sidebar__nav__text My store
           %li
-            %a.sidebar__nav__link{:href => myLibraryFavorites_path, "data-method" => "get"}
+            %a.sidebar__nav__link{:href => selling_path, "data-method" => "get"}
               %i.mdi.mdi-star
-              %span.sidebar__nav__text  Favorites
+              %span.sidebar__nav__text  Selling
           %li
             %a.sidebar__nav__link{:href => searchGame_path, "data-method" => "get"}
               %i.mdi.mdi-database-search
@@ -48,7 +48,7 @@
       %a.sort{:href => "#"}
         %span Sort
         %i.mdi.mdi-filter-variant
-      %a.editText{:href => myLibrary_path, "data-method" => "get"}
+      %a.editText{:href => myStore_path, "data-method" => "get"}
         %span Save changes
         %i.mdi.mdi-content-save
       - @mylibrary.each do |game|
@@ -60,7 +60,7 @@
               %p
               %p
               %p
-              %a.btn{:href => game_mylibrary_path(@games.id,game.id), "data-method" => "delete"}
+              %a.btn{:href => game_store_path(@games.id,game.id), "data-method" => "delete"}
                 %i.mdi.mdi-minus
                 %span.sidebar__nav__text remove
                 /remove the game (hai perso) removes it also from favorites

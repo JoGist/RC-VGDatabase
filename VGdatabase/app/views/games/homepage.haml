@@ -16,11 +16,11 @@
           %li
             %a.sidebar__nav__link{:href => myStore_path, "data-method" => "get"}
               %i.mdi.mdi-library-movie
-              %span.sidebar__nav__text My library
+              %span.sidebar__nav__text My store
           %li
             %a.sidebar__nav__link{:href => selling_path, "data-method" => "get"}
               %i.mdi.mdi-star
-              %span.sidebar__nav__text  Favorites
+              %span.sidebar__nav__text  Selling
           %li
             %a.sidebar__nav__link{:href => searchGame_path, "data-method" => "get"}
               %i.mdi.mdi-database-search
@@ -50,10 +50,6 @@
       - @games.each do |game|
         - if @library.exists?(:game_id => game.id)
           .card
-            - if (@library.where(:game_id => game.id)[0].favorite == "true")
-              %a.mdi.mdi-star.dot{:href => game_mylibrary_path(game.id,@library.where(:game_id => game.id)[0].id), "data-method" => "put"}
-            - else             
-              %a.mdi.mdi-star-outline.dotCard{:href => game_mylibrary_path(game.id,@library.where(:game_id => game.id)[0].id), "data-method" => "put"}
             .content.cardPadding
               %p.description Genre: #{game.genre}
               %p.description Platforms: #{game.platform}
