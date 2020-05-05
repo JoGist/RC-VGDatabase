@@ -84,12 +84,12 @@
                 /%span Last changed password on:
               .grid-item-details
                 %h5.sub-header-details Background
-                %input{:name => 'user[backgrounf]' , :value => @user.background, :autocomplete => "text", :type => "text"}/
+                %input{:name => 'user[background]' , :value => @user.background, :autocomplete => "text", :type => "text"}/
                 %br
                 %span Enter your custom background url (img or gif)
-              %a.grid-item-details.white{}
+              %a.grid-item-details.white{:href => revert_path, "data-method" => "post"}
                 %span Revert to default background
-                %a2.right2.white{:href => '#'} x
+                %a2.right2.white x
               .grid-item-details
                 %h5.sub-header-details Linked accounts:
                 %br

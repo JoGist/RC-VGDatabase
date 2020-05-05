@@ -59,6 +59,7 @@ skip_before_action :verify_authenticity_token
         oldp = params[:user][:oldp]
         newp = params[:user][:newp]
         newp1 = params[:user][:newp1]
+        back = params[:user][:background]
         @user = User.find(session[:user_id])
         if username.length==0 && email.length==0 && oldp.length==0 && newp.length==0 && newp1.length==0
             redirect_to myProfile_path
@@ -83,6 +84,16 @@ skip_before_action :verify_authenticity_token
         else
             redirect_to editProfile_error_path        
         end
+        if back.length!=0
+            @user.update_attributes!(:background => back)
+            redirect_to editProfile_success_path 
+        end
+    end
+
+    def revert 
+        @user = User.find(session[:user_id])
+        @user.update_attributes!(:background => "backgroundSimple.png")
+        redirect_to editProfile_success_path  
     end
 
     def editProfile_success

@@ -35,7 +35,8 @@ get '/deleteUser' => 'games#deleteUser'   #Serve all'user per cancellare il prop
 get '/editProfile_success' => "games#editProfile_success"
 get '/editProfile_error' => "games#editProfile_error"
 get '/editAvatar' => 'games#editAvatar'
-post 'editAvatar' => 'games#editingAvatar'
+post '/editAvatar' => 'games#editingAvatar'
+post '/revert' => 'games#revert'
 
 # Guest routes
 get '/homepage_guest' => 'sessions#homepageGuest'

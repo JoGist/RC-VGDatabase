@@ -6,7 +6,7 @@
       /* Set the size of the div element that contains the map */
       #map {
         height: 100%; /* The height is 400 pixels */
-        /*width: 100%; The width is the width of the web page */
+        width: 100%; /* The width is the width of the web page */
       }
       html,
       body {
@@ -22,6 +22,12 @@
       #pac-input:focus {
         border-color: #4d90fe;
       }
+    - provide :head_tags do
+      :javascript
+        document.addEventListener("DOMContentLoaded", function(){
+            initMap(#{@user.location})
+        });
+
   %body.visible
     %aside.sidebar.normal
       %nav
@@ -87,26 +93,5 @@
 
           = select :game, :choice, ['Title','Developer']                   
     %div.page-content.extraPadding
-      %h4.extraMarginLeft 2 results
-      %a.sortOnly{:href => "#"}
-        %span Sort
-        %i.mdi.mdi-filter-variant
-      /data-trigger has to be saved into a var
-      - @games.each do |game|
-        .card
-          %a.mdi.mdi-star-outline.dotCard{:href => "#"}
-          /only present if the game is in your library and not in favorites
-          /if the game is in favorites, the the full star should appear
-          .content.cardPadding
-            %p.description Genre: #{game.genre}
-            %p.description Platforms: #{game.platform}
-            %a.btn{:href => game_path(game), "data-method" => "get"} View info 
-            %a.btn{}
-              %i.mdi.mdi-plus
-              %span.sidebar__nav__text library
-              //only present if the game is not in your library
-          %img.cover{:alt => "Game image cover", :src => "#{game.cover}"}
-    .backgroundImg2
-      - background = "backgroundSimple.png"
-      =image_tag (background), class: "background2"
-      .overlay
+      %p
+        #map

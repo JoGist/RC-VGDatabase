@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html class="container" lang="en">
+  <head>
+    <title>Search - VGDatabase</title>
+    <% provide :head_tags do %>
+      <script>
+        document.addEventListener("DOMContentLoaded", function(){ 
+            var myCoords = new google.maps.LatLng(22.64 , 45.3453);
+            var mapOptions = {
+            center: myCoords,
+            zoom: 14
+            };
+            var map = new google.maps.Map(document.getElementById('map'), mapOptions);});
+      </script>
+    <% end %>
+  </head>
+  <body class="visible">
+    <aside class="sidebar normal">
+      <nav>
+        <ul class="sidebar__nav">
+          <li>
+            <a class="sidebar__nav__link_plain_img">
+              <%= image_tag ('logo-normal.png') %>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar__nav__link" data-method="get" href="<%= homepage_path %>">
+              <i class="mdi mdi-home"></i>
+              <span class="sidebar__nav__text">Homepage</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar__nav__link" data-method="get" href="<%= myStore_path %>">
+              <i class="mdi mdi-library-movie"></i>
+              <span class="sidebar__nav__text">My store</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar__nav__link" data-method="get" href="<%= selling_path %>">
+              <i class="mdi mdi-star"></i>
+              <span class="sidebar__nav__text">Selling</span>
+            </a>
+          </li>
+          <li class="active">
+            <a class="sidebar__nav__link_plain">
+              <i class="mdi mdi-database-search"></i>
+              <span class="sidebar__nav__text">Search</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar__nav__link" data-method="get" href="<%= friends_path %>">
+              <i class="mdi mdi-account-multiple"></i>
+              <span class="sidebar__nav__text">Friends</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar__nav__link" data-method="get" href="<%= myProfile_path %>">
+              <%= image_tag (@user.avatar), class: "img3" %>
+              <span class="sidebar__nav__text">My account</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar__nav__link" data-method="delete" href="<%= login_path %>">
+              <i class="mdi mdi-logout-variant"></i>
+              <span class="sidebar__nav__text">Log out </span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar__nav__link" data-method="get" href="<%= contactUs_path %>">
+              <i class="mdi mdi-information"></i>
+              <span class="sidebar__nav__text">Contact us</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <!-- partial:index.partial.html
+    -->
+    <br/>
+    <h1>Games search</h1>
+    <div>
+      <div class="s003">
+        <%= form_tag :method => :get do %>
+          <div class="inner-form">
+            <div class="input-field first-wrap">
+              <div class="btn-group inner">
+                <buttonActive class="borderLeft">Games</buttonActive>
+                <a class="left-4" data-method="get" href="<%= searchUser_path %>">Users</a>
+              </div>
+            </div>
+            <div class="vl"></div>
+            <div class="input-field second-wrap">
+              <input id="search" name="search" placeholder="Type here to search..." type="text">/</input>
+              <!--https://www.w3schools.com/howto/howto_css_dropdown.asp
+              -->
+            </div>
+            <i class="mdi mdi-filter-variant searchBar"></i>
+            <div class="input-field third-wrap">
+              <button class="btn-search">
+                <svg aria-hidden="true" class="svg-inline--fa fa-search fa-w-16" data-icon="search" data-prefix="fas" role="img" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" fill="currentColor"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <%= select :game, :genre, ['action', 'adveture', 'racing', 'sandbox'] %>
+          <%= select :game, :platform, ['PC', 'PS4', 'XBOX ONE', 'Nintendo Switch'] %>
+          <%= select :game, :choice, ['Title','Developer']                    %>
+        <% end %>
+      </div>
+    </div>
+    <div class="page-content extraPadding">
+      <p>
+        <div id="map"></div>
+      </p>
+    </div>
+  </body>
+</html>
