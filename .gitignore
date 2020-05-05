@@ -91,3 +91,4 @@ yarn-debug.log*
 VGdatabase/tmp/pids/server.pid
 *.pid
 VGdatabase/tmp/pids/server.pid
+VGdatabase/config/credentials.yml.enc
