@@ -2,6 +2,26 @@
 %html{:lang => "en", class: "container"}
   %head
     %title Search - VGDatabase
+    :css
+      /* Set the size of the div element that contains the map */
+      #map {
+        height: 100%; /* The height is 400 pixels */
+        /*width: 100%; The width is the width of the web page */
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #description {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+      }
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
   %body.visible
     %aside.sidebar.normal
       %nav
