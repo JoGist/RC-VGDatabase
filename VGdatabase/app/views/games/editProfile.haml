@@ -17,10 +17,10 @@
           %li
             %a.sidebar__nav__link{:href => myStore_path, "data-method" => "get"}
               %i.mdi.mdi-library-movie
-              %span.sidebar__nav__text My store
+              %span.sidebar__nav__text Collection
           %li
             %a.sidebar__nav__link{:href => selling_path, "data-method" => "get"}
-              %i.mdi.mdi-star
+              %i.mdi.mdi-shopping
               %span.sidebar__nav__text  Selling
           %li
             %a.sidebar__nav__link{:href => searchGame_path, "data-method" => "get"}
@@ -81,7 +81,9 @@
                 %input{:name => 'user[newp]' , :placeholder => 'Enter new password' , :autocomplete => "new-password", :type => "password"}/
                 %br
                 %input{:name => 'user[newp1]' , :placeholder => 'Re-enter new password' , :autocomplete => "new-password", :type => "password"}/
-                /%span Last changed password on:
+              .grid-item-details
+                %h5.sub-header-details Location
+                %input{:name => 'user[email]' , :value => @user.location , :autocomplete => "street-address", :type => "text"}/
               .grid-item-details
                 %h5.sub-header-details Background
                 %input{:name => 'user[background]' , :value => @user.background, :autocomplete => "text", :type => "text"}/
@@ -89,7 +91,6 @@
                 %span Enter your custom background url (img or gif)
               %a.grid-item-details.white{:href => revert_path, "data-method" => "post"}
                 %span Revert to default background
-                %a2.right2.white x
               .grid-item-details
                 %h5.sub-header-details Linked accounts:
                 %br
@@ -131,7 +132,7 @@
           .reviewHeader
             %a2
               %h5.right5 click on a review title to edit
-              %i.mdi.mdi-pencil.right5
+              %h5.mdi.mdi-pencil.right5
             %h5 Your reviews
           .reviewDiv
             - if (@review.length==0)

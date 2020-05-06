@@ -1,7 +1,7 @@
 !!!
 %html{:lang => "en", class: "container"}
   %head
-    %title My Library - VGDatabase
+    %title Collection - VGDatabase
   %body.visible
     %aside.sidebar.normal
       %a.sidebarOverlay
@@ -15,12 +15,12 @@
               %i.mdi.mdi-home
               %span.sidebar__nav__text Homepage
           %li.active
-            %a.sidebar__nav__link{}
+            %a.sidebar__nav__link_plain{}
               %i.mdi.mdi-library-movie
-              %span.sidebar__nav__text My store
+              %span.sidebar__nav__text Collection
           %li
             %a.sidebar__nav__link{:href => selling_path, "data-method" => "get"}
-              %i.mdi.mdi-star
+              %i.mdi.mdi-shopping
               %span.sidebar__nav__text  Selling
           %li
             %a.sidebar__nav__link{:href => searchGame_path, "data-method" => "get"}
@@ -63,7 +63,6 @@
               %a.btn{:href => game_store_path(@games.id,game.id), "data-method" => "delete"}
                 %i.mdi.mdi-minus
                 %span.sidebar__nav__text remove
-                /remove the game (hai perso) removes it also from favorites
             %img.cover{:alt => "Game image cover", :src => "#{@games.cover}"}
     .backgroundImg2
       - background = "backgroundSimple.png"

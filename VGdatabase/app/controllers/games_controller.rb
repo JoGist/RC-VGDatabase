@@ -92,7 +92,7 @@ skip_before_action :verify_authenticity_token
 
     def revert 
         @user = User.find(session[:user_id])
-        @user.update_attributes!(:background => "backgroundSimple.png")
+        @user.update_attributes!(:background => "default.png")
         redirect_to editProfile_success_path  
     end
 
@@ -170,10 +170,14 @@ skip_before_action :verify_authenticity_token
         @hash = Gmaps4rails.build_markers(@users) do |user, marker|
             marker.lat user.location.split(',')[0]
             marker.lng user.location.split(',')[1]
-          end
+            marker.infowindow user.username
+            marker.picture({
+             "url" => ActionController::Base.helpers.asset_path("marker.png"),
+             "width" =>  50,
+             "height" => 50})
+        end
     end
 
-    
     def searchingGame
         search = params[:search]
         genre = params[:game][:genre]

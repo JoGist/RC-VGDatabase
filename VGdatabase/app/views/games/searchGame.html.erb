@@ -24,12 +24,12 @@
           <li>
             <a class="sidebar__nav__link" data-method="get" href="<%= myStore_path %>">
               <i class="mdi mdi-library-movie"></i>
-              <span class="sidebar__nav__text">My store</span>
+              <span class="sidebar__nav__text">Collection</span>
             </a>
           </li>
           <li>
             <a class="sidebar__nav__link" data-method="get" href="<%= selling_path %>">
-              <i class="mdi mdi-star"></i>
+              <i class="mdi mdi-shopping"></i>
               <span class="sidebar__nav__text">Selling</span>
             </a>
           </li>
@@ -164,28 +164,10 @@
               ],
             },
             {
-              featureType: "road.arterial",
-              elementType: "labels",
-              stylers: [
-                {
-                  visibility: "off",
-                },
-              ],
-            },
-            {
-              featureType: "road.highway",
-              elementType: "labels",
-              stylers: [
-                {
-                  visibility: "off",
-                },
-              ],
-            },
-            {
               featureType: "road.local",
               stylers: [
                 {
-                  visibility: "off",
+                  visibility: "on",
                 },
               ],
             },
@@ -207,13 +189,16 @@
               ],
             },
           ],
-        }, internal: {id: 'map'}}, function(){
-          handler.bounds.extendWith(markers);
+        }, 
+        internal: {id: 'map'}}, function(){
+          /*var circles = handler.addCircles(
+            [{ lat: 41.923443, lng: 12.416874, radius: 1500 }],
+            { strokeColor: '#f26657'}
+          );*/
+          markers = handler.addMarkers(<%=raw @hash.to_json %>); 
+          handler.bounds.extendWith();
           handler.fitMapToBounds();
         });
-      </script>
-      <script>
-        markers = handler.addMarkers(<%=raw @hash.to_json %>); 
       </script>
     </div>
   </body>
