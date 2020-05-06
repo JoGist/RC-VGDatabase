@@ -166,6 +166,11 @@ skip_before_action :verify_authenticity_token
     def searchGame
         @games = Game.all
         @user = User.find(session[:user_id])
+        @users = User.all
+        @hash = Gmaps4rails.build_markers(@users) do |user, marker|
+            marker.lat user.location.split(',')[0]
+            marker.lng user.location.split(',')[1]
+          end
     end
 
     
