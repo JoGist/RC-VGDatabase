@@ -101,32 +101,121 @@
         <% end %>
       </div>
     </div>
+    <br>
     <div class="page-content extraPadding">
-      <div>
-    <div style='width: 800px;'>
-      <div id="map" style='width: 800px; height: 400px;'></div>
+    <div id="map" style='width: 90%; height: 800px; margin-left: 5%;'></div>
       <script type='text/javascript'>
         handler = Gmaps.build('Google');
-        handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-          markers = handler.addMarkers([
+        handler.buildMap({ provider: {
+        "center": { lat: 41.89, lng: 12.48 },
+        "zoom": 12,
+        "mapTypeControl": false,
+        "streetViewControl" : false,
+        styles: [
             {
-              "lat": 0,
-              "lng": 0,
-              "picture": {
-                "url": "http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png",
-                "width":  32,
-                "height": 32
-              },
-              "infowindow": "hello!"
-            }
-          ]);
+              featureType: "administrative.land_parcel",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "administrative.neighborhood",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "poi",
+              elementType: "labels.text",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "poi.business",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "road",
+              elementType: "labels",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "road",
+              elementType: "labels.icon",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "road.arterial",
+              elementType: "labels",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "road.highway",
+              elementType: "labels",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "road.local",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "transit",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+            {
+              featureType: "water",
+              elementType: "labels.text",
+              stylers: [
+                {
+                  visibility: "off",
+                },
+              ],
+            },
+          ],
+        }, internal: {id: 'map'}}, function(){
           handler.bounds.extendWith(markers);
           handler.fitMapToBounds();
         });
       </script>
       <script>
-        markers = handler.addMarkers(<%=raw @hash.to_json %>);
+        markers = handler.addMarkers(<%=raw @hash.to_json %>); 
       </script>
     </div>
   </body>
+  <br>
 </html>
