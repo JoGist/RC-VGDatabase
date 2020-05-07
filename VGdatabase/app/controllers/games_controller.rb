@@ -160,8 +160,8 @@ skip_before_action :verify_authenticity_token
             marker.infowindow User.find(user.user_id).username
             marker.picture({
             "url" => ActionController::Base.helpers.asset_path("marker.png"),
-            "width" =>  40,
-            "height" => 40})
+            "width" =>  20,
+            "height" => 30})
         end
         @hash1 = Gmaps4rails.build_markers(@users1) do |user, marker|
             marker.lat User.find(user.user_id).location.split(',')[0]
@@ -169,8 +169,8 @@ skip_before_action :verify_authenticity_token
             marker.infowindow User.find(user.user_id).username
             marker.picture({
             "url" => ActionController::Base.helpers.asset_path("marker_alt.png"),
-            "width" =>  40,
-            "height" => 40})
+            "width" =>  20,
+            "height" => 30})
         end
     end
 
@@ -186,8 +186,8 @@ skip_before_action :verify_authenticity_token
                 marker.infowindow User.find(user.user_id).username
                 marker.picture({
                 "url" => ActionController::Base.helpers.asset_path("marker.png"),
-                "width" =>  40,
-                "height" => 40})
+                "width" =>  20,
+                "height" => 30})
             end
             @hash1 = Gmaps4rails.build_markers(@users1) do |user, marker|
                 marker.lat User.find(user.user_id).location.split(',')[0]
@@ -195,8 +195,8 @@ skip_before_action :verify_authenticity_token
                 marker.infowindow User.find(user.user_id).username
                 marker.picture({
                 "url" => ActionController::Base.helpers.asset_path("marker_alt.png"),
-                "width" =>  40,
-                "height" => 40})
+                "width" =>  20,
+                "height" => 30})
             end   
         end
         redirect_to searchGame_path 

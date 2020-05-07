@@ -160,6 +160,16 @@ form_tag {
   margin-right: 15rem;
   margin-top: -2.6rem;
 }
+.new {
+  float: right;
+  margin-right: 10rem;
+  margin-top: -4.50rem;
+}
+.used {
+  float: right;
+  margin-right: 3.5rem;
+  margin-top: -4.5rem;
+}
 .sortOnly {
   float: right;
   margin-right: 5rem;
@@ -843,6 +853,11 @@ a:hover {
   border-radius: 100%;
   border: 1px solid #fff;
 }
+.img4 {
+  width: 20px;
+  height: 30px;
+  margin-left: 5px
+}
 .left-4 {
   margin-left: -4px;
 }
@@ -882,7 +897,7 @@ a:hover {
   max-width: 700px;
   padding-top: 15px;
   padding-left: 20px;
-  margin-left: auto;
+  margin-left: 14.5rem;
   margin-right: auto;
 }
 .s003 form .inner-form {

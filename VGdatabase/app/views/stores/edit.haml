@@ -54,6 +54,9 @@
           %br/
           %button.button{:type => "submit"} Save changes
           %br/
+          %br/
+          %a.button{:href => selling_path(@game), "data-method" => "get"} Discard changes
+          %br/
     .backgroundImg2
       - background = "backgroundSimple.png"
       =image_tag (background), class: "background2"

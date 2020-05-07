@@ -15,7 +15,7 @@
               %i.mdi.mdi-home
               %span.sidebar__nav__text Homepage
           %li
-            %a.sidebar__nav__link{:href => myStore_path, "data-method" => "get"}
+            %a.sidebar__nav__link{:href => collection_path, "data-method" => "get"}
               %i.mdi.mdi-library-movie
               %span.sidebar__nav__text Collection
           %li
@@ -53,11 +53,11 @@
             .account-grid-item-1-alt2
               .profile-pic-details
                 .overlayImg.iconBig
-                  %i.mdi.mdi-upload
+                  %i.mdi.mdi-pencil
                   %span.hidden _
-                  %span edit picture
-                  .overlayProfileImg
-                    %input{:name => "myfile", :type => "file"}/
+                  %span change avatar
+                  %a.overlayProfileImg{:href => editAvatar_path, "data-method" => "get"}
+                    /%input{:name => "myfile", :type => "file"}/
                 =image_tag (@user.avatar) ,class: "img"
               .grid-item-detailsProfile
               %button.grid-item-details-button-2
@@ -70,19 +70,27 @@
             .account-grid-item-2
               .grid-item-details
                 %h5.sub-header-details Username
-                %input{:name => 'user[name]' , :placeholder => @user.username , :autocomplete => "off", :type => "text"}/
+                %input{:name => 'user[name]' , :value => @user.username , :autocomplete => "username", :type => "text"}/
               .grid-item-details
                 %h5.sub-header-details Email
-                %input{:name => 'user[email]' , :placeholder => @user.email , :autocomplete => "off", :type => "email"}/
+                %input{:name => 'user[email]' , :value => @user.email , :autocomplete => "email", :type => "email"}/
               .grid-item-details
                 %h5.sub-header-details Password
-                /%span ••••••••
-                %input{:name => 'user[oldp]' , :placeholder => 'Enter current password' , :autocomplete => "off", :type => "password"}/
+                %input{:name => 'user[oldp]' , :placeholder => 'Enter current password' , :autocomplete => "current-password", :type => "password"}/
                 %br
-                %input{:name => 'user[newp]' , :placeholder => 'Enter new password' , :autocomplete => "off", :type => "password"}/
+                %input{:name => 'user[newp]' , :placeholder => 'Enter new password' , :autocomplete => "new-password", :type => "password"}/
                 %br
-                %input{:name => 'user[newp1]' , :placeholder => 'Re-enter new password' , :autocomplete => "off", :type => "password"}/
-                /%span Last changed password on:
+                %input{:name => 'user[newp1]' , :placeholder => 'Re-enter new password' , :autocomplete => "new-password", :type => "password"}/
+              .grid-item-details
+                %h5.sub-header-details Location
+                %input{:name => 'user[location]' , :value => @user.location , :autocomplete => "street-address", :type => "text"}/
+              .grid-item-details
+                %h5.sub-header-details Background
+                %input{:name => 'user[background]' , :value => @user.background, :autocomplete => "text", :type => "text"}/
+                %br
+                %span Enter your custom background url (img or gif)
+              %a.grid-item-details.white{:href => revert_path, "data-method" => "post"}
+                %span Revert to default background
               .grid-item-details
                 %h5.sub-header-details Linked accounts:
                 %br
@@ -98,10 +106,12 @@
                   %a2.right2.white{:href => '#'} x
                 %br
                 %br
-                %a
-              .grid-item-details.white
+              %a.grid-item-details.white{:href => deleteUser_path, "data-method" => "get"}
+                %br
                 %i.mdi.mdi-trash-can
-                %a2{:href => deleteUser_path} DELETE ACCOUNT
+                %span DELETE ACCOUNT
+                %br
+                %br
             .account-grid-item-3
               .grid-item-details
                 %span Friends
@@ -120,9 +130,9 @@
         %br/
         %div
           .reviewHeader
-            %a
-              %h5.right5 click on a review to edit
-              %i.mdi.mdi-pencil.right5
+            %a2
+              %h5.right5 click on a review title to edit
+              %h5.mdi.mdi-pencil.right5
             %h5 Your reviews
           .reviewDiv
             - if (@review.length==0)

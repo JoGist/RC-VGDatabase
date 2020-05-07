@@ -44,11 +44,11 @@
     %br/
     - @lunghezza = @library.where(:user_id => @user.id).length
     - if @lunghezza==0
-      %h1 You don't have any game in selling
+      %h1 You don't have any game on sale
     - elsif @lunghezza==1
-      %h1 You have #{@lunghezza} game in selling
+      %h1 You have #{@lunghezza} game on sale
     -else
-      %h1 You have #{@lunghezza} games in selling
+      %h1 You have #{@lunghezza} games on sale
     %div.page-content
       %a.sort{:href => "#"}
         %span Sort
