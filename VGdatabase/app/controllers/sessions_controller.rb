@@ -18,7 +18,7 @@ def signin
         elsif password != password1             # Password non coincidono    
             redirect_to signup_error_password_path
         else                                    # Controlli a buon fine
-            @users = User.create(:email => name, :password => password, :username => name1, :avatar => 'Avatars/avatar_0')
+            @users = User.create(:email => name, :password => password, :username => name1, :avatar => 'Avatars/avatar_0',:background => 'default.png')
             redirect_to login_path
         end
 end

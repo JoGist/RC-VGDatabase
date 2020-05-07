@@ -4,6 +4,7 @@
     %title Collection - VGDatabase
   %body.visible
     %aside.sidebar.normal
+      %a.sidebarOverlay
       %nav
         %ul.sidebar__nav
           %li
@@ -42,31 +43,28 @@
               %i.mdi.mdi-information
               %span.sidebar__nav__text Contact us
     %br/
-    - @lunghezza = @library.where(:user_id => @user.id).length
-    - if @lunghezza==0
-      %h1 You don't have any game in your collection
-    - elsif @lunghezza==1
-      %h1 You have 1 game in your collection
-    -else
-      %h1 You have #{@lunghezza} games in your collection
+    %h1 Editing my library
     %div.page-content
       %a.sort{:href => "#"}
         %span Sort
         %i.mdi.mdi-filter-variant
-      %a.editText{:href => editStore_path, "data-method" => "get"}
-        %span Start editing
-        %i.mdi.mdi-pencil
-      - @library.each do |game|
+      %a.editText{:href => collection_path, "data-method" => "get"}
+        %span Save changes
+        %i.mdi.mdi-content-save
+      - @mylibrary.each do |game|
         - if (game.user_id == @user.id) 
           - @games = Game.find(game.game_id)
-          /%h2 Il gioco cercato ha id #{@games.id}, si chiama #{@games.title} ed appartiene a #{@user.username} 
           .card
-            - if (game.selling == "true")
-              %a.mdi.mdi-star.dot
-            - else             
-              %a.mdi.mdi-star-outline.dotCard{:href => game_store_path(@games.id,game.id), "data-method" => "put"}
             .content.cardPadding
-              %p.description Genre: #{@games.genre}
-              %p.description Platforms: #{@games.platform}
-              %a.btn{:href => game_path(game.game_id), "data-method" => "get"} View info 
+              %p
+              %p
+              %p
+              %p
+              %a.btn{:href => game_store_path(@games.id,game.id), "data-method" => "delete"}
+                %i.mdi.mdi-minus
+                %span.sidebar__nav__text remove
             %img.cover{:alt => "Game image cover", :src => "#{@games.cover}"}
+    .backgroundImg2
+      - background = "backgroundSimple.png"
+      =image_tag (background), class: "background2"
+      .overlay

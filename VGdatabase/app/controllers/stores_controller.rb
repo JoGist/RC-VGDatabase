@@ -22,12 +22,20 @@ class StoresController < ApplicationController
     def update
         id = params[:id]
         @mygame = Store.find(id)
-        if @mygame.selling == "false"
-            @mygame.update_attributes!(:selling => "true")
+        if (@mygame.selling == 'false')
+            condition = params[:store][:condition]
+            price = params[:price]
+            @mygame.update_attributes(:price => price, :condition => condition, :selling =>'true')
             redirect_to selling_path
-        else
-            @mygame.update_attributes!(:selling => "false")   
-            redirect_to selling_path
+        else 
+            @mygame.update_attributes(:price => 0, :condition => '', :selling => 'false')
+            redirect_to editSelling_path           
         end
+    end
+
+    def edit
+        @user = User.find(session[:user_id])
+        @game = Game.find(params[:game_id])  
+        @library = Store.find(Store.where(:user_id => @user,:game_id => params[:game_id])[0].id)
     end
 end

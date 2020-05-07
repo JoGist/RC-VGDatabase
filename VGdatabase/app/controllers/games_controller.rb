@@ -7,13 +7,13 @@ skip_before_action :verify_authenticity_token
         @library = Store.where(:user_id => @user.id)
     end
 
-    def myStore
-        @library = Store.all
+    def collection
+        @library = Store.where(:user_id => session[:user_id])
         @user = User.find(session[:user_id])
     end
 
-    def myStoreEdit
-        @mylibrary = Store.all
+    def collectionEdit
+        @mylibrary = Store.where(:user_id => session[:user_id])
         @user = User.find(session[:user_id])
     end
 
@@ -22,6 +22,10 @@ skip_before_action :verify_authenticity_token
         @library = Store.where(:user_id => @user.id, :selling => 'true')
     end
 
+    def editSelling
+        @mylibrary = Store.where(:user_id => session[:user_id],:selling => 'true')
+        @user = User.find(session[:user_id])
+    end
     def search
     end
 
@@ -60,33 +64,16 @@ skip_before_action :verify_authenticity_token
         newp = params[:user][:newp]
         newp1 = params[:user][:newp1]
         back = params[:user][:background]
+        location = params[:user][:location]
         @user = User.find(session[:user_id])
-        if username.length==0 && email.length==0 && oldp.length==0 && newp.length==0 && newp1.length==0
-            redirect_to myProfile_path
-        elsif username.length==0 && email.length==0 && newp.length!=0 && newp==newp1 && oldp==@user.password
-            @user.update_attributes!(:password => newp)
+        if username.length!=0 && email.length!=0 && newp.length!=0 && newp==newp1 && oldp==@user.password && location.length!=0 && back.length!=0
+            @user.update_attributes!(:password => newp, :username => username, :email => email, :background => back, :location => location)
             redirect_to editProfile_success_path
-        elsif username.length!=0 && email.length==0 && newp.length!=0 && newp==newp1 && oldp==@user.password
-            @user.update_attributes!(:password => newp, :username => username)
-            redirect_to editProfile_success_path
-        elsif username.length!=0 && email.length!=0 && newp.length!=0 && newp==newp1 && oldp==@user.password
-            @user.update_attributes!(:password => newp, :username => username, :email => email)
-            redirect_to editProfile_success_path
-        elsif username.length!=0 && email.length==0 && oldp.length==0
-            @user.update_attributes!(:username => username)
-            redirect_to editProfile_success_path        
-        elsif username.length==0 && email.length!=0 && oldp.length==0
-            @user.update_attributes!(:email => email)
-            redirect_to editProfile_success_path      
-        elsif username.length!=0 && email.length!=0 && oldp.length==0
-            @user.update_attributes!(:email => email, :username => username)
-            redirect_to editProfile_success_path                                       
+        elsif username.length!=0 && email.length!=0 && oldp.length==0 && location.length!=0 && back.length!=0
+            @user.update_attributes!(:username => username, :email => email, :background => back, :location => location)
+            redirect_to editProfile_success_path                         
         else
-            redirect_to editProfile_error_path        
-        end
-        if back.length!=0
-            @user.update_attributes!(:background => back)
-            redirect_to editProfile_success_path 
+            redirect_to editProfile_error_path
         end
     end
 
@@ -164,36 +151,55 @@ skip_before_action :verify_authenticity_token
     end
 
     def searchGame
-        @games = Game.all
         @user = User.find(session[:user_id])
-        @users = User.all
+        @users = Store.where(:selling => 'true', :condition => 'New')
+        @users1 = Store.where(:selling => 'true', :condition => 'Used')
         @hash = Gmaps4rails.build_markers(@users) do |user, marker|
-            marker.lat user.location.split(',')[0]
-            marker.lng user.location.split(',')[1]
-            marker.infowindow user.username
+            marker.lat User.find(user.user_id).location.split(',')[0]
+            marker.lng User.find(user.user_id).location.split(',')[1]
+            marker.infowindow User.find(user.user_id).username
             marker.picture({
-             "url" => ActionController::Base.helpers.asset_path("marker.png"),
-             "width" =>  50,
-             "height" => 50})
+            "url" => ActionController::Base.helpers.asset_path("marker.png"),
+            "width" =>  40,
+            "height" => 40})
+        end
+        @hash1 = Gmaps4rails.build_markers(@users1) do |user, marker|
+            marker.lat User.find(user.user_id).location.split(',')[0]
+            marker.lng User.find(user.user_id).location.split(',')[1]
+            marker.infowindow User.find(user.user_id).username
+            marker.picture({
+            "url" => ActionController::Base.helpers.asset_path("marker_alt.png"),
+            "width" =>  40,
+            "height" => 40})
         end
     end
 
     def searchingGame
-        search = params[:search]
-        genre = params[:game][:genre]
-        platform = params[:game][:platform]
-        choice = params[:game][:choice]
-        if choice == 'Title'
-            if Game.exists?(Game.where(:title => search, :platform => platform, :genre => genre))
-                @games = Game.where(:title => search, :platform => platform, :genre => genre)[0].id
-                redirect_to game_path(@games)
+        game = params[:game]
+        if (Game.exists?(:title => game))
+            @game = Game.where(:title => game)[0].id
+            @users = Store.where(:selling => 'true', :condition => 'new', :game_id => @game)
+            @users1 = Store.where(:selling => 'true', :condition => 'used', :game_id => @game )
+            @hash = Gmaps4rails.build_markers(@users) do |user, marker|
+                marker.lat User.find(user.user_id).location.split(',')[0]
+                marker.lng User.find(user.user_id).location.split(',')[1]
+                marker.infowindow User.find(user.user_id).username
+                marker.picture({
+                "url" => ActionController::Base.helpers.asset_path("marker.png"),
+                "width" =>  40,
+                "height" => 40})
             end
-        elsif choice == 'Developer'
-           if Game.exists?(Game.where(:developer => search))
-                 @games = Game.where(:developer => search)
-                 render html: ''
-            end
-        end         
+            @hash1 = Gmaps4rails.build_markers(@users1) do |user, marker|
+                marker.lat User.find(user.user_id).location.split(',')[0]
+                marker.lng User.find(user.user_id).location.split(',')[1]
+                marker.infowindow User.find(user.user_id).username
+                marker.picture({
+                "url" => ActionController::Base.helpers.asset_path("marker_alt.png"),
+                "width" =>  40,
+                "height" => 40})
+            end   
+        end
+        redirect_to searchGame_path 
     end
     
     

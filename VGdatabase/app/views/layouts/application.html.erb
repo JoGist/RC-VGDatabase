@@ -16,7 +16,11 @@
   <body>
     <%= yield %>
     <div class="backgroundImg">
-      <%= image_tag ("default.png"), class: "background" %>
+      <% if (session[:user_id]!=nil) %>
+        <%= image_tag (User.find(session[:user_id]).background), class: "background" %>
+        <% else %>
+        <%= image_tag ("default.png"), class: "background" %>
+        <% end %>
       <div class="overlay"></div>-->
     </div>
   </body>

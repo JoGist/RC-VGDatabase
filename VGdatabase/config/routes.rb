@@ -22,9 +22,10 @@ get '/forgot_password_error_password' => 'sessions#forgot_password_error_passwor
 
 # User routes
 get '/homepage' => 'games#homepage'
-get '/myStore' =>  'games#myStore'
-get '/editStore' => 'games#myStoreEdit'
+get '/collection' =>  'games#collection'
+get '/editCollection' => 'games#collectionEdit'
 get '/selling' => 'games#selling'
+get '/editSelling' => 'games#editSelling'
 get '/friends' => 'games#friends'
 get '/myProfile' => 'games#myProfile'
 get '/editProfile' => 'games#editProfile'

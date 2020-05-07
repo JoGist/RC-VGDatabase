@@ -15,7 +15,7 @@
               %i.mdi.mdi-home
               %span.sidebar__nav__text Homepage
           %li
-            %a.sidebar__nav__link{:href => myStore_path, "data-method" => "get"}
+            %a.sidebar__nav__link{:href => collection_path, "data-method" => "get"}
               %i.mdi.mdi-library-movie
               %span.sidebar__nav__text Collection
           %li
@@ -83,7 +83,7 @@
                 %input{:name => 'user[newp1]' , :placeholder => 'Re-enter new password' , :autocomplete => "new-password", :type => "password"}/
               .grid-item-details
                 %h5.sub-header-details Location
-                %input{:name => 'user[email]' , :value => @user.location , :autocomplete => "street-address", :type => "text"}/
+                %input{:name => 'user[location]' , :value => @user.location , :autocomplete => "street-address", :type => "text"}/
               .grid-item-details
                 %h5.sub-header-details Background
                 %input{:name => 'user[background]' , :value => @user.background, :autocomplete => "text", :type => "text"}/

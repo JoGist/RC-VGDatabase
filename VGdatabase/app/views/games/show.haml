@@ -14,7 +14,7 @@
               %i.mdi.mdi-home
               %span.sidebar__nav__text Homepage
           %li
-            %a.sidebar__nav__link{:href => myStore_path, "data-method" => "get"}
+            %a.sidebar__nav__link{:href => collection_path, "data-method" => "get"}
               %i.mdi.mdi-library-movie
               %span.sidebar__nav__text Collection
           %li
@@ -96,7 +96,7 @@
             %h4 Release date: #{@games.release_date.strftime('%d %B %Y')}
             %br
             - if @library.exists?(:game_id => @games)
-              %a.buttonSmall{:href => myLibrary_path, "data-method" => "get"}
+              %a.buttonSmall
                 %span.sidebar__nav__text Already in library
             - else
               %a.buttonSmall{:href => game_stores_path(@games), "data-method" => "post"}
@@ -149,34 +149,35 @@
                   %div{:href => "#"}
                   - if (review.comments != "")
                     %h5.reviewText #{review.comments}
-              - @aux.each do |review|
-                - @users = User.where(:id => review.user_id)[0]
-                .reviewUser
-                  =image_tag (User.find(@users.id).avatar) ,class: "reviewImg"
-                  %a{:href => visit_profile_path(@users.id), "data-method" => "get"} #{@users.username}
-                  - if (review.score==1)
-                    %i.mdi.mdi-star.reviewStar.right4
-                  - elsif (review.score==2)
-                    %i.mdi.mdi-star.reviewStar.right4
-                    %i.mdi.mdi-star.reviewStar.right4
-                  - elsif (review.score==3)
-                    %i.mdi.mdi-star.reviewStar.right4
-                    %i.mdi.mdi-star.reviewStar.right4
-                    %i.mdi.mdi-star.reviewStar.right4
-                  - elsif (review.score==4)
-                    %i.mdi.mdi-star.reviewStar.right4
-                    %i.mdi.mdi-star.reviewStar.right4
-                    %i.mdi.mdi-star.reviewStar.right4
-                    %i.mdi.mdi-star.reviewStar.right4
-                  - else
-                    %i.mdi.mdi-star.reviewStar.right4
-                    %i.mdi.mdi-star.reviewStar.right4                
-                    %i.mdi.mdi-star.reviewStar.right4
-                    %i.mdi.mdi-star.reviewStar.right4
-                    %i.mdi.mdi-star.reviewStar.right4
-                  %div{:href => "#"}
-                  - if (review.comments != "")
-                    %h5.reviewText #{review.comments}
+              - if(@aux.length!=0)
+                - @aux.each do |review|
+                  - @users = User.where(:id => review.user_id)[0]
+                  .reviewUser
+                    =image_tag (User.find(@users.id).avatar) ,class: "reviewImg"
+                    %a{:href => visit_profile_path(@users.id), "data-method" => "get"} #{@users.username}
+                    - if (review.score==1)
+                      %i.mdi.mdi-star.reviewStar.right4
+                    - elsif (review.score==2)
+                      %i.mdi.mdi-star.reviewStar.right4
+                      %i.mdi.mdi-star.reviewStar.right4
+                    - elsif (review.score==3)
+                      %i.mdi.mdi-star.reviewStar.right4
+                      %i.mdi.mdi-star.reviewStar.right4
+                      %i.mdi.mdi-star.reviewStar.right4
+                    - elsif (review.score==4)
+                      %i.mdi.mdi-star.reviewStar.right4
+                      %i.mdi.mdi-star.reviewStar.right4
+                      %i.mdi.mdi-star.reviewStar.right4
+                      %i.mdi.mdi-star.reviewStar.right4
+                    - else
+                      %i.mdi.mdi-star.reviewStar.right4
+                      %i.mdi.mdi-star.reviewStar.right4                
+                      %i.mdi.mdi-star.reviewStar.right4
+                      %i.mdi.mdi-star.reviewStar.right4
+                      %i.mdi.mdi-star.reviewStar.right4
+                    %div{:href => "#"}
+                    - if (review.comments != "")
+                      %h5.reviewText #{review.comments}
     .backgroundImg2
       - background = "backgroundSimple.png"
       =image_tag (background), class: "background2"

@@ -22,7 +22,7 @@
             </a>
           </li>
           <li>
-            <a class="sidebar__nav__link" data-method="get" href="<%= myStore_path %>">
+            <a class="sidebar__nav__link" data-method="get" href="<%= collection_path %>">
               <i class="mdi mdi-library-movie"></i>
               <span class="sidebar__nav__text">Collection</span>
             </a>
@@ -69,7 +69,7 @@
     <!-- partial:index.partial.html
     -->
     <br/>
-    <h1>Games search</h1>
+    <!--<h1>Games search</h1>-->
     <div>
       <div class="s003">
         <%= form_tag :method => :get do %>
@@ -82,7 +82,7 @@
             </div>
             <div class="vl"></div>
             <div class="input-field second-wrap">
-              <input id="search" name="search" placeholder="Type here to search..." type="text">/</input>
+              <input id="search" name="game" placeholder="Type here to search..." type="text">/</input>
               <!--https://www.w3schools.com/howto/howto_css_dropdown.asp
               -->
             </div>
@@ -95,15 +95,12 @@
               </button>
             </div>
           </div>
-          <%= select :game, :genre, ['action', 'adveture', 'racing', 'sandbox'] %>
-          <%= select :game, :platform, ['PC', 'PS4', 'XBOX ONE', 'Nintendo Switch'] %>
-          <%= select :game, :choice, ['Title','Developer']                    %>
         <% end %>
       </div>
     </div>
     <br>
     <div class="page-content extraPadding">
-    <div id="map" style='width: 90%; height: 800px; margin-left: 5%; margin: 2px solid #f26657;'></div>
+    <div id="map" style='width: 90%; height: 670px; margin-left: 5%; margin: 2px solid #f26657;'></div>
       <script type='text/javascript'>
         handler = Gmaps.build('Google');
         handler.buildMap({ provider: {
@@ -196,6 +193,7 @@
             { strokeColor: '#f26657'}
           );*/
           markers = handler.addMarkers(<%=raw @hash.to_json %>); 
+          markers = handler.addMarkers(<%=raw @hash1.to_json %>); 
           handler.bounds.extendWith();
           handler.fitMapToBounds();
         });
