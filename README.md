@@ -10,7 +10,7 @@ The site is based on a videogames database, where you can view many information 
 *   **Marco Musciaglia** - musciaglia.1816864@studenti.uniroma1.it - [GitHub](https://github.com/loldlink)
 *   **Gianmarco Montillo** - montillo.1801402@studenti.uniroma1.it - [GitHub](https://github.com/ZioSaba)
 
-## Requirementa
+## Requirements
 
 *   Il servizio REST implementato deve offrire delle API documentate (e.g. GET /sanlorenzo fornisce tutti i cinema di sanlorenzo)
 *   SERV si deve interfacciare con almeno due servizi REST “esterni”, cioè non su localhost
