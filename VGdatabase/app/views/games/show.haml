@@ -97,7 +97,9 @@
             %br
             - if @library.exists?(:game_id => @games)
               %a.buttonSmall
-                %span.sidebar__nav__text Already in library
+                %i.mdi.mdi-shopping
+                %span.hidden . 
+                %span.sidebar__nav__text sell
             - else
               %a.buttonSmall{:href => game_stores_path(@games), "data-method" => "post"}
                 %i.mdi.mdi-plus

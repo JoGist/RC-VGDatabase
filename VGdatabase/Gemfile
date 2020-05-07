@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/JoGist/VGDatabase.git"
 end
 
+gem 'ruby-apicalypse'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2'
@@ -59,3 +60,6 @@ gem 'html'
 gem 'gmaps4rails'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+#gem "appengine", "~> 0.5.0"
+
+#gem "mysql2", "~> 0.5.3"

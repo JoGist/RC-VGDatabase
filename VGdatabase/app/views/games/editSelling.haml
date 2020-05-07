@@ -48,7 +48,7 @@
       %a.sort{:href => "#"}
         %span Sort
         %i.mdi.mdi-filter-variant
-      %a.editText{:href => collection_path, "data-method" => "get"}
+      %a.editText{:href => selling_path, "data-method" => "get"}
         %span Save changes
         %i.mdi.mdi-content-save
       - @mylibrary.each do |game|
@@ -56,10 +56,8 @@
           - @games = Game.find(game.game_id)
           .card
             .content.cardPadding
-              %p
-              %p
-              %p
-              %p
+              %p.description Price: #{game.price} €
+              %p.description Condition: #{game.condition}
               %a.btn{:href => edit_game_store_path(@games.id,game.id), "data-method" => "get"}
                 %i.mdi.mdi-pencil
                 %span.sidebar__nav__text edit
