@@ -1,6 +1,8 @@
 class GamesController < ApplicationController
 skip_before_action :verify_authenticity_token
-
+    require 'rubygems'
+    require 'geocoder'
+    require 'apicalypse'
     def homepage
         @user = User.find(session[:user_id])
         @games = Game.all
@@ -67,11 +69,23 @@ skip_before_action :verify_authenticity_token
         location = params[:user][:location]
         @user = User.find(session[:user_id])
         if username.length!=0 && email.length!=0 && newp.length!=0 && newp==newp1 && oldp==@user.password && location.length!=0 && back.length!=0
-            @user.update_attributes!(:password => newp, :username => username, :email => email, :background => back, :location => location)
-            redirect_to editProfile_success_path
+            if Geocoder.search(location) != []
+                lat = Geocoder.search(location).last.latitude
+                lng = Geocoder.search(location).last.longitude
+                @user.update_attributes!(:latitude => lat, :longitude => lng, :password => newp, :username => username, :email => email, :background => back, :location => location)
+                redirect_to editProfile_success_path
+            else 
+                redirect_to editProfile_error_path  
+            end
         elsif username.length!=0 && email.length!=0 && oldp.length==0 && location.length!=0 && back.length!=0
-            @user.update_attributes!(:username => username, :email => email, :background => back, :location => location)
-            redirect_to editProfile_success_path                         
+            if Geocoder.search(location) != []
+                lat = Geocoder.search(location).last.latitude
+                lng = Geocoder.search(location).last.longitude
+                @user.update_attributes!(:latitude => lat, :longitude => lng, :username => username, :email => email, :background => back, :location => location)
+                redirect_to editProfile_success_path  
+            else 
+                redirect_to editProfile_error_path  
+            end                       
         else
             redirect_to editProfile_error_path
         end
@@ -134,8 +148,6 @@ skip_before_action :verify_authenticity_token
         redirect_to login_path
     end
 
-    
-
     def searchUser
         @user = User.find(session[:user_id])
     end
@@ -146,7 +158,7 @@ skip_before_action :verify_authenticity_token
             @users = User.where(:username => user)[0].id
             redirect_to visit_profile_path(@users)
         else
-            render html: 'user non trovato'
+            redirect_to searchingUser_path
         end
     end
 
@@ -155,8 +167,8 @@ skip_before_action :verify_authenticity_token
         @users = Store.where(:selling => 'true', :condition => 'New')
         @users1 = Store.where(:selling => 'true', :condition => 'Used')
         @hash = Gmaps4rails.build_markers(@users) do |user, marker|
-            marker.lat User.find(user.user_id).location.split(',')[0]
-            marker.lng User.find(user.user_id).location.split(',')[1]
+            marker.lat User.find(user.user_id).latitude
+            marker.lng User.find(user.user_id).longitude
             marker.json({:id => user.id })
             marker.infowindow User.find(user.user_id).username+" sells it for "+user.price.to_s+"€"#+render_to_string(:partial => "/users/infowindow", :locals => { :object => user})
             marker.picture({
@@ -165,8 +177,8 @@ skip_before_action :verify_authenticity_token
             "height" => 30})
         end
         @hash1 = Gmaps4rails.build_markers(@users1) do |user, marker|
-            marker.lat User.find(user.user_id).location.split(',')[0]
-            marker.lng User.find(user.user_id).location.split(',')[1]
+            marker.lat User.find(user.user_id).latitude
+            marker.lng User.find(user.user_id).longitude
             marker.infowindow User.find(user.user_id).username+" sells it for "+user.price.to_s+"€"
             marker.picture({
             "url" => ActionController::Base.helpers.asset_path("marker_alt.png"),
