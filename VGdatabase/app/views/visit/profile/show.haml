@@ -75,7 +75,7 @@
               %h5.sub-header-details Email:
               %span #{@user.email}
             .grid-item-details
-              %h5.sub-header-details Games in his library:
+              %h5.sub-header-details Games in his collection:
               %span #{@library.length}
             .grid-item-details
               %h5.sub-header-details Linked accounts:
@@ -107,7 +107,7 @@
           %br/
           %div
             .reviewHeader
-              %h5 Selling
+              %h5 Currently selling
             .reviewDiv
               .userLibrary
                 - @library.each do |game|
@@ -205,7 +205,7 @@
               %h5.sub-header-details Email:
               %span Can't view emails as guest
             .grid-item-details
-              %h5.sub-header-details Games in your collection:
+              %h5.sub-header-details Games in his collection:
               %span #{@library.length}
             .grid-item-details
               %h5.sub-header-details Linked accounts:
@@ -236,7 +236,7 @@
         %br/
         %div
           .reviewHeader
-            %h5 #{@user.username}'s store
+            %h5 Currently selling
           .reviewDiv
             .reviewUser
               - @library.each do |game|

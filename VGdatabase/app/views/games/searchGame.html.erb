@@ -67,7 +67,7 @@
       </nav>
     </aside>
     <br/>
-    <!--<h1>Games search</h1>-->
+    <h1>Games search</h1>
     <div class="s003">
       <%= form_tag :method => :get do %>
         <div class="inner-form">
@@ -92,7 +92,6 @@
         </div>
       <% end %>
     </div>
-    <br>
     <div class="page-content extraPadding">
       <a class="new">
         <span>New</span>
@@ -106,8 +105,6 @@
       <script type='text/javascript'>
         handler = Gmaps.build('Google');
         handler.buildMap({ provider: {
-        "center": { lat: 41.9028144, lng: 12.4963954 },
-        "zoom": 12,
         "mapTypeControl": false,
         "streetViewControl" : false,
         styles: [
@@ -207,7 +204,12 @@
 
 
 <!-- 
+
+http://www.rubygeocoder.com/
+
 https://github.com/apneadiving/Google-Maps-for-Rails/wiki/Markers
+
+https://guides.rubyonrails.org/layouts_and_rendering.html - Partials
 
 https://stackoverflow.com/questions/30988903/rails-4-gmaps4rails-how-to-include-a-link-to-a-show-view-in-marker-infowindo
 
@@ -215,7 +217,10 @@ https://stackoverflow.com/questions/21105142/gmaps4rails-populating-infowindow-w
 
 https://stackoverflow.com/questions/42634667/rails-customizing-an-infowindow-using-gmaps4rails - geocoding example
 
+https://melvinchng.github.io/rails/GoogleMap.html#64-add-google-map-to-view
+
 https://apneadiving.github.io/ - Custom Builder
+
 
 class CustomMarkerBuilder extends Gmaps.Google.Builders.Marker
   create_marker: ->

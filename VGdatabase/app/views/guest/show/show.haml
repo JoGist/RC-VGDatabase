@@ -47,6 +47,7 @@
             %h4 Developer: #{@game.developer}
             %h4 Genre: #{@game.genre}
             %h4 Platform: #{@game.platform}
+            %h4 Release date: #{@game.release_date.strftime('%d %B %Y')}
             %h4 Score: 
             - if (score==0)
               %h5.gameStar No review
@@ -75,7 +76,7 @@
                 %i.mdi.mdi-star.reviewStar
                 %i.mdi.mdi-star.reviewStar
                 %i.mdi.mdi-star.reviewStar
-            %h4 Release date: #{@game.release_date.strftime('%d %B %Y')}
+            //avg price (separate conditions?) (only visible if at least 1 user is selling)
             %br
             %a.buttonSmall{:href => signup_path, "data-method" => "get"}
               %i.mdi.mdi-login

@@ -64,7 +64,8 @@
             %h2 Title: #{@games.title}
             %h4 Developer: #{@games.developer}
             %h4 Genre: #{@games.genre}
-            %h4 Platform: #{@games.platform}   
+            %h4 Platform: #{@games.platform}
+            %h4 Release date: #{@games.release_date.strftime('%d %B %Y')}
             %h4 Score:
             - if (score==0)
               %h4.gameReview no review
@@ -93,7 +94,7 @@
                 %i.mdi.mdi-star.reviewStar
                 %i.mdi.mdi-star.reviewStar
                 %i.mdi.mdi-star.reviewStar
-            %h4 Release date: #{@games.release_date.strftime('%d %B %Y')}
+            //avg price (separate conditions?) (only visible if at least 1 user is selling), if you sell tells your price
             %br
             - if @library.exists?(:game_id => @games)
               %a.buttonSmall
@@ -105,6 +106,7 @@
                 %i.mdi.mdi-plus
                 %span.hidden . 
                 %span.sidebar__nav__text Add to library 
+            // elsif if selling show selling
             %a.buttonSmall{:href => "https://www.amazon.it/s?k=#{@games.title}&i=videogames", :target => "_blank"}
               %i.mdi.mdi-amazon
               %span.hidden . 

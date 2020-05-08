@@ -41,7 +41,6 @@
             %a.sidebar__nav__link{:href => contactUs_path, "data-method" => "get"}
               %i.mdi.mdi-information
               %span.sidebar__nav__text Contact us
-    / partial:index.partial.html
     %br/
     %h1 Users search
     %div
@@ -55,7 +54,6 @@
             .vl
             .input-field.second-wrap
               %input#search{:name => 'username' ,:placeholder => "Type here to search...", :type => "text"}/
-              /https://www.w3schools.com/howto/howto_css_dropdown.asp
             .input-field.third-wrap
               %button.btn-search{"data-trigger" => ""}
                 %svg.svg-inline--fa.fa-search.fa-w-16{"aria-hidden" => "true", "data-icon" => "search", "data-prefix" => "fas", :role => "img", :viewbox => "0 0 512 512", :xmlns => "http://www.w3.org/2000/svg"}
@@ -66,7 +64,3 @@
     /    %span Sort
     /   %i.mdi.mdi-filter-variant
     /  %br/
-    .backgroundImg2
-      - background = "backgroundSimple.png"
-      =image_tag (background), class: "background2"
-      .overlay
