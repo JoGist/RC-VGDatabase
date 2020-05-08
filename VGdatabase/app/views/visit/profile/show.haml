@@ -157,6 +157,9 @@
                   %div{:href => "#"}
                   - if (review.comments != "")
                     %h5.reviewText #{review.comments}
+    .backgroundImg2
+      =image_tag (@user.background), class: "background2"
+      .overlay
   - else
     %aside.sidebar.normal
       %nav
@@ -232,21 +235,22 @@
             -else
               .grid-item-detailsImg
                 %span.sub-header-details This user doesen't have friends
-        %br/
-        %br/
-        %div
-          .reviewHeader
-            %h5 Currently selling
-          .reviewDiv
-            .reviewUser
-              - @library.each do |game|
-                - @games = Game.find(game.game_id)
-                .card
-                  .content.cardPadding
-                    %p.description Genre: #{@games.genre}
-                    %p.description Platforms: #{@games.platform}
-                    %a.btn{:href => guest_show_path(@games), "data-method" => "get"} View info 
-                  %img.cover{:alt => "Game image cover", :src => "#{@games.cover}"}
+        - if (@library.length>0)
+          %br/
+          %br/
+          %div
+            .reviewHeader
+              %h5 Currently selling
+            .reviewDiv
+              .reviewUser
+                - @library.each do |game|
+                  - @games = Game.find(game.game_id)
+                  .card
+                    .content.cardPadding
+                      %p.description Genre: #{@games.genre}
+                      %p.description Platforms: #{@games.platform}
+                      %a.btn{:href => guest_show_path(@games), "data-method" => "get"} View info 
+                    %img.cover{:alt => "Game image cover", :src => "#{@games.cover}"}
         %br/
         %br/
         %div
@@ -286,3 +290,6 @@
                   %div{:href => "#"}
                   - if (review.comments != "")
                     %h5.reviewText #{review.comments}
+    .backgroundImg2
+      =image_tag (@user.background), class: "background2"
+      .overlay

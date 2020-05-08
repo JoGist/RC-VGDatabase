@@ -61,7 +61,7 @@
               %a.btn{:href => edit_game_store_path(@games.id,game.id), "data-method" => "get"}
                 %i.mdi.mdi-pencil
                 %span.sidebar__nav__text edit
-              %a.btn{:href => game_store_path(@games.id,game.id), "data-method" => "put"}
+              %a.btn{:href => game_store_path(@games.id,game.id), "data-method" => "get"}
                 %i.mdi.mdi-minus
                 %span.sidebar__nav__text remove
             %img.cover{:alt => "Game image cover", :src => "#{@games.cover}"}

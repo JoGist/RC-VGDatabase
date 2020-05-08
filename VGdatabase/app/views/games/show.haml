@@ -94,19 +94,22 @@
                 %i.mdi.mdi-star.reviewStar
                 %i.mdi.mdi-star.reviewStar
                 %i.mdi.mdi-star.reviewStar
-            //avg price (separate conditions?) (only visible if at least 1 user is selling), if you sell tells your price
             %br
-            - if @library.exists?(:game_id => @games)
-              %a.buttonSmall
+            - if @library.exists?(:game_id => @games,:selling => 'false') 
+              %a.buttonSmall{:href => edit_game_store_path(@games,@library.where(:game_id => @games)[0].id), "data-method" => "get"}
                 %i.mdi.mdi-shopping
                 %span.hidden . 
                 %span.sidebar__nav__text sell
+            - elsif @library.exists?(:game_id => @games,:selling => 'true') 
+              %a.buttonSmall{:href => selling_path, "data-method" => 'get'}
+                %i.mdi.mdi-shopping
+                %span.hidden . 
+                %span.sidebar__nav__text selling
             - else
               %a.buttonSmall{:href => game_stores_path(@games), "data-method" => "post"}
                 %i.mdi.mdi-plus
                 %span.hidden . 
-                %span.sidebar__nav__text Add to library 
-            // elsif if selling show selling
+                %span.sidebar__nav__text Add to collection
             %a.buttonSmall{:href => "https://www.amazon.it/s?k=#{@games.title}&i=videogames", :target => "_blank"}
               %i.mdi.mdi-amazon
               %span.hidden . 

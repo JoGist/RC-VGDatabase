@@ -9,28 +9,37 @@ class StoresController < ApplicationController
         @mylibrary.user_id = @user.id
         @mylibrary.game_id = @games.id
         @mylibrary.save!
-        redirect_to myStore_path
+        redirect_to collection_path
     end
 
     def destroy
         id = params[:id]
 		@mygame = Store.find(id)
         @mygame.destroy
-        redirect_to editStore_path
+        redirect_to editCollection_path
     end
 
     def update
         id = params[:id]
         @mygame = Store.find(id)
-        if (@mygame.selling == 'false')
+        if @mygame.price==0
             condition = params[:store][:condition]
             price = params[:price]
             @mygame.update_attributes(:price => price, :condition => condition, :selling =>'true')
             redirect_to selling_path
-        else 
-            @mygame.update_attributes(:price => 0, :condition => '', :selling => 'false')
-            redirect_to editSelling_path           
+        elsif @mygame.price!=0
+            condition = params[:store][:condition]
+            price = params[:price]
+            @mygame.update_attributes(:price => price, :condition => condition)
+            redirect_to selling_path
         end
+    end
+
+    def show
+        id = params[:id]
+        @mygame = Store.find(id)
+        @mygame.update_attributes(:price => 0, :condition => '', :selling => 'false')
+        redirect_to editSelling_path  
     end
 
     def edit
