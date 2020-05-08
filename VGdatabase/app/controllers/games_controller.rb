@@ -1,9 +1,6 @@
 class GamesController < ApplicationController
 skip_before_action :verify_authenticity_token
 
-require 'rubygems'
-require 'apicalypse'
-
     def homepage
         @user = User.find(session[:user_id])
         @games = Game.all
