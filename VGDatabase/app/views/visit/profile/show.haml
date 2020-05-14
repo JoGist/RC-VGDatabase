@@ -1,0 +1,292 @@
+!!!
+%html{:lang => "en", class: "container"}
+  %head
+    %title #{@user.username}'s profile - VGDatabase
+  %body.visible
+  - if (@users!=nil)
+    %aside.sidebar.normal
+      %nav
+        %ul.sidebar__nav
+          %li
+            %a.sidebar__nav__link_plain_img
+              =image_tag ('logo-normal.png')
+          %li
+            %a.sidebar__nav__link{:href => homepage_path, "data-method" => "get"}
+              %i.mdi.mdi-home
+              %span.sidebar__nav__text Homepage
+          %li
+            %a.sidebar__nav__link{:href => collection_path, "data-method" => "get"}
+              %i.mdi.mdi-library-movie
+              %span.sidebar__nav__text Collection
+          %li
+            %a.sidebar__nav__link{:href => selling_path, "data-method" => "get"}
+              %i.mdi.mdi-shopping
+              %span.sidebar__nav__text  Selling
+          %li
+            %a.sidebar__nav__link{:href => searchGame_path, "data-method" => "get"}
+              %i.mdi.mdi-database-search
+              %span.sidebar__nav__text Search
+          %li
+            %a.sidebar__nav__link{:href => friends_path, "data-method" => "get"}
+              %i.mdi.mdi-account-multiple
+              %span.sidebar__nav__text Friends
+          %li
+            %a.sidebar__nav__link{:href => myProfile_path, "data-method" => "get"}
+              =image_tag (User.find(@users).avatar), class: "img3"
+              %span.sidebar__nav__text My account
+          %li
+            %a.sidebar__nav__link{:href => login_path, "data-method" => "delete"}
+              %i.mdi.mdi-logout-variant
+              %span.sidebar__nav__text Log out
+          %li
+            %a.sidebar__nav__link{:href => contactUs_path, "data-method" => "get"}
+              %i.mdi.mdi-information
+              %span.sidebar__nav__text Contact us
+    %br/
+    %h1 #{@user.username}'s profile
+    %div.page-content
+      %br/
+      .my-account-wrapper
+        .account-grid-system
+          .account-grid-item-1-alt
+            .profile-pic-details
+              =image_tag (@user.avatar) ,class: "img"
+            .grid-item-details_alt
+              -if (Friend.exists?(:user_id => @users, :friend_id => @user.id))
+                - if (Friend.where(:user_id => @users, :friend_id => @user.id)[0].favorite == "true")
+                  %a.mdi.mdi-star.iconBig2.right6{:href => friend_path(@user.id) , "data-method" => "get"}
+                - else             
+                  %a.mdi.mdi-star-outline.iconBig2.right6{:href => friend_path(@user.id) , "data-method" => "get"}
+              -else
+                %a.mdi.mdi-star-outline.iconBig2.right6.hidden
+            .grid-item-details-button
+              %p.profile-hyper-links
+                - if (Friend.exists?(:user_id => @users, :friend_id => @user.id))
+                  %a{:href => friend_path(@user), "data-method" => "delete"} Remove from friends
+                  %i.mdi.mdi-account-remove
+                - else 
+                  %a{:href => friend_path(@user), "data-method" => "put"} Add to friends
+                  %i.mdi.mdi-account-plus
+          .account-grid-item-2
+            .grid-item-details
+              %h5.sub-header-details Username:
+              %span #{@user.username}
+            .grid-item-details
+              %h5.sub-header-details Email:
+              %span #{@user.email}
+            .grid-item-details
+              %h5.sub-header-details Games in his library:
+              %span #{@library.length}
+            - if @user.steam_username!=nil
+              .grid-item-details
+                %h5.sub-header-details Linked account:
+                %a{:href => "https://steamcommunity.com/id/"+@user.steam_username, :target => "_blank"}
+                  %span.mdi.mdi-steam
+                  %span #{@user.steam_username}             
+          .account-grid-item-3
+            .grid-item-details
+              %span Friends
+            -if @friends.length==0 && @friends1.length==0
+              .grid-item-detailsImg
+                %span This user doesn't have friends
+            -else
+              -if @friends.exists?
+                - @friends.each do |friend|
+                  .grid-item-detailsImg
+                    -if (friend.friend_id == @users)
+                      =image_tag (User.find(friend.friend_id).avatar) ,class: "reviewImg" 
+                      %a{:href => myProfile_path, "data-method" => "get"} You
+                      %i.mdi.mdi-star.friendStar
+                    -else
+                      =image_tag (User.find(friend.friend_id).avatar) ,class: "reviewImg" 
+                      %a{:href => visit_profile_path(friend.friend_id), "data-method" => "get"} #{User.find(friend.friend_id).username}
+              -if @friends1.exists?
+                - @friends1.each do |friend|
+                  .grid-item-detailsImg
+                    -if (friend.friend_id == @users)
+                      =image_tag (User.find(friend.friend_id).avatar) ,class: "reviewImg" 
+                      %a{:href => myProfile_path, "data-method" => "get"} You
+                    -else
+                      =image_tag (User.find(friend.friend_id).avatar) ,class: "reviewImg" 
+                      %a{:href => visit_profile_path(friend.friend_id), "data-method" => "get"} #{User.find(friend.friend_id).username}
+        - if (@library.length>0)
+          %br/
+          %br/
+          %div
+            .reviewHeader
+              %h5 #{@user.username}'s library
+            .reviewDiv
+              .userLibrary
+                - @library.each do |game|
+                  - @games = Game.find(game.game_id)
+                  .card
+                    .content.cardPadding
+                      %p.description Genre: #{@games.genre}
+                      %p.description Platforms: #{@games.platform}
+                      %a.btn{:href => game_path(@games), "data-method" => "get"} View info 
+                    %img.cover{:alt => "Game image cover", :src => "#{@games.cover}"}
+        %br/
+        %br/
+        %div
+          .reviewHeader
+            %h5 #{@user.username}'s reviews
+          .reviewDiv
+            - if (@review.length==0)
+              .reviewUser
+                %h5.reviewText_alt This user don't have any reviews
+            - else
+              - @review.each do |review|
+                - @game = Game.find(review.game_id)
+                .reviewUser
+                  =image_tag (@game.cover) ,class: "reviewImg"
+                  %a{:href => game_path(@game)} #{@game.title}
+                  - if (review.score==1)
+                    %i.mdi.mdi-star.reviewStar.right4
+                  - elsif (review.score==2)
+                    %i.mdi.mdi-star.reviewStar.right4
+                    %i.mdi.mdi-star.reviewStar.right4
+                  - elsif (review.score==3)
+                    %i.mdi.mdi-star.reviewStar.right4
+                    %i.mdi.mdi-star.reviewStar.right4
+                    %i.mdi.mdi-star.reviewStar.right4
+                  - elsif (review.score==4)
+                    %i.mdi.mdi-star.reviewStar.right4
+                    %i.mdi.mdi-star.reviewStar.right4
+                    %i.mdi.mdi-star.reviewStar.right4
+                    %i.mdi.mdi-star.reviewStar.right4
+                  - else
+                    %i.mdi.mdi-star.reviewStar.right4
+                    %i.mdi.mdi-star.reviewStar.right4
+                    %i.mdi.mdi-star.reviewStar.right4
+                    %i.mdi.mdi-star.reviewStar.right4
+                    %i.mdi.mdi-star.reviewStar.right4
+                  %div{:href => "#"}
+                    - if (review.comments != "")
+                      %h5.reviewText #{review.comments}
+  - else
+    %aside.sidebar.normal
+      %nav
+        %ul.sidebar__nav
+          %li
+            %a.sidebar__nav__link_plain
+              =image_tag ('logo-normal.png')
+          %li
+            %a.sidebar__nav__link{:href => homepage_guest_path}
+              %i.mdi.mdi-home
+              %span.sidebar__nav__text Homepage
+          %li
+            %a.sidebar__nav__link{:href => search_guest_game_path, "data-method" => "get"}
+              %i.mdi.mdi-database-search
+              %span.sidebar__nav__text Search
+          %li
+            %a.sidebar__nav__link{:href => signup_path, "data-method" => "get"}
+              %i.mdi.mdi-logout-variant
+              %span.sidebar__nav__text Sign up
+          %li
+            %a.sidebar__nav__link{:href => contactUs_guest_path, "data-method" => "get"}
+              %i.mdi.mdi-information
+              %span.sidebar__nav__text Contact us
+    %br/
+    %h1 #{@user.username}'s profile
+    %div.page-content
+      %br/
+      .my-account-wrapper
+        .account-grid-system
+          .account-grid-item-1-alt
+            .profile-pic-details
+              =image_tag (@user.avatar) ,class: "img"
+            .grid-item-details
+              %a.mdi.mdi-star-outline.iconBig2.right6.hidden
+              %i.right
+            .grid-item-details-button
+              %p.profile-hyper-links
+                %a{:href => signup_path} Log in to add to your friends
+                %i.mdi.mdi-account-plus
+          .account-grid-item-2
+            .grid-item-details
+              %h5.sub-header-details Username:
+              %span #{@user.username}
+            .grid-item-details
+              %h5.sub-header-details Email:
+              %span Can't view emails as guest
+            .grid-item-details
+              %h5.sub-header-details Games in your collection:
+              %span #{@library.length}
+            - if @user.steam_username!=nil
+              .grid-item-details
+                %h5.sub-header-details Linked account:
+                %a{:href => "https://steamcommunity.com/id/"+@user.steam_username, :target => "_blank"}
+                  %span.mdi.mdi-steam
+                  %span #{@user.steam_username}
+          .account-grid-item-3
+            .grid-item-details
+              %span Friends
+            -if @friends.length==0 && @friends1.length==0
+              .grid-item-detailsImg
+                %span This user doesn't have friends
+            -else
+              -if @friends.exists?
+                - @friends.each do |friend|
+                  .grid-item-detailsImg
+                    =image_tag (User.find(friend.friend_id).avatar) ,class: "reviewImg" 
+                    %a{:href => visit_profile_path(friend.friend_id), "data-method" => "get"} #{User.find(friend.friend_id).username}
+                    %i.mdi.mdi-star.friendStar
+              -if @friends1.exists?
+                - @friends1.each do |friend|
+                  .grid-item-detailsImg
+                    =image_tag (User.find(friend.friend_id).avatar) ,class: "reviewImg" 
+                    %a{:href => visit_profile_path(friend.friend_id), "data-method" => "get"} #{User.find(friend.friend_id).username}
+        - if (@library.length>0)
+          %br/
+          %br/
+          %div
+            .reviewHeader
+              %h5 #{@user.username}'s library
+            .reviewDiv
+              .userLibrary
+                - @library.each do |game|
+                  - @games = Game.find(game.game_id)
+                  .card
+                    .content.cardPadding
+                      %p.description Genre: #{@games.genre}
+                      %p.description Platforms: #{@games.platform}
+                      %a.btn{:href => guest_show_path(@games), "data-method" => "get"} View info 
+                    %img.cover{:alt => "Game image cover", :src => "#{@games.cover}"}
+        %br/
+        %br/
+        %div
+          .reviewHeader
+            %h5 #{@user.username}'s reviews
+          .reviewDiv
+            - if (@review.length==0)
+              .reviewUser
+                %h5.reviewText_alt This user don't have any reviews
+            - else
+              - @review.each do |review|
+                - @game = Game.find(review.game_id)
+                .reviewUser
+                  =image_tag (@game.cover) ,class: "reviewImg"
+                  %a{:href => guest_show_path(@game)} #{@game.title}
+                  - if (review.score==1)
+                    %i.mdi.mdi-star.reviewStar.right4
+                  - elsif (review.score==2)
+                    %i.mdi.mdi-star.reviewStar.right4
+                    %i.mdi.mdi-star.reviewStar.right4
+                  - elsif (review.score==3)
+                    %i.mdi.mdi-star.reviewStar.right4
+                    %i.mdi.mdi-star.reviewStar.right4
+                    %i.mdi.mdi-star.reviewStar.right4
+                  - elsif (review.score==4)
+                    %i.mdi.mdi-star.reviewStar.right4
+                    %i.mdi.mdi-star.reviewStar.right4
+                    %i.mdi.mdi-star.reviewStar.right4
+                    %i.mdi.mdi-star.reviewStar.right4
+                  - else
+                    %i.mdi.mdi-star.reviewStar.right4
+                    %i.mdi.mdi-star.reviewStar.right4
+                    %i.mdi.mdi-star.reviewStar.right4
+                    %i.mdi.mdi-star.reviewStar.right4
+                    %i.mdi.mdi-star.reviewStar.right4
+                  %div{:href => "#"}
+                    - if (review.comments != "")
+                      %h5.reviewText #{review.comments}

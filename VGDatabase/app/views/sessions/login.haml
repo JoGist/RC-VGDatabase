@@ -1,0 +1,36 @@
+!!!
+%html{:lang => "en", class: "container"}
+  %head
+    %title Log in - VGDatabase
+    %link{:href => "https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css", :rel => "stylesheet"}/
+    %meta{:content => "872803402078-pd5jq5iufrdb5qin5pk3mohkrtq88pjq.apps.googleusercontent.com", :name => "google-signin-client_id"}/
+  %body.visible
+    .form
+      =image_tag ('logo-normal.png')
+      %ul.tab-group
+        %li.tab.active
+          #{link_to 'Log in', login_path}
+        %li.tab
+          #{link_to 'Sign up', signup_path}
+      .tab-content
+        %br/ 
+        %br/
+        %br/
+        %br/
+        = form_tag callback_path(), :method => :get do
+          .field-wrap
+            %input{:name => 'user[name]' , :placeholder => 'Username' , :autocomplete => "username", :required => "", :type => "text"}/
+          .field-wrap
+            %input{:name => 'user[password]' , :placeholder => 'Password' , :autocomplete => "current-password", :required => "", :type => "password"}/
+          %a.left{:href => homepage_guest_path, "data-method" => "get"} Explore as Guest
+          %a.right2{:href => forgot_password_path, "data-method" => "get"} Forgot Password?
+          %br/
+          %br/
+          %button.button Log in
+          %br/
+          %a.left.oauth{:href => '/auth/google_oauth2'}
+            =image_tag ('google.png')
+          %a.right7.oauth{:href => '/auth/steam'}
+            =image_tag ('steam.png')
+          %br/
+          %br/
