@@ -1,2 +1,0 @@
-class Avatar < ApplicationRecord
-end
