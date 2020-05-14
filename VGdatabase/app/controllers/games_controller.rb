@@ -117,6 +117,28 @@ skip_before_action :verify_authenticity_token
         @aux = Review.where(:game_id => @games)
         @aux = @aux.where('user_id != ?', @user)
         @review = Review.where(:game_id => @games, :user_id => @user)
+        
+        @users = Store.where(:selling => 'true', :condition => 'New')
+        @users1 = Store.where(:selling => 'true', :condition => 'Used')
+        @hash = Gmaps4rails.build_markers(@users) do |user, marker|
+            marker.lat User.find(user.user_id).latitude
+            marker.lng User.find(user.user_id).longitude
+            marker.json({:id => user.id })
+            marker.infowindow User.find(user.user_id).username+" sells it for "+user.price.to_s+"€"#+render_to_string(:partial => "/users/infowindow", :locals => { :object => user})
+            marker.picture({
+            "url" => ActionController::Base.helpers.asset_path("marker.png"),
+            "width" =>  20,
+            "height" => 30})
+        end
+        @hash1 = Gmaps4rails.build_markers(@users1) do |user, marker|
+            marker.lat User.find(user.user_id).latitude
+            marker.lng User.find(user.user_id).longitude
+            marker.infowindow User.find(user.user_id).username+" sells it for "+user.price.to_s+"€"
+            marker.picture({
+            "url" => ActionController::Base.helpers.asset_path("marker_alt.png"),
+            "width" =>  20,
+            "height" => 30})
+        end
     end
 
     def contactUs
@@ -193,24 +215,6 @@ skip_before_action :verify_authenticity_token
             @game = Game.where(:title => game)[0].id
             @users = Store.where(:selling => 'true', :condition => 'new', :game_id => @game)
             @users1 = Store.where(:selling => 'true', :condition => 'used', :game_id => @game )
-            @hash = Gmaps4rails.build_markers(@users) do |user, marker|
-                marker.lat User.find(user.user_id).location.split(',')[0]
-                marker.lng User.find(user.user_id).location.split(',')[1]
-                marker.infowindow User.find(user.user_id).username
-                marker.picture({
-                "url" => ActionController::Base.helpers.asset_path("marker.png"),
-                "width" =>  20,
-                "height" => 30})
-            end
-            @hash1 = Gmaps4rails.build_markers(@users1) do |user, marker|
-                marker.lat User.find(user.user_id).location.split(',')[0]
-                marker.lng User.find(user.user_id).location.split(',')[1]
-                marker.infowindow User.find(user.user_id).username
-                marker.picture({
-                "url" => ActionController::Base.helpers.asset_path("marker_alt.png"),
-                "width" =>  20,
-                "height" => 30})
-            end   
         end
         redirect_to searchGame_path 
     end
