@@ -112,11 +112,11 @@ form_tag {
 }
 .right3 {
   float: right;
-  margin-top: -472px;
+  margin-top: -550px;
+  margin-bottom: 20px;
   list-style-type: none;
   padding-right: 60px;
   width: 50%;
-  min-width: 1000px;
 }
 .right4 {
   float: right;
@@ -136,6 +136,14 @@ form_tag {
 .right7 {
   float: right;
   margin-top: -5px;
+}
+.right8 {
+  float: left;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  margin-left: -25rem;
+  width: 840px;
+  list-style-type: none; 
 }
 .gameStar {
   float: left;
@@ -449,6 +457,19 @@ a:hover {
   background-color: #f26657;
   border: none;
 }
+.buttonSmall_alt {
+  cursor: default;
+  margin-top: 4.6rem;
+  margin-right: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.025rem;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #f26657;
+  border: none;
+}
 .buttonSmall-null {
   cursor: default;
   margin-top: 4.6rem;
@@ -472,7 +493,9 @@ a:hover {
 .gameInfo {
   margin-left: 27em;
   list-style-type: none;
-  width: 455px;
+  min-width: 455px;
+  width: 25%;
+  height: 550px;
 }
 .forgot {
   margin-top: -10px;
@@ -664,7 +687,7 @@ a:hover {
   font-size: 1.15rem;
   font-style: italic;
   line-height: 1.25;
-  overflow: hidden;
+  /*overflow: auto;*/
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 .btn {
@@ -1216,6 +1239,13 @@ textarea {
 .profile-hlp-txt span {
   color: f26657;
 }
+a .profile-hyper-links {
+  font-size: 14px;
+  margin: 3px;
+}
+a .profile-hyper-links:hover a{
+  color: #fff !important;
+}
 .profile-hyper-links {
   font-size: 14px;
   margin: 3px;
@@ -1460,6 +1490,19 @@ textarea {
   background-color: #444;
   border: 1px solid #f26657;
 }
+.reviewText_alt2 {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  height: auto;
+  float: left;
+  text-align: justify;
+  padding: 15px;
+  background-color: #444;
+  border: 1px solid #f26657;
+}
 .reviewUser {
   padding: 15px;
   border-bottom: 1px solid #444;
@@ -1541,21 +1584,27 @@ textarea {
   font-size: 24px;
   font-weight: 700;
 }
-@media (max-width: 2180px) {
-  .right3 {
-    float: left;
-    margin-top: 120px;
-    list-style-type: none;
-    margin-left: -400px;
-  }
-}
-@media (max-width: 1500px) {
+
+@media (max-width: 2000px) {
   .right3 {
     float: left;
     margin-top: 0;
     list-style-type: none;
-    padding-left: 400px;
-    width: 1308px;
+    width: 100%;
+  }
+  .right8 {
+    float: left;
+    width: 100%;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+    padding-right: 60px;
+    list-style-type: none; 
+  }
+  .gameInfo {
+    margin-left: 27em;
+    list-style-type: none;
+    width: 100%;
   }
 }
 .reviewUser h6 {

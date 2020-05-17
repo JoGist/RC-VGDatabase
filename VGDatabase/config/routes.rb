@@ -54,6 +54,7 @@ get '/editProfileOauth_error' => "games#editProfileOauth_error"
 get '/editProfileOauth_success' => "games#editProfileOauth_success"
 get '/removeOauthSteam' => 'games#removeOauthSteam'
 get '/removeOauthGoogle' => 'games#removeOauthGoogle'
+post '/revert' => 'games#revert'
 
 # Guest routes
 get '/homepage_guest' => 'sessions#homepageGuest'

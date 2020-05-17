@@ -84,13 +84,16 @@
               %i.mdi.mdi-amazon
               %span.hidden . 
               %span.sidebar__nav__text BUY 
-          %div.right3
+          - if @plot.length!=0
+            .right8
+              %h5.reviewText_alt2 #{@plot}  
+          .right3
             .reviewHeader
               %h5 Reviews
             .reviewDiv
               - if (@review.length==0)
                 .reviewUser
-                  %h5.reviewText_alt This game doesen't have any review
+                  %h5.reviewText_alt This game doesn't have any review
               - else
                 - @review.each do |review|
                   - @users = User.where(:id => review.user_id)[0]
@@ -120,4 +123,5 @@
                     %div{:href => "#"}
                       - if (review.comments != "")
                         %h5.reviewText #{review.comments}
-
+          %br
+          %br
