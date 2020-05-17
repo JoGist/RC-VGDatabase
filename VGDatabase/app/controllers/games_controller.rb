@@ -111,15 +111,19 @@ skip_before_action :verify_authenticity_token
         email = params[:user][:email]
         newp = params[:user][:newp]
         newp1 = params[:user][:newp1]
+        location = params[:user][:location]
         @user = User.find(session[:user_id])
-        if username.length==0 && email.length==0 && newp.length==0 && newp1.length==0
+        if username.length==0 && email.length==0 && newp.length==0 && newp1.length==0 && location.length==0
             redirect_to editProfileOauth_error_path
-        elsif username.length!=0 && email.length!=0 && newp.length!=0 && newp==newp1
-            @user.update_attributes!(:username => username, :email => email, :password => newp)
-            redirect_to editProfileOauth_success_path
-        elsif username.length!=0 && email.length!=0 && newp.length==0 && newp1.length==0
-            @user.update_attributes!(:username => username, :email => email)
-            redirect_to editProfileOauth_success_path
+        elsif username.length!=0 && email.length!=0 && newp.length!=0 && newp==newp1 && location.length!=0
+            if Geocoder.search(location) != []
+                lat = Geocoder.search(location).last.latitude
+                lng = Geocoder.search(location).last.longitude
+                @user.update_attributes!(:username => username, :email => email, :password => newp, :location => location,:latitude => lat, :longitude => lng)
+                redirect_to editProfileOauth_success_path
+            else                
+                redirect_to editProfileOauth_error_path  
+            end
         else
             redirect_to editProfileOauth_error_path
         end
@@ -224,8 +228,8 @@ skip_before_action :verify_authenticity_token
         api = Apicalypse.new(api_endpoint, request_headers)
         api.fields(:summary).where(:id => @games.serial).request
         @plot = api.request[0].values[1]
-        @users = Store.where(:selling => 'true', :condition => 'New')
-        @users1 = Store.where(:selling => 'true', :condition => 'Used')
+        @users = Store.where(:selling => 'true', :condition => 'New', :game_id => id)
+        @users1 = Store.where(:selling => 'true', :condition => 'Used', :game_id => id)
         @hash = Gmaps4rails.build_markers(@users) do |user, marker|
             marker.lat User.find(user.user_id).latitude
             marker.lng User.find(user.user_id).longitude

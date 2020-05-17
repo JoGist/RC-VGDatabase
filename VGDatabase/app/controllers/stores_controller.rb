@@ -74,6 +74,7 @@ class StoresController < ApplicationController
     def update
         id = params[:id]
         @mygame = Store.find(id)
+        user = session[:user_id]
         if @mygame.price==0
             condition = params[:store][:condition]
             price = params[:price]
@@ -91,6 +92,9 @@ class StoresController < ApplicationController
         @user = User.find(session[:user_id])
         @game = Game.find(params[:game_id])  
         @library = Store.find(Store.where(:user_id => @user,:game_id => params[:game_id])[0].id)
+        if @user.location==nil
+            redirect_to collection_path
+        end
     end
 
     def show

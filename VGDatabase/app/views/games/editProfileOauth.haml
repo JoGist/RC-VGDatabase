@@ -75,6 +75,9 @@
                 %br
                 %input{:name => 'user[newp1]' , :placeholder => 'Re-enter password' , :autocomplete => "new-password", :type => "password", :required => ''}/
               .grid-item-details
+                %h5.sub-header-details Location
+                %input{:name => 'user[location]' , :value => @user.location , :autocomplete => "street-address", :type => "text", :required => ''}/
+              .grid-item-details
                 %h5.sub-header-details Linked account:
                 %br
                 %a

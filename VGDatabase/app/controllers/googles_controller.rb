@@ -7,7 +7,7 @@ class GooglesController < ApplicationController
         info = auth.info
         if session[:user_id]==nil
             if !User.exists?(:google_token => auth.uid)
-                User.create(:username => info.name ,:google_username => info.name , :avatar => info.image, :google_token => auth.uid, :email => info.email)
+                User.create(:username => info.name ,:google_username => info.name , :avatar => info.image, :google_token => auth.uid, :email => info.email,:background => 'deafult.png')
                 session[:user_id] = User.where(:google_token => auth.uid)[0].id
                 redirect_to editProfileOauth_path
             else
