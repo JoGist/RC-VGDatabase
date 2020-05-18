@@ -135,12 +135,18 @@
               <h4>Release date: <%=@games.release_date.strftime('%d %B %Y')%></h4>
             <% end %>
             <br/>
-            <% if @library.exists?(:game_id => @games , :selling => 'false') %>
+            <% if @library.exists?(:game_id => @games , :selling => 'false') && User.find(@user).location!=nil %>
               <a class='buttonSmall' data-method = "get" href = '<%= edit_game_store_path(@games,@library.where(:game_id => @games)[0].id) %>'>
                 <i class='mdi.mdi-shopping'></i>
                 <span class= 'hidden'>. </span>
                 <span calss = 'sidebar__nav__text'> sell </span>
-	      </a>      
+	      </a>  
+            <% elsif @library.exists?(:game_id => @games , :selling => 'false') && User.find(@user).location==nil %>
+              <a class='buttonSmall' data-method = "get" href = '<%= editProfile_path %>'>
+                <i class='mdi.mdi-shopping'></i>
+                <span class= 'hidden'>. </span>
+                <span calss = 'sidebar__nav__text'> sell </span>
+	      </a>          
             <% elsif @library.exists?(:game_id => @games,:selling => 'true')  %>
               <a class="buttonSmall" data-method="get" href="<%= edit_game_store_path(@games,@library.where(:game_id => @games)[0].id) %>">
                 <i class="mdi mdi-shopping"></i>
