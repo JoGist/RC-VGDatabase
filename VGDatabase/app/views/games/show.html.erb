@@ -142,7 +142,7 @@
                 <span calss = 'sidebar__nav__text'> sell </span>
 	      </a>      
             <% elsif @library.exists?(:game_id => @games,:selling => 'true')  %>
-              <a class="buttonSmall" data-method="get" href="<%= selling_path %>">
+              <a class="buttonSmall" data-method="get" href="<%= edit_game_store_path(@games,@library.where(:game_id => @games)[0].id) %>">
                 <i class="mdi mdi-shopping"></i>
                 <span class="hidden">. </span>
                 <span class="sidebar__nav__text">selling</span>

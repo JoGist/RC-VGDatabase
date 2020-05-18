@@ -231,23 +231,45 @@ skip_before_action :verify_authenticity_token
         @users = Store.where(:selling => 'true', :condition => 'New', :game_id => id)
         @users1 = Store.where(:selling => 'true', :condition => 'Used', :game_id => id)
         @hash = Gmaps4rails.build_markers(@users) do |user, marker|
-            marker.lat User.find(user.user_id).latitude
-            marker.lng User.find(user.user_id).longitude
-            marker.json({:id => user.id })
-            marker.infowindow User.find(user.user_id).username+" sells it for "+user.price.to_s+"€"#+render_to_string(:partial => "/users/infowindow", :locals => { :object => user})
-            marker.picture({
-            "url" => ActionController::Base.helpers.asset_path("marker.png"),
-            "width" =>  20,
-            "height" => 30})
+            if user.user_id==@user
+                marker.lat User.find(user.user_id).latitude
+                marker.lng User.find(user.user_id).longitude
+                marker.json({:id => user.id })
+                marker.infowindow "You"+" sells it for "+user.price.to_s+"€"#+render_to_string(:partial => "/users/infowindow", :locals => { :object => user})
+                marker.picture({
+                "url" => ActionController::Base.helpers.asset_path("marker.png"),
+                "width" =>  20,
+                "height" => 30})
+            else
+                marker.lat User.find(user.user_id).latitude
+                marker.lng User.find(user.user_id).longitude
+                marker.json({:id => user.id })
+                marker.infowindow User.find(user.user_id).username+" sells it for "+user.price.to_s+"€"#+render_to_string(:partial => "/users/infowindow", :locals => { :object => user})
+                marker.picture({
+                "url" => ActionController::Base.helpers.asset_path("marker.png"),
+                "width" =>  20,
+                "height" => 30})
+            end
         end
         @hash1 = Gmaps4rails.build_markers(@users1) do |user, marker|
-            marker.lat User.find(user.user_id).latitude
-            marker.lng User.find(user.user_id).longitude
-            marker.infowindow User.find(user.user_id).username+" sells it for "+user.price.to_s+"€"
-            marker.picture({
-            "url" => ActionController::Base.helpers.asset_path("marker_alt.png"),
-            "width" =>  20,
-            "height" => 30})
+            if user.user_id==@user
+                marker.lat User.find(user.user_id).latitude
+                marker.lng User.find(user.user_id).longitude
+                marker.infowindow "you"+" sells it for "+user.price.to_s+"€"
+                marker.picture({
+                "url" => ActionController::Base.helpers.asset_path("marker_alt.png"),
+                "width" =>  20,
+                "height" => 30})
+            else
+                marker.lat User.find(user.user_id).latitude
+                marker.lng User.find(user.user_id).longitude
+                marker.json({:id => user.id })
+                marker.infowindow User.find(user.user_id).username+" sells it for "+user.price.to_s+"€"#+render_to_string(:partial => "/users/infowindow", :locals => { :object => user})
+                marker.picture({
+                "url" => ActionController::Base.helpers.asset_path("marker_alt.png"),
+                "width" =>  20,
+                "height" => 30})
+            end
         end
     end
 
