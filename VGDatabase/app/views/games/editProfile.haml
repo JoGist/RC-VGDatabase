@@ -81,7 +81,8 @@
                 %input{:name => 'user[newp1]' , :placeholder => 'Re-enter new password' , :autocomplete => "new-password", :type => "password"}/
               .grid-item-details
                 %h5.sub-header-details Location
-                %input{:name => 'user[location]' , :value => @user.location , :autocomplete => "street-address", :type => "text"}/
+                %input{id: :autocomplete_address, :name => 'user[location]' , :value => @user.location , :autocomplete => "street-address", :type => "text"}/
+                = form_tag id: :autocomplete_address
               .grid-item-details
                 %h5.sub-header-details Background
                 %input{:name => 'user[background]' , :value => @user.background, :autocomplete => "text", :type => "text"}/
