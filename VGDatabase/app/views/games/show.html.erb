@@ -137,8 +137,8 @@
             <br/>
             <% if @library.exists?(:game_id => @games , :selling => 'false') %>
               <a class='buttonSmall' data-method = "get" href = '<%= edit_game_store_path(@games,@library.where(:game_id => @games)[0].id) %>'>
-                <i class='mdi.mdi-shopping'></i>
-                <span class= 'hidden'>. </span>
+                <i class="mdi mdi-shopping"></i>
+                <span class="hidden">. </span>
                 <span calss = 'sidebar__nav__text'> sell </span>
 	      </a>      
             <% elsif @library.exists?(:game_id => @games,:selling => 'true')  %>
@@ -165,7 +165,7 @@
               <h5 class="reviewText_alt2"><%=@plot%></h5>
             </div>
           <% end %>
-	   <div class="page-content extraPadding">
+	   <div class="right8">
 	      <a class="new">
 		<span>New</span>
 		<%= image_tag ("marker.png"), class: "img4" %>
@@ -174,7 +174,7 @@
 		<span>Used</span>
 		<%= image_tag ("marker_alt.png"), class: "img4" %>
 	      </a>
-	    <div id="map" style='width: 90%; height: 670px; margin-left: 5%; border: 3px solid #f26657;'></div>
+	    <div id="map" style='height: 700px; margin-top: 10px; margin-bottom: 10px; border: 2px solid #f26657;'></div>
 	      <script type='text/javascript'>
 		handler = Gmaps.build('Google');
 		handler.buildMap({ provider: {
@@ -265,7 +265,7 @@
 		    { strokeColor: '#f26657'}
 		  );*/
 		  markers = handler.addMarkers(<%=raw @hash.to_json %>); 
-		  markers = handler.addMarkers(<%=raw @hash1.to_json %>); 
+      markers = handler.addMarkers(<%=raw @hash1.to_json %>);
 		  handler.bounds.extendWith();
 		  handler.fitMapToBounds();
 		});

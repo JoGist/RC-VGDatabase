@@ -111,6 +111,18 @@
                     %i Account not linked 
                     %a.right2.x{:href => '/auth/steam'} link
                 %br
+              .grid-item-details
+                %h5.sub-header-details Social account
+                %br
+                %i YouTube
+                %input{:name => 'user[social1]' , :value => @user.social1 , :autocomplete => "", :type => "text"}/
+                %br
+                %i Twitch
+                %input{:name => 'user[social2]' , :value => @user.social2 , :autocomplete => "", :type => "text"}/
+                %br
+                %i YouPorn
+                %input{:name => 'user[social3]' , :value => @user.social3 , :autocomplete => "", :type => "text"}/
+                %br
               %a.grid-item-details.white{:href => deleteUserConfirmation_path, "data-method" => "get"}
                 %br
                 %i.mdi.mdi-trash-can

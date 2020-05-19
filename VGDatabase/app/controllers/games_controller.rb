@@ -251,6 +251,12 @@ skip_before_action :verify_authenticity_token
         end
     end
 
+    def gmaps4rails_marker_picture
+        {
+          "rich_marker" =>  "<div class='my-marker'>It works!<img height='30' width='30' src='http://farm4.static.flickr.com/3212/3012579547_097e27ced9_m.jpg'/></div>"
+        }
+      end
+
     def revert 
         @user = User.find(session[:user_id])
         @user.update_attributes!(:background => "default.png")

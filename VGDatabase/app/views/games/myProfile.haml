@@ -71,6 +71,15 @@
                 %a{:href => "https://steamcommunity.com/id/"+@user.steam_username, :target => "_blank"}
                   %span.mdi.mdi-steam
                   %span #{@user.steam_username}
+            .grid-item-details
+              %h5.sub-header-details Social account
+              %br
+              %span #{@user.social1}
+              %br
+              %span #{@user.social2}
+              %br
+              %span #{@user.social3}
+              %br
           .account-grid-item-3
             .grid-item-details
               %span Friends
