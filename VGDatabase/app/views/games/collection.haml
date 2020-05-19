@@ -62,8 +62,12 @@
               %p.description Genre: #{@games.genre}
               %p.description Platforms: #{@games.platform}
               %a.btn{:href => game_path(game.game_id), "data-method" => "get"} View info 
-              - if (game.selling == 'false')
+              - if (game.selling == 'false' && @user.location!=nil)
                 %a.btn{:href => edit_game_store_path(@games.id,game.id), "data-method" => "get"}
+                  %i.mdi.mdi-shopping
+                  %span.sidebar__nav__text sell
+              - elsif (game.selling == 'false' && @user.location==nil)
+                %a.btn{:href => editProfile_path, "data-method" => "get"}
                   %i.mdi.mdi-shopping
                   %span.sidebar__nav__text sell
             %img.cover{:alt => "Game image cover", :src => "#{@games.cover}"}
