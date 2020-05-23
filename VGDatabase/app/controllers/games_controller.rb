@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-skip_before_action :set_current_user
+#skip_before_action :set_current_user
 skip_before_action :verify_authenticity_token
     require 'apicalypse'
     require 'rubygems'
@@ -121,8 +121,8 @@ skip_before_action :verify_authenticity_token
                 lng = Geocoder.search(location).last.longitude
                 @user.update_attributes!(:username => username, :email => email, :password => newp, :location => location,:latitude => lat, :longitude => lng)
                 redirect_to editProfileOauth_success_path
-            else                
-                redirect_to editProfileOauth_error_path  
+            else
+                redirect_to editProfileOauth_error_path
             end
         else
             redirect_to editProfileOauth_error_path
@@ -183,18 +183,18 @@ skip_before_action :verify_authenticity_token
                 lng = Geocoder.search(location).last.longitude
                 @user.update_attributes!(:latitude => lat, :longitude => lng, :password => newp, :username => username, :email => email, :background => back, :location => location, :social1 => social1, :social2 => social2, :social3 => social3)
                 redirect_to editProfile_success_path
-            else 
-                redirect_to editProfile_error_path  
+            else
+                redirect_to editProfile_error_path
             end
         elsif username.length!=0 && email.length!=0 && oldp.length==0 && location.length!=0 && back.length!=0
             if Geocoder.search(location) != []
                 lat = Geocoder.search(location).last.latitude
                 lng = Geocoder.search(location).last.longitude
                 @user.update_attributes!(:latitude => lat, :longitude => lng, :username => username, :email => email, :background => back, :location => location, :social1 => social1, :social2 => social2, :social3 => social3)
-                redirect_to editProfile_success_path  
-            else 
-                redirect_to editProfile_error_path  
-            end                       
+                redirect_to editProfile_success_path
+            else
+                redirect_to editProfile_error_path
+            end
         else
             redirect_to editProfile_error_path
         end
@@ -282,10 +282,10 @@ skip_before_action :verify_authenticity_token
         }
       end
 
-    def revert 
+    def revert
         @user = User.find(session[:user_id])
         @user.update_attributes!(:background => "default.png")
-        redirect_to editProfile_success_path  
+        redirect_to editProfile_success_path
     end
 
     def contactUs
