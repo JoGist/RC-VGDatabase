@@ -17,6 +17,10 @@ get '/forgot_password_error_password' => 'sessions#forgot_password_error_passwor
 
 #api
 get '/api' => 'sessions#apiRest'
+get '/api2' => 'sessions#apiRest2'
+get '/api3' => 'sessions#apiRest3'
+get '/api4' => 'sessions#apiRest4'
+get '/api5' => 'sessions#apiRest5'
 
 #Steam
 post '/auth/steam/callback' => 'steams#auth_callback'

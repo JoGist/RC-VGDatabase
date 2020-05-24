@@ -226,6 +226,20 @@ skip_before_action :verify_authenticity_token
         @aux = Review.where(:game_id => @games)
         @aux = @aux.where('user_id != ?', @user)
         @review = Review.where(:game_id => @games, :user_id => @user)
+        if (@review.length != 0 || @aux.length != 0)
+            score = 0
+            @review.each do |review|
+                score = score+review.score
+            end
+            @aux.each do |aux|
+                score = score+aux.score
+            end
+            score = score/(@review.length+@aux.length) 
+            @games.update_attributes(:score => score)
+        else 
+            score = 0
+            @games.update_attributes(:score => score)
+        end
         api_endpoint = 'https://api-v3.igdb.com/games'
         request_headers = { headers: { 'user-key' => Rails.application.credentials.maps[:igdb] } }
         api = Apicalypse.new(api_endpoint, request_headers)
