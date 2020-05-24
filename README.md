@@ -1,4 +1,4 @@
-![logo-normal.png](VGdatabase/app/assets/images/logo-normal.png)
+![logo-normal.png](VGDatabase/VGdatabase/app/assets/images/logo-normal.png)
 **VGDatabase (VGDB)** is a platform designed and built for gamers by gamers.
 
 The site is based on a videogames database, where you can view many information about any games such as genre, developer, date of release, score and the reviews written by other players, with an additional external link for the purchase. The platform also provides a selling platform. In addition, the site is updated periodically, always showing in the homepage the most popular games at the moment. Each user has his own library of games, a friends list and the possibility to group games and friends in Favorites lists. Enjoy!
