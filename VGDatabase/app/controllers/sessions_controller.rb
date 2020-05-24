@@ -2,7 +2,11 @@ class SessionsController < ApplicationController
     skip_before_action :set_current_user
     require 'apicalypse'
     require 'rubygems'
-    
+    def apiRest
+        @games = User.all
+        render json: @games
+    end
+
 def login
 end
 def signup
