@@ -23,6 +23,7 @@ get '/api4' => 'api#apiRest4'
 get '/api5' => 'api#apiRest5'
 post '/api6' => 'api#apiRest6'
 delete '/api7' => 'api#apiRest7'
+put '/api8' => 'api#apiRest8'
 
 #Steam
 post '/auth/steam/callback' => 'steams#auth_callback'

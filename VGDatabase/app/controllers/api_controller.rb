@@ -113,5 +113,22 @@ class ApiController < ApplicationController
         end
     end
 
+    def apiRest8
+        user_id = params[:user_id]
+        username = params[:username]
+        password = params[:password]
+        email = params[:email]
+        key = params[:key]
+        if key=='123456789'
+            if user_id!=nil && User.exists?(:id => user_id)
+                User.find(user_id).update_attributes!(:username => username, :password => password, :email => email)
+                render json: User.find(User.where(:username => username)[0].id)
+            else
+                render json: 'User not found'
+            end
+        else
+            render json: 401
+        end
+    end
 
 end
