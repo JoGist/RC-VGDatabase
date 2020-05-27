@@ -16,11 +16,13 @@ get '/forgot_password_error' => 'sessions#forgot_password_error'
 get '/forgot_password_error_password' => 'sessions#forgot_password_error_password'
 
 #api
-get '/api' => 'sessions#apiRest'
-get '/api2' => 'sessions#apiRest2'
-get '/api3' => 'sessions#apiRest3'
-get '/api4' => 'sessions#apiRest4'
-get '/api5' => 'sessions#apiRest5'
+get '/api' => 'api#apiRest'
+get '/api2' => 'api#apiRest2'
+get '/api3' => 'api#apiRest3'
+get '/api4' => 'api#apiRest4'
+get '/api5' => 'api#apiRest5'
+post '/api6' => 'api#apiRest6'
+delete '/api7' => 'api#apiRest7'
 
 #Steam
 post '/auth/steam/callback' => 'steams#auth_callback'
