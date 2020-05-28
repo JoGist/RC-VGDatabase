@@ -59,8 +59,8 @@ VGDatabase/log/*/tmp/*
 #/VGDatabase/db/*.sqlite3-journal
 
 # Comment out this rule if you are OK with secrets being uploaded to the repo
-VGDatabase/config/initializers/secret_token.rb
-VGDatabase/config/master.key
+#VGDatabase/config/initializers/secret_token.rb
+#VGDatabase/config/master.key
 
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
