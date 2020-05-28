@@ -94,3 +94,6 @@ VGdatabase/tmp/pids/server.pid
 VGdatabase/config/credentials.yml.enc
 VGDatabase/config/credentials.yml.enc
 *.enc
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
