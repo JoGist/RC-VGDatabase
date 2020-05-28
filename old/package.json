@@ -1,0 +1,29 @@
+{
+  "name": "Progetto-Reti-di-Calcolatori",
+  "version": "1.0.0",
+  "description": "Il progetto consiste nella realizzazione di un servizio REST accessibile via Web. L'obiettivo del progetto è dimostrare che siete in grado di integrare le varie tecnologie viste nel corso. In quest'ottica un front-end ben fatto è molto ben accetto, ma non è un requisito di progetto.",
+  "main": "weather_request.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoGist/Progetto-Reti-di-Calcolatori.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoGist/Progetto-Reti-di-Calcolatori/issues"
+  },
+  "homepage": "https://github.com/JoGist/Progetto-Reti-di-Calcolatori#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "pg": "^8.0.0",
+    "postgres": "^1.0.2",
+    "request": "^2.88.2"
+  }
+}

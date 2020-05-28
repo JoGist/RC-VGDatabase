@@ -1,0 +1,73 @@
+!!!
+%html{:lang => "en", class: "container"}
+  %head
+    %title Collection - VGDatabase
+  %body.visible
+    %aside.sidebar.normal
+      %nav
+        %ul.sidebar__nav
+          %li
+            %a.sidebar__nav__link_plain_img
+              =image_tag ('logo-normal.png')
+          %li
+            %a.sidebar__nav__link{:href => homepage_path, "data-method" => "get"}
+              %i.mdi.mdi-home
+              %span.sidebar__nav__text Homepage
+          %li.active
+            %a.sidebar__nav__link_plain{}
+              %i.mdi.mdi-library-movie
+              %span.sidebar__nav__text Collection
+          %li
+            %a.sidebar__nav__link{:href => selling_path, "data-method" => "get"}
+              %i.mdi.mdi-shopping
+              %span.sidebar__nav__text  Selling
+          %li
+            %a.sidebar__nav__link{:href => searchGame_path, "data-method" => "get"}
+              %i.mdi.mdi-database-search
+              %span.sidebar__nav__text Search
+          %li
+            %a.sidebar__nav__link{:href => friends_path, "data-method" => "get"}
+              %i.mdi.mdi-account-multiple
+              %span.sidebar__nav__text Friends
+          %li
+            %a.sidebar__nav__link{:href => myProfile_path, "data-method" => "get"}
+              =image_tag (@user.avatar), class: "img3"
+              %span.sidebar__nav__text My account
+          %li
+            %a.sidebar__nav__link{:href => login_path, "data-method" => "delete"}
+              %i.mdi.mdi-logout-variant
+              %span.sidebar__nav__text Log out 
+          %li
+            %a.sidebar__nav__link{:href => contactUs_path, "data-method" => "get"}
+              %i.mdi.mdi-information
+              %span.sidebar__nav__text Contact us
+    %br/
+    - @lunghezza = @library.where(:user_id => @user.id).length
+    - if @lunghezza==0
+      %h1 You don't have any game in your collection
+    - elsif @lunghezza==1
+      %h1 You have 1 game in your collection
+    -else
+      %h1 You have #{@lunghezza} games in your collection
+    %div.page-content
+      %a.editText{:href => editCollection_path, "data-method" => "get"}
+        %span Start editing
+        %i.mdi.mdi-pencil
+      - @library.each do |game|
+        - if (game.user_id == @user.id) 
+          - @games = Game.find(game.game_id)
+          /%h2 Il gioco cercato ha id #{@games.id}, si chiama #{@games.title} ed appartiene a #{@user.username} 
+          .card
+            .content.cardPadding
+              %p.description Genre: #{@games.genre}
+              %p.description Platforms: #{@games.platform}
+              %a.btn{:href => game_path(game.game_id), "data-method" => "get"} View info 
+              - if (game.selling == 'false' && @user.location!=nil)
+                %a.btn{:href => edit_game_store_path(@games.id,game.id), "data-method" => "get"}
+                  %i.mdi.mdi-shopping
+                  %span.sidebar__nav__text sell
+              - elsif (game.selling == 'false' && @user.location==nil)
+                %a.btn{:href => editProfile_path, "data-method" => "get"}
+                  %i.mdi.mdi-shopping
+                  %span.sidebar__nav__text sell
+            %img.cover{:alt => "Game image cover", :src => "#{@games.cover}"}
