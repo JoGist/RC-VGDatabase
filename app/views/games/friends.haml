@@ -96,4 +96,4 @@
               .grid-item-details
                 %p.profile-hyper-links
                   %span.sub-header-details Games in the collection:
-                  %span #{Mylibrary.where(:user_id => friend.friend_id).length}
+                  %span #{Store.where(:user_id => friend.friend_id).length}
