@@ -1,62 +1,122 @@
-<h1>
-  Chat with <%= @room.user %>
-</h1>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html class="container" lang="en">
 
-  <div class="col">
-    <div class="chat">
-      <% @room_messages.each do |room_message| %>
-        <div class="chat-message-container">
-          <div class="row no-gutters">
-            <div class="col">
-              <div class="message-content">
-                <p class="mb-1">
-                  <%= User.find(room_message.user_id).username %>
-                  <%= room_message.message %>
-                  <%= room_message.created_at %>
-                </p>
-                <div class="text-right">
-                  <small>
+<head>
+  <title>Chat - VGDatabase</title>
+</head>
 
-                  </small>
-                </div>
-              </div>
-            </div>
+<body class="visible">
+    <aside class="sidebar normal">
+        <nav>
+            <ul class="sidebar__nav">
+                <li>
+                    <a class="sidebar__nav__link_plain_img">
+                        <%= image_tag ('logo-normal.png') %>
+                    </a>
+                </li>
+                <li>
+                    <a class="sidebar__nav__link" data-method="get" href="<%= homepage_path %>">
+                        <i class="mdi mdi-home"></i>
+                        <span class="sidebar__nav__text">Homepage</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="sidebar__nav__link" data-method="get" href="<%= collection_path %>">
+                        <i class="mdi mdi-library-movie"></i>
+                        <span class="sidebar__nav__text">Collection</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="sidebar__nav__link" data-method="get" href="<%= selling_path %>">
+                        <i class="mdi mdi-shopping"></i>
+                        <span class="sidebar__nav__text">Selling</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="sidebar__nav__link" data-method="get" href="<%= searchGame_path %>">
+                        <i class="mdi mdi-database-search"></i>
+                        <span class="sidebar__nav__text">Search</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="sidebar__nav__link" data-method="get" href="<%= friends_path %>">
+                        <i class="mdi mdi-account-multiple"></i>
+                        <span class="sidebar__nav__text">Friends</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="sidebar__nav__link" data-method="get" href="<%= myProfile_path %>">
+                        <span class="sidebar__nav__text">My account</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="sidebar__nav__link" data-method="delete" href="<%= login_path %>">
+                        <i class="mdi mdi-logout-variant"></i>
+                        <span class="sidebar__nav__text">Log out </span>
+                    </a>
+                </li>
+                <li>
+                    <a class="sidebar__nav__link" data-method="get" href="<%= contactUs_path %>">
+                        <i class="mdi mdi-information"></i>
+                        <span class="sidebar__nav__text">Contact us</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <br />
+    <h1>
+        Chat with <%= @room.user %>
+    </h1>
+    <div class="page-content">
+      <div class="chatBox">
+        <br>
+        <% @room_messages.each do |room_message| %>
+
+          <div class="from-me">
+            <p class="from-me-text"><%= room_message.message %></p>
+            <p class="from-me-date"><%= room_message.created_at %></p>
           </div>
+          <br>
+          <% end %>
+        <div class="from-them">
+          <p class="from-them-text">Ciao grazie non sapevo</p>
+          <p class="from-them-date">2020-06-30 21:55:36 UTC</p>
         </div>
-      <% end %>
+      </div>
     </div>
 
-<div class="form">
-  <div class="tab-content">
-    <%= form_tag  room_path(@room.id),  :method => :put do %>
-      <div class="field-wrapAlt">
-        <input autocomplete="off" maxlength="250" name="text" placeholder="Write review" type="text"></input>
-      </div>
-      <br/>
-      <button class="button" type="submit">Save changes</button>
-      <br/>
-      <br/>
-    <% end %>
-  </div>
-</div>
+    <div class="form">
+        <div class="tab-content">
+            <%= form_tag  room_path(@room.id),  :method => :put do %>
+            <div class="field-wrapAlt">
+                <input autocomplete="off" maxlength="250" name="text" placeholder="Write review" type="text"></input>
+            </div>
+            <br />
+            <button class="button" type="submit">Send</button>
+            <br />
+            <br />
+            <% end %>
+        </div>
+    </div>
     </div>
 
     <div class="d-none" data-role="message-template">
-  <div class="chat-message-container">
-    <div class="row no-gutters">
-      <div class="col-auto text-center">
-        <img src="" class="avatar" alt="" data-role="user-avatar">
-      </div>
+        <div class="chat-message-container">
+            <div class="row no-gutters">
+                <div class="col-auto text-center">
+                    <img src="" class="avatar" alt="" data-role="user-avatar">
+                </div>
 
-      <div class="col">
-        <div class="message-content">
-          <p class="mb-1" data-role="message-text"></p>
+                <div class="col">
+                    <div class="message-content">
+                        <p class="mb-1" data-role="message-text"></p>
 
-          <div class="text-right">
-            <small data-role="message-date"></small>
-          </div>
+                        <div class="text-right">
+                            <small data-role="message-date"></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-</div>

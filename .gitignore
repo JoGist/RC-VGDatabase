@@ -27,6 +27,10 @@ pickle-email-*.html
 /VGDatabase/tmp/
 /VGDatabase/log/*
 /VGDatabase/log/
+/log/*
+/log/
+/tmp/*
+/tmp/
 
 # Ignore bundler config.
 /VGDatabase/.bundle
