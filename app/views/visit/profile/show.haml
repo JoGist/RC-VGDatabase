@@ -116,6 +116,7 @@
                     -else
                       =image_tag (User.find(friend.friend_id).avatar) ,class: "reviewImg" 
                       %a{:href => visit_profile_path(friend.friend_id), "data-method" => "get"} #{User.find(friend.friend_id).username}
+            %a{:href => edit_room_path(@user.id)} Chatta
         - if (@library.length>0)
           %br/
           %br/

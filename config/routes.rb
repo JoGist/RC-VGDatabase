@@ -109,6 +109,9 @@ resources :games do
   resources :stores
 end
 
+resources :rooms 
+resources :room_messages
+
 namespace :guest do
   resources :show , only: [:show]
 end

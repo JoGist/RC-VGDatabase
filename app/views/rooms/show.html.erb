@@ -1,0 +1,62 @@
+<h1>
+  Chat with <%= @room.user %>
+</h1>
+
+  <div class="col">
+    <div class="chat">
+      <% @room_messages.each do |room_message| %>
+        <div class="chat-message-container">
+          <div class="row no-gutters">
+            <div class="col">
+              <div class="message-content">
+                <p class="mb-1">
+                  <%= User.find(room_message.user_id).username %>
+                  <%= room_message.message %>
+                  <%= room_message.created_at %>
+                </p>
+                <div class="text-right">
+                  <small>
+
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+<div class="form">
+  <div class="tab-content">
+    <%= form_tag  room_path(@room.id),  :method => :put do %>
+      <div class="field-wrapAlt">
+        <input autocomplete="off" maxlength="250" name="text" placeholder="Write review" type="text"></input>
+      </div>
+      <br/>
+      <button class="button" type="submit">Save changes</button>
+      <br/>
+      <br/>
+    <% end %>
+  </div>
+</div>
+    </div>
+
+    <div class="d-none" data-role="message-template">
+  <div class="chat-message-container">
+    <div class="row no-gutters">
+      <div class="col-auto text-center">
+        <img src="" class="avatar" alt="" data-role="user-avatar">
+      </div>
+
+      <div class="col">
+        <div class="message-content">
+          <p class="mb-1" data-role="message-text"></p>
+
+          <div class="text-right">
+            <small data-role="message-date"></small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
