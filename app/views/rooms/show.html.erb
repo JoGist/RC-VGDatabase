@@ -46,7 +46,7 @@
                 </li>
                 <li>
                     <a class="sidebar__nav__link" data-method="get" href="<%= myProfile_path %>">
-                        <%= image_tag (User.find(session[:user_id]).avatar), class: "img3" %>   
+                        <%= image_tag (User.find(session[:user_id]).avatar), class: "img3" %>
                         <span class="sidebar__nav__text">My account</span>
                     </a>
                 </li>
@@ -66,18 +66,21 @@
         </nav>
     </aside>
     <br />
-    <i class="return mdi mdi-arrow-left-bold">
-        <a data-method="get" href="<%= myProfile_path%>">back to profile</a>
-    </i>
-    <%if (User.find(session[:user_id]).username==@room.user1)%>
-    <h1>
-        Chat with <%= @room.user %>
-    </h1>
-    <%else%>
-    <h1>
-        Chat with <%= @room.user1 %>
-    </h1>
-    <%end%>
+    <div class="floatChatHead">
+        <i class="return mdi mdi-arrow-left-bold">
+            <a data-method="get" href="<%= myProfile_path%>">back to profile</a>
+        </i>
+        <%if (User.find(session[:user_id]).username==@room.user1)%>
+        <h1>
+            Chat with <%= @room.user %>
+        </h1>
+        <%else%>
+        <h1>
+            Chat with <%= @room.user1 %>
+        </h1>
+        <%end%>
+    </div>
+    <div class="rectangle"></div>
 
 
     <div class="page-content">
@@ -114,13 +117,23 @@
             <% end %>
             <% end %>
             <% end %>
+            <br><br><br>
         </div>
         <div class="floatChat">
-            <%= form_tag  room_path(@room.id),  :method => :put do %>
-            <div>
-                <input autocomplete="off" minlength="1" maxlength="250" name="text" placeholder="Write a message" type="text"></input>
+            <div class="--dark-theme" id="chat">
+                <%= form_tag  room_path(@room.id),  :method => :put do %>
+                <div class="chat__conversation-panel">
+                    <div class="chat__conversation-panel__container">
+                        <input class="chat__conversation-panel__input panel-item" autocomplete="off" required="" maxlength="250" name="text" placeholder="Type a message..." type="text" />
+                        <button class="chat__conversation-panel__button panel-item btn-icon send-message-button" type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-reactid="1036">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                        <% end %>
+                    </div>
+                </div>
             </div>
-            <button class="buttonSend" type="submit">Send</button>
-            <% end %>
         </div>
     </div>
