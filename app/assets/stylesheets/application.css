@@ -1850,3 +1850,29 @@ th {
   margin-left: 13em;
   color: #f26657;
 }
+.floatChat{
+	position:fixed;
+	bottom:20px;
+  left: 20%;
+  right: 20%;
+  text-align:center;
+  background: rgba(30, 27, 44, 1);
+  border-radius: 4px;
+}
+.buttonSend {
+  border: 0;
+  outline: none;
+  border-radius: 4px;
+  font-size: 2rem;
+  width: 10%;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: #f26657;
+  color: #fff;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-appearance: none;
+  transition: all 0.3s ease-out;
+  text-align: center;
+}
+

@@ -2,7 +2,7 @@
 <html class="container" lang="en">
 
 <head>
-  <title>Chat - VGDatabase</title>
+    <title>Chat - VGDatabase</title>
 </head>
 
 <body class="visible">
@@ -68,85 +68,58 @@
     <i class="return mdi mdi-arrow-left-bold">
         <a data-method="get" href="login_path">back to profile</a>
     </i>
-     <%if (User.find(session[:user_id]).username==@room.user1)%>
-        <h1>
-            Chat with <%= @room.user %>
-        </h1>
+    <%if (User.find(session[:user_id]).username==@room.user1)%>
+    <h1>
+        Chat with <%= @room.user %>
+    </h1>
     <%else%>
-        <h1>
-            Chat with <%= @room.user1 %>
-        </h1>
+    <h1>
+        Chat with <%= @room.user1 %>
+    </h1>
     <%end%>
-    
+
 
     <div class="page-content">
-      <div class="chatBox">
-        <br>
-        <%if (User.find(session[:user_id]).username==@room.user1)%>
+        <div class="chatBox">
+            <br>
+            <%if (User.find(session[:user_id]).username==@room.user1)%>
             <% @room_messages.each do |room_message| %>
-                <% if User.find(room_message.user_id).username==@room.user1%>
-                    <div class="from-me">
-                        <p class="from-me-text"><%= room_message.message %></p>
-                        <p class="from-me-date"><%= room_message.created_at %></p>
-                    </div>
-                <br>
-                <%else%>
-                    <div class="from-them">
-                        <p class="from-them-text"><%= room_message.message %></p>
-                        <p class="from-them-date"><%= room_message.created_at %></p>
-                    </div>
-                <% end %>
-            <% end %>
-        <%else%>
-            <% @room_messages.each do |room_message| %>
-                <% if User.find(room_message.user_id).username!=@room.user1%>
-                    <div class="from-me">
-                        <p class="from-me-text"><%= room_message.message %></p>
-                        <p class="from-me-date"><%= room_message.created_at %></p>
-                    </div>
-                <br>
-                <%else%>
-                    <div class="from-them">
-                        <p class="from-them-text"><%= room_message.message %></p>
-                        <p class="from-them-date"><%= room_message.created_at %></p>
-                    </div>
-                <% end %>
-            <% end %>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="form">
-        <div class="tab-content">
-            <%= form_tag  room_path(@room.id),  :method => :put do %>
-            <div class="field-wrapAlt">
-                <input autocomplete="off" maxlength="250" name="text" placeholder="Write review" type="text"></input>
+            <% if User.find(room_message.user_id).username==@room.user1%>
+            <div class="from-me">
+                <p class="from-me-text"><%= room_message.message %></p>
+                <p class="from-me-date"><%= room_message.created_at.strftime('%d %B %Y - %H:%M') %></p>
             </div>
-            <br />
-            <button class="button" type="submit">Send</button>
-            <br />
-            <br />
+            <br>
+            <%else%>
+            <div class="from-them">
+                <p class="from-them-text"><%= room_message.message %></p>
+                <p class="from-them-date"><%= room_message.created_at.strftime('%d %B %Y - %H:%M') %></p>
+            </div>
+            <% end %>
+            <% end %>
+            <%else%>
+            <% @room_messages.each do |room_message| %>
+            <% if User.find(room_message.user_id).username!=@room.user1%>
+            <div class="from-me">
+                <p class="from-me-text"><%= room_message.message %></p>
+                <p class="from-me-date"><%= room_message.created_at.strftime('%d %B %Y - %H:%M') %></p>
+            </div>
+            <br>
+            <%else%>
+            <div class="from-them">
+                <p class="from-them-text"><%= room_message.message %></p>
+                <p class="from-them-date"><%= room_message.created_at.strftime('%d %B %Y - %H:%M') %></p>
+            </div>
+            <% end %>
+            <% end %>
             <% end %>
         </div>
-    </div>
-    </div>
-
-    <div class="d-none" data-role="message-template">
-        <div class="chat-message-container">
-            <div class="row no-gutters">
-                <div class="col-auto text-center">
-                    <img src="" class="avatar" alt="" data-role="user-avatar">
-                </div>
-
-                <div class="col">
-                    <div class="message-content">
-                        <p class="mb-1" data-role="message-text"></p>
-
-                        <div class="text-right">
-                            <small data-role="message-date"></small>
-                        </div>
-                    </div>
-                </div>
+        <div class="floatChat">
+            <%= form_tag  room_path(@room.id),  :method => :put do %>
+            <div>
+                <input autocomplete="off" minlength="1" maxlength="250" name="text" placeholder="Write a message" type="text"></input>
             </div>
+            <button class="buttonSend" type="submit">Send</button>
+            <% end %>
         </div>
     </div>
