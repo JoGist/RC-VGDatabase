@@ -65,24 +65,49 @@
         </nav>
     </aside>
     <br />
-    <h1>
-        Chat with <%= @room.user %>
-    </h1>
+     <%if (User.find(session[:user_id]).username==@room.user1)%>
+        <h1>
+            Chat with <%= @room.user %>
+        </h1>
+    <%else%>
+        <h1>
+            Chat with <%= @room.user1 %>
+        </h1>
+    <%end%>
     <div class="page-content">
       <div class="chatBox">
         <br>
-        <% @room_messages.each do |room_message| %>
-
-          <div class="from-me">
-            <p class="from-me-text"><%= room_message.message %></p>
-            <p class="from-me-date"><%= room_message.created_at %></p>
-          </div>
-          <br>
-          <% end %>
-        <div class="from-them">
-          <p class="from-them-text">Ciao grazie non sapevo</p>
-          <p class="from-them-date">2020-06-30 21:55:36 UTC</p>
-        </div>
+        <%if (User.find(session[:user_id]).username==@room.user1)%>
+            <% @room_messages.each do |room_message| %>
+                <% if User.find(room_message.user_id).username==@room.user1%>
+                    <div class="from-me">
+                        <p class="from-me-text"><%= room_message.message %></p>
+                        <p class="from-me-date"><%= room_message.created_at %></p>
+                    </div>
+                <br>
+                <%else%>
+                <div class="from-them">
+                    <p class="from-them-text"><%= room_message.message %></p>
+                    <p class="from-them-date"><%= room_message.created_at %></p>
+                </div>
+                <% end %>
+            <% end %>
+        <%else%>
+            <% @room_messages.each do |room_message| %>
+                <% if User.find(room_message.user_id).username!=@room.user1%>
+                    <div class="from-me">
+                        <p class="from-me-text"><%= room_message.message %></p>
+                        <p class="from-me-date"><%= room_message.created_at %></p>
+                    </div>
+                <br>
+                <%else%>
+                <div class="from-them">
+                    <p class="from-them-text"><%= room_message.message %></p>
+                    <p class="from-them-date"><%= room_message.created_at %></p>
+                </div>
+                <% end %>
+            <% end %>
+        <% end %>
       </div>
     </div>
 
