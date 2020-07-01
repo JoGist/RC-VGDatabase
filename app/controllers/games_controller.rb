@@ -92,6 +92,8 @@ skip_before_action :verify_authenticity_token
         @review = Review.where(:user_id => @user)
         @friends = Friend.where(:user_id => @user.id,:favorite => 'true')
         @friends1 = Friend.where(:user_id => @user.id,:favorite => 'false')
+        @room = Room.where(:user1 => @user.username)
+        @room1 = Room.where(:user => @user.username)
     end
 
     def editProfile

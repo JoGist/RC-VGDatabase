@@ -102,21 +102,18 @@
           .account-grid-item-4
             .grid-item-details
               %span Chat
-            -if @friends.length==0 && @friends1.length==0
+            -if @room.length==0 && @room1.length==0
               .grid-item-detailsImg
                 %span You don't have chats
-            -else
-              -if @friends.exists?
-                - @friends.each do |friend|
-                  .grid-item-detailsImg
-                    =image_tag (User.find(friend.friend_id).avatar) ,class: "reviewImg"
-                    %a{:href => visit_profile_path(friend.friend_id), "data-method" => "get"} #{User.find(friend.friend_id).username}
-                    %i.mdi.mdi-star.friendStar
-              -if @friends1.exists?
-                - @friends1.each do |friend|
-                  .grid-item-detailsImg
-                    =image_tag (User.find(friend.friend_id).avatar) ,class: "reviewImg"
-                    %a{:href => visit_profile_path(friend.friend_id), "data-method" => "get"} #{User.find(friend.friend_id).username}
+            -else 
+              - @room.each do |room|
+                .grid-item-detailsImg
+                  =image_tag (User.where(:username => room.user)[0].avatar) ,class: "reviewImg"
+                  %a{:href => room_path(Room.where(:user => room.user,:user1 => room.user1)[0].id), "data-method" => "get"} #{User.where(:username => room.user)[0].username}
+              - @room1.each do |room1|
+                .grid-item-detailsImg
+                  =image_tag (User.where(:username => room1.user1)[0].avatar) ,class: "reviewImg"
+                  %a{:href => room_path(Room.where(:user1 => room1.user1,:user => room1.user)[0].id), "data-method" => "get"} #{User.where(:username => room1.user1)[0].username}
         %br/
         %br/
         %div

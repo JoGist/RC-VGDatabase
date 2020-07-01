@@ -46,6 +46,7 @@
                 </li>
                 <li>
                     <a class="sidebar__nav__link" data-method="get" href="<%= myProfile_path %>">
+                        <%= image_tag (User.find(session[:user_id]).avatar), class: "img3" %>   
                         <span class="sidebar__nav__text">My account</span>
                     </a>
                 </li>
@@ -66,7 +67,7 @@
     </aside>
     <br />
     <i class="return mdi mdi-arrow-left-bold">
-        <a data-method="get" href="login_path">back to profile</a>
+        <a data-method="get" href="<%= myProfile_path%>">back to profile</a>
     </i>
      <%if (User.find(session[:user_id]).username==@room.user1)%>
         <h1>
