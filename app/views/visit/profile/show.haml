@@ -59,12 +59,14 @@
                   %a.mdi.mdi-star-outline.iconBig2.right6{:href => friend_path(@user.id) , "data-method" => "get"}
               -else
                 %a.mdi.mdi-star-outline.iconBig2.right6.hidden
-            .grid-item-details-button
-              %p.profile-hyper-links
-                - if (Friend.exists?(:user_id => @users, :friend_id => @user.id))
-                  %a{:href => friend_path(@user), "data-method" => "delete"} Remove from friends
-                  %i.mdi.mdi-account-remove
-                - else 
+            - if (Friend.exists?(:user_id => @users, :friend_id => @user.id))
+              .grid-item-details-button
+                %p.profile-hyper-links
+                  %a{:href => edit_room_path(@user.id)} Chat
+                  %i.mdi.mdi-telegram
+            - if !(Friend.exists?(:user_id => @users, :friend_id => @user.id))
+              .grid-item-details-button
+                %p.profile-hyper-links
                   %a{:href => friend_path(@user), "data-method" => "put"} Add to friends
                   %i.mdi.mdi-account-plus
           .account-grid-item-2
@@ -89,7 +91,12 @@
                 %a{:href => @user.social2, :target => "_blank"}  #{@user.social2}
                 %br
                 %a{:href => @user.social3, :target => "_blank"}  #{@user.social3}
-                %br            
+                %br
+            - if (Friend.exists?(:user_id => @users, :friend_id => @user.id))
+              .grid-item-details
+                %p.profile-hyper-links
+                  %a{:href => friend_path(@user), "data-method" => "delete"} Remove from friends
+                  %i.mdi.mdi-account-remove       
           .account-grid-item-3
             .grid-item-details
               %span Friends
@@ -116,7 +123,6 @@
                     -else
                       =image_tag (User.find(friend.friend_id).avatar) ,class: "reviewImg" 
                       %a{:href => visit_profile_path(friend.friend_id), "data-method" => "get"} #{User.find(friend.friend_id).username}
-            %a{:href => edit_room_path(@user.id)} Chatta
         - if (@library.length>0)
           %br/
           %br/
