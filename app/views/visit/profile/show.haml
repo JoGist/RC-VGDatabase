@@ -59,16 +59,10 @@
                   %a.mdi.mdi-star-outline.iconBig2.right6{:href => friend_path(@user.id) , "data-method" => "get"}
               -else
                 %a.mdi.mdi-star-outline.iconBig2.right6.hidden
-            - if (Friend.exists?(:user_id => @users, :friend_id => @user.id))
-              .grid-item-details-button
-                %p.profile-hyper-links
-                  %a{:href => edit_room_path(@user.id)} Chat
-                  %i.mdi.mdi-telegram
-            - if !(Friend.exists?(:user_id => @users, :friend_id => @user.id))
-              .grid-item-details-button
-                %p.profile-hyper-links
-                  %a{:href => friend_path(@user), "data-method" => "put"} Add to friends
-                  %i.mdi.mdi-account-plus
+            .grid-item-details-button
+              %p.profile-hyper-links
+                %a{:href => edit_room_path(@user.id)} Chat
+                %i.mdi.mdi-telegram
           .account-grid-item-2
             .grid-item-details
               %h5.sub-header-details Username:
@@ -96,7 +90,12 @@
               .grid-item-details
                 %p.profile-hyper-links
                   %a{:href => friend_path(@user), "data-method" => "delete"} Remove from friends
-                  %i.mdi.mdi-account-remove       
+                  %i.mdi.mdi-account-remove 
+            - else
+              .grid-item-details
+                %p.profile-hyper-links
+                  %a{:href => friend_path(@user), "data-method" => "put"} Add to friends
+                  %i.mdi.mdi-account-plus      
           .account-grid-item-3
             .grid-item-details
               %span Friends

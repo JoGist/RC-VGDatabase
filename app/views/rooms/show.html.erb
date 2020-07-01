@@ -65,6 +65,9 @@
         </nav>
     </aside>
     <br />
+    <i class="return mdi mdi-arrow-left-bold">
+        <a data-method="get" href="login_path">back to profile</a>
+    </i>
      <%if (User.find(session[:user_id]).username==@room.user1)%>
         <h1>
             Chat with <%= @room.user %>
@@ -74,6 +77,8 @@
             Chat with <%= @room.user1 %>
         </h1>
     <%end%>
+    
+
     <div class="page-content">
       <div class="chatBox">
         <br>
@@ -86,10 +91,10 @@
                     </div>
                 <br>
                 <%else%>
-                <div class="from-them">
-                    <p class="from-them-text"><%= room_message.message %></p>
-                    <p class="from-them-date"><%= room_message.created_at %></p>
-                </div>
+                    <div class="from-them">
+                        <p class="from-them-text"><%= room_message.message %></p>
+                        <p class="from-them-date"><%= room_message.created_at %></p>
+                    </div>
                 <% end %>
             <% end %>
         <%else%>
@@ -101,10 +106,10 @@
                     </div>
                 <br>
                 <%else%>
-                <div class="from-them">
-                    <p class="from-them-text"><%= room_message.message %></p>
-                    <p class="from-them-date"><%= room_message.created_at %></p>
-                </div>
+                    <div class="from-them">
+                        <p class="from-them-text"><%= room_message.message %></p>
+                        <p class="from-them-date"><%= room_message.created_at %></p>
+                    </div>
                 <% end %>
             <% end %>
         <% end %>

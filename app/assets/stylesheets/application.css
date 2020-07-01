@@ -1072,6 +1072,14 @@ a:hover {
   width: 45%;
   margin-right: 12px;
 }
+.account-grid-item-2-alt {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #444;
+  border-radius: 2px;
+  width: 30%;
+  margin-right: 12px;
+}
 .account-grid-item-3 {
   display: flex;
   flex-direction: column;
@@ -1079,6 +1087,24 @@ a:hover {
   border-bottom: 0;
   border-radius: 2px;
   width: 25%;
+  max-width: 500px;
+}
+.account-grid-item-3-alt {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #444;
+  border-bottom: 0;
+  border-radius: 2px;
+  width: 18%;
+  max-width: 500px;
+}
+.account-grid-item-4 {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #444;
+  border-bottom: 0;
+  border-radius: 2px;
+  width: 18%;
   max-width: 500px;
 }
 .grid-item-details {
@@ -1265,6 +1291,12 @@ a .profile-hyper-links:hover a{
   padding: 14px 50px;
 }
 .account-grid-item-2 .grid-item-details:hover {
+  cursor: default;
+}
+.account-grid-item-2-alt .grid-item-details {
+  padding: 14px 50px;
+}
+.account-grid-item-2-alt .grid-item-details:hover {
   cursor: default;
 }
 .accordian-details {
@@ -1729,7 +1761,7 @@ th {
 .chatBox {
 	font-size: 20px;
 	font-weight: normal;
-  max-width: 60%;
+  max-width: 90%;
 	margin: auto;
   display: -webkit-box;
   display: flex;
@@ -1777,6 +1809,7 @@ th {
   font-size: 13px;
 }
 .from-them {
+  margin-bottom: 25px;
   width: fit-content;
   position: relative;
   background: #fff;
@@ -1812,4 +1845,8 @@ th {
   margin-right: 12px;
   margin-bottom: 5px;
   font-size: 13px;
+}
+.return{
+  margin-left: 13em;
+  color: #f26657;
 }
