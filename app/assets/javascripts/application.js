@@ -47,7 +47,20 @@ $(document).ready(function () {
     $(".digital-clock").text(
     day + "/" + month + "/" + d.getFullYear() + " · " + h + ":" + m + ":" + s
     );
+    $(".boxContenuto").load("show.html.erb");
     }
 
     var dt = new Date();
     document.getElementById("datetime").innerHTML = dt.toLocaleString();
+
+
+    function loadlink(){
+      $('#links').load('test.php',function () {
+           $(this).unwrap();
+      });
+  }
+  
+  loadlink(); // This will run on page load
+  setInterval(function(){
+      loadlink() // this will run after every 5 seconds
+  }, 5000);

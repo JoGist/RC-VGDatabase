@@ -43,41 +43,40 @@
               %i.mdi.mdi-information
               %span.sidebar__nav__text Contact us
     %br/
-    %h1 Editing my profile
+    %h1 Complete your profile before continue
     %div.page-content
       %br/
       = form_tag :method => :post do
         .my-account-wrapper
           .account-grid-system
-            .account-grid-item-1-alt2
+            .account-grid-item-1
               .profile-pic-details
                 .overlayImg.iconBig
-                  %i.mdi.mdi-upload
+                  %i.mdi.mdi-pencil
                   %span.hidden _
-                  %span edit picture
-                  .overlayProfileImg
-                    %input{:name => "myfile", :type => "file"}/
+                  %span change avatar
+                  %a.overlayProfileImg{:href => editAvatar_path, "data-method" => "get"}
                 =image_tag (@user.avatar) ,class: "img"
               .grid-item-detailsProfile
               %button.grid-item-details-button-2
                 %p.profile-hyper-links
                   %a Save changes 
                   %i.mdi.mdi-content-save
-              .grid-item-details-button
-                %p.profile-hyper-links
-                  %a{:href => myProfile_path, "data-method" => "get"} Discard changes  x
             .account-grid-item-2
               .grid-item-details
                 %h5.sub-header-details Username
-                %input{:name => 'user[name]' , :placeholder => @user.username , :autocomplete => "off", :type => "text"}/
+                %input{:name => 'user[name]' , :value => @user.username , :autocomplete => "username", :type => "text"}/
               .grid-item-details
                 %h5.sub-header-details Email
-                %input{:name => 'user[email]' , :placeholder => @user.email , :autocomplete => "off", :type => "email"}/
+                %input{:name => 'user[email]' , :value => @user.email , :autocomplete => "email", :type => "email", :required => ''}/
               .grid-item-details
                 %h5.sub-header-details Password
-                %input{:name => 'user[newp]' , :placeholder => 'Enter new password' , :autocomplete => "off", :type => "password"}/
+                %input{:name => 'user[newp]' , :placeholder => 'Enter password' , :autocomplete => "new-password", :type => "password", :required => ''}/
                 %br
-                %input{:name => 'user[newp1]' , :placeholder => 'Re-enter new password' , :autocomplete => "off", :type => "password"}/
+                %input{:name => 'user[newp1]' , :placeholder => 'Re-enter password' , :autocomplete => "new-password", :type => "password", :required => ''}/
+              .grid-item-details
+                %h5.sub-header-details Location
+                %input{:name => 'user[location]' , :value => @user.location , :autocomplete => "street-address", :type => "text", :required => ''}/
               .grid-item-details
                 %h5.sub-header-details Linked account:
                 %br
@@ -98,9 +97,12 @@
                   - else
                     %i Account not linked
                 %br
-              .grid-item-details.white
+              %a.grid-item-details.white{:href => deleteUserConfirmation_path, "data-method" => "get"}
+                %br
                 %i.mdi.mdi-trash-can
-                %a2{:href => deleteUser_path} DELETE ACCOUNT
+                %span DELETE ACCOUNT
+                %br
+                %br
             .account-grid-item-3
               .grid-item-details
                 %span Friends

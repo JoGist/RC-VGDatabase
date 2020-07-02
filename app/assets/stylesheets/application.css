@@ -1196,6 +1196,13 @@ textarea {
   color: #696f7e;
   padding: 10px;
 }
+.grid-item-detailsImgAlt {
+  padding: 8px;
+  border-bottom: 1px solid #444;
+  background-color: #333;
+  color: #696f7e;
+  padding: 10px;
+}
 .grid-item-detailsImg span {
   cursor: default;
   padding-left: 1rem;
@@ -1209,7 +1216,26 @@ textarea {
   color: #696f7e;
   float: left;
 }
+.grid-item-detailsImgAlt a {
+  cursor: pointer;
+  padding-left: 1rem;
+  padding-top: 0.4rem;
+  color: #696f7e;
+  float: left;
+}
+.grid-item-detailsImgAlt h6 {
+  font-size: 16px;
+  white-space: nowrap;
+  cursor: pointer;
+  margin-left: 5rem;
+  padding-top: 2.5rem;
+  color: #696f7e;
+  max-width: 20px;
+}
 .grid-item-detailsImg a:hover {
+  color: #fff;
+}
+.grid-item-detailsImgAlt a:hover {
   color: #fff;
 }
 .grid-item-details:last-child {
@@ -1675,7 +1701,7 @@ a .profile-hyper-links:hover a{
 .wrapper .overlay-container::before {
   content: attr(data-overlay-text);
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   top: 40%;
   width: 100%;
   text-align: center;

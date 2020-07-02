@@ -104,16 +104,18 @@
               %span Chat
             -if @room.length==0 && @room1.length==0
               .grid-item-detailsImg
-                %span You don't have chats
+                %span You don't have active chats
             -else 
               - @room.each do |room|
-                .grid-item-detailsImg
+                .grid-item-detailsImgAlt
                   =image_tag (User.where(:username => room.user)[0].avatar) ,class: "reviewImg"
                   %a{:href => room_path(Room.where(:user => room.user,:user1 => room.user1)[0].id), "data-method" => "get"} #{User.where(:username => room.user)[0].username}
+                  %h6 You: dai fra smettila di fare il bro
               - @room1.each do |room1|
-                .grid-item-detailsImg
+                .grid-item-detailsImgAlt
                   =image_tag (User.where(:username => room1.user1)[0].avatar) ,class: "reviewImg"
                   %a{:href => room_path(Room.where(:user1 => room1.user1,:user => room1.user)[0].id), "data-method" => "get"} #{User.where(:username => room1.user1)[0].username}
+                  %h6 You: dai fra smettila di fare il bro
         %br/
         %br/
         %div
