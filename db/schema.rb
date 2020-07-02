@@ -19,6 +19,24 @@ ActiveRecord::Schema.define(version: 2020_07_02_140302) do
     t.string "avatar"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "username"
+    t.string "password"
+    t.string "avatar"
+    t.string "background"
+    t.string "location"
+    t.string "social1"
+    t.string "social2"
+    t.string "social3"
+    t.float "latitude"
+    t.float "longitude"
+    t.decimal "google_token"
+    t.string "google_username"
+    t.string "steam_username"
+    t.bigint "steam_token"
+  end
+
   create_table "friends", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "friend_id"
@@ -75,22 +93,5 @@ ActiveRecord::Schema.define(version: 2020_07_02_140302) do
     t.index ["user_id"], name: "index_stores_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "username"
-    t.string "password"
-    t.string "avatar"
-    t.string "background"
-    t.string "location"
-    t.string "social1"
-    t.string "social2"
-    t.string "social3"
-    t.float "latitude"
-    t.float "longitude"
-    t.decimal "google_token"
-    t.string "google_username"
-    t.string "steam_username"
-    t.bigint "steam_token"
-  end
 
 end
