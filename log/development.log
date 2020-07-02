@@ -2503,3 +2503,129 @@ Migrating to AddAvatarToUser (20200425131641)
   [1m[35m (0.4ms)[0m  [1m[35mCREATE DATABASE "db/reti-development" ENCODING = 'unicode'[0m
   [1m[35m (0.5ms)[0m  [1m[35mCREATE DATABASE "db/reti-test" ENCODING = 'unicode'[0m
   [1m[35m (0.4ms)[0m  [1m[35mCREATE DATABASE "db/reti-production" ENCODING = 'unicode'[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-02 15:05:08.824243"], ["updated_at", "2020-07-02 15:05:08.824243"]]
+  [1m[35m (5.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (72.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "db/reti-development"[0m
+  [1m[35m (84.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "db/reti-test"[0m
+  [1m[35m (491.0ms)[0m  [1m[35mCREATE DATABASE "db/reti-development" ENCODING = 'unicode'[0m
+  [1m[35m (270.6ms)[0m  [1m[35mCREATE DATABASE "db/reti-test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "avatars" CASCADE[0m
+  [1m[35m (31.3ms)[0m  [1m[35mCREATE TABLE "avatars" ("id" bigserial primary key, "avatar" character varying)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (14.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying, "username" character varying, "password" character varying, "avatar" character varying, "background" character varying, "location" character varying, "social1" character varying, "social2" character varying, "social3" character varying, "latitude" float, "longitude" float, "google_token" decimal, "google_username" character varying, "steam_username" character varying, "steam_token" bigint)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "friends" CASCADE[0m
+  [1m[35m (32.4ms)[0m  [1m[35mCREATE TABLE "friends" ("id" bigserial primary key, "user_id" bigint, "friend_id" bigint, "favorite" character varying)[0m
+  [1m[35m (16.1ms)[0m  [1m[35mCREATE  INDEX  "index_friends_on_friend_id" ON "friends"  ("friend_id")[0m
+  [1m[35m (25.0ms)[0m  [1m[35mCREATE  INDEX  "index_friends_on_user_id" ON "friends"  ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "games" CASCADE[0m
+  [1m[35m (22.7ms)[0m  [1m[35mCREATE TABLE "games" ("id" bigserial primary key, "title" character varying, "serial" integer, "developer" character varying, "platform" character varying, "score" integer, "release_date" timestamp, "cover" character varying, "genre" character varying)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "reviews" CASCADE[0m
+  [1m[35m (26.3ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" bigserial primary key, "user_id" bigint, "game_id" bigint, "score" integer, "comments" text)[0m
+  [1m[35m (16.1ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_game_id" ON "reviews"  ("game_id")[0m
+  [1m[35m (13.0ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_user_id" ON "reviews"  ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "room_messages" CASCADE[0m
+  [1m[35m (13.6ms)[0m  [1m[35mCREATE TABLE "room_messages" ("id" bigserial primary key, "room_id" bigint, "user_id" bigint, "message" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (13.8ms)[0m  [1m[35mCREATE  INDEX  "index_room_messages_on_room_id" ON "room_messages"  ("room_id")[0m
+  [1m[35m (15.3ms)[0m  [1m[35mCREATE  INDEX  "index_room_messages_on_user_id" ON "room_messages"  ("user_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "rooms" CASCADE[0m
+  [1m[35m (16.4ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" bigserial primary key, "user1" character varying, "user" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "stores" CASCADE[0m
+  [1m[35m (17.1ms)[0m  [1m[35mCREATE TABLE "stores" ("id" bigserial primary key, "game_id" bigint, "user_id" bigint, "selling" character varying, "condition" character varying, "price" integer)[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE  INDEX  "index_stores_on_game_id" ON "stores"  ("game_id")[0m
+  [1m[35m (14.0ms)[0m  [1m[35mCREATE  INDEX  "index_stores_on_user_id" ON "stores"  ("user_id")[0m
+  [1m[35m (21.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (9.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200630142909)[0m
+  [1m[35m (4.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200417122700),
+(20200418164117),
+(20200419125717),
+(20200421145537),
+(20200425131641),
+(20200425151922),
+(20200425155714),
+(20200428173530),
+(20200512171146),
+(20200513145344),
+(20200514135356),
+(20200514135553),
+(20200630132443),
+(20200630132503),
+(20200630141024);
+
+[0m
+  [1m[35m (17.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (4.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-02 15:05:38.609809"], ["updated_at", "2020-07-02 15:05:38.609809"]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "avatars" CASCADE[0m
+  [1m[35m (23.6ms)[0m  [1m[35mCREATE TABLE "avatars" ("id" bigserial primary key, "avatar" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (21.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying, "username" character varying, "password" character varying, "avatar" character varying, "background" character varying, "location" character varying, "social1" character varying, "social2" character varying, "social3" character varying, "latitude" float, "longitude" float, "google_token" decimal, "google_username" character varying, "steam_username" character varying, "steam_token" bigint)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "friends" CASCADE[0m
+  [1m[35m (20.9ms)[0m  [1m[35mCREATE TABLE "friends" ("id" bigserial primary key, "user_id" bigint, "friend_id" bigint, "favorite" character varying)[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE  INDEX  "index_friends_on_friend_id" ON "friends"  ("friend_id")[0m
+  [1m[35m (13.5ms)[0m  [1m[35mCREATE  INDEX  "index_friends_on_user_id" ON "friends"  ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "games" CASCADE[0m
+  [1m[35m (16.3ms)[0m  [1m[35mCREATE TABLE "games" ("id" bigserial primary key, "title" character varying, "serial" integer, "developer" character varying, "platform" character varying, "score" integer, "release_date" timestamp, "cover" character varying, "genre" character varying)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "reviews" CASCADE[0m
+  [1m[35m (15.5ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" bigserial primary key, "user_id" bigint, "game_id" bigint, "score" integer, "comments" text)[0m
+  [1m[35m (11.4ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_game_id" ON "reviews"  ("game_id")[0m
+  [1m[35m (13.6ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_user_id" ON "reviews"  ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "room_messages" CASCADE[0m
+  [1m[35m (23.7ms)[0m  [1m[35mCREATE TABLE "room_messages" ("id" bigserial primary key, "room_id" bigint, "user_id" bigint, "message" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE  INDEX  "index_room_messages_on_room_id" ON "room_messages"  ("room_id")[0m
+  [1m[35m (12.9ms)[0m  [1m[35mCREATE  INDEX  "index_room_messages_on_user_id" ON "room_messages"  ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "rooms" CASCADE[0m
+  [1m[35m (21.3ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" bigserial primary key, "user1" character varying, "user" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "stores" CASCADE[0m
+  [1m[35m (21.8ms)[0m  [1m[35mCREATE TABLE "stores" ("id" bigserial primary key, "game_id" bigint, "user_id" bigint, "selling" character varying, "condition" character varying, "price" integer)[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE  INDEX  "index_stores_on_game_id" ON "stores"  ("game_id")[0m
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE  INDEX  "index_stores_on_user_id" ON "stores"  ("user_id")[0m
+  [1m[35m (20.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (5.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200630142909)[0m
+  [1m[35m (6.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200417122700),
+(20200418164117),
+(20200419125717),
+(20200421145537),
+(20200425131641),
+(20200425151922),
+(20200425155714),
+(20200428173530),
+(20200512171146),
+(20200513145344),
+(20200514135356),
+(20200514135553),
+(20200630132443),
+(20200630132503),
+(20200630141024);
+
+[0m
+  [1m[35m (15.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-02 15:05:39.030285"], ["updated_at", "2020-07-02 15:05:39.030285"]]
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-07-02 15:05:39.044675"], ["key", "environment"]]
+  [1m[35m (6.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
