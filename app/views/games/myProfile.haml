@@ -110,12 +110,30 @@
                 .grid-item-detailsImgAlt
                   =image_tag (User.where(:username => room.user)[0].avatar) ,class: "reviewImg"
                   %a{:href => room_path(Room.where(:user => room.user,:user1 => room.user1)[0].id), "data-method" => "get"} #{User.where(:username => room.user)[0].username}
-                  %h6 You: dai fra smettila di fare il bro
+                  -if (RoomMessage.where(:room_id => room.id).last.user_id==User.where(:username => room.user1)[0].id)
+                    -if (RoomMessage.where(:room_id => room.id).last.message.length>20)
+                      %h6 You: #{RoomMessage.where(:room_id => room.id).last.message.slice(0..17)}...
+                    -else
+                      %h6 You: #{RoomMessage.where(:room_id => room.id).last.message}
+                  -else
+                    -if (RoomMessage.where(:room_id => room.id).last.message.length>20)
+                      %h6 #{RoomMessage.where(:room_id => room.id).last.message.slice(0..17)}...
+                    -else
+                      %h6 #{RoomMessage.where(:room_id => room.id).last.message}
               - @room1.each do |room1|
                 .grid-item-detailsImgAlt
                   =image_tag (User.where(:username => room1.user1)[0].avatar) ,class: "reviewImg"
                   %a{:href => room_path(Room.where(:user1 => room1.user1,:user => room1.user)[0].id), "data-method" => "get"} #{User.where(:username => room1.user1)[0].username}
-                  %h6 You: dai fra smettila di fare il bro
+                  -if (RoomMessage.where(:room_id => room1.id).last.user_id==User.where(:username => room1.user)[0].id)
+                    -if (RoomMessage.where(:room_id => room1.id).last.message.length>20)
+                      %h6 You: #{RoomMessage.where(:room_id => room1.id).last.message.slice(0..17)}...
+                    -else
+                      %h6 You: #{RoomMessage.where(:room_id => room1.id).last.message}
+                  -else
+                    -if (RoomMessage.where(:room_id => room1.id).last.message.length>20)
+                      %h6 #{RoomMessage.where(:room_id => room1.id).last.message.slice(0..17)}...
+                    -else
+                      %h6 #{RoomMessage.where(:room_id => room1.id).last.message}
         %br/
         %br/
         %div
