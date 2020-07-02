@@ -1783,7 +1783,7 @@ th {
   border-radius: .4em;
   word-wrap: break-word;
   max-width: 80%;
-  min-width: 10%;
+  min-width: 5%;
 }
 .from-me:after {
   content: '';
@@ -1821,7 +1821,7 @@ th {
   border-radius: .4em;
   word-wrap: break-word;
   max-width: 80%;
-  min-width: 10%;
+  min-width: 5%;
 }
 .from-them:after {
   content: '';
@@ -1852,16 +1852,14 @@ th {
   font-size: 13px;
 }
 .return{
-  margin-left: 13em;
+  margin-left: 1em;
   color: #f26657;
 }
 .floatChatHead{
-  position:fixed;
   z-index: 0;
   top: 0px;
   margin-left: 12.5em;
   margin-right: 0.5em;
-  height: 150px;
   color: #f26657;
   background-color: #14111f;
 }
@@ -1876,6 +1874,7 @@ th {
 	bottom: 10px;
   left: 25%;
   right: 25%;
+  margin-left: 12.5em;
   text-align:center;
 }
 #chat .btn-icon {
@@ -1944,9 +1943,14 @@ th {
   outline: none;
   position: relative;
   color: #fff;
-  font-size: 13px;
+  font-size: 18px;
   background: transparent;
   border: 0;
   font-family: "Lato", sans-serif;
   resize: none;
+}
+.visitProfile {
+  float: right;
+  margin-right: 5rem;
+  margin-top: -12rem;
 }

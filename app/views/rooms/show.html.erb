@@ -68,7 +68,7 @@
     <br />
     <div class="floatChatHead">
         <i class="return mdi mdi-arrow-left-bold">
-            <a data-method="get" href="<%= myProfile_path%>">back to profile</a>
+            <a data-method="get" href="<%= myProfile_path%>">back to your profile</a>
         </i>
         <%if (User.find(session[:user_id]).username==@room.user1)%>
         <h1>
@@ -84,6 +84,9 @@
 
 
     <div class="page-content">
+        <a class="visitProfile" data-method="get" href="<%= METTIPROFILODELLUTENTE_path %>">
+            <span>Visit his profile</span>
+        </a>
         <div class="chatBox">
             <br>
             <%if (User.find(session[:user_id]).username==@room.user1)%>
