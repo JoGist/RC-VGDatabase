@@ -25,4 +25,10 @@ test:
 
 production:
   <<: *default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+  encoding: unicode
+  username: postgres
+  password: biar
   database: db/reti-production
