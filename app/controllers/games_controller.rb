@@ -326,6 +326,22 @@ skip_before_action :verify_authenticity_token
         @library.each do |library|
             library.delete
         end
+        @room = Room.where(:user1 => User.find(name).username)
+        @room.each do |room|
+            @messages = RoomMessage.where(:room_id => room.id)
+            @messages.each do |message|
+                message.delete
+            end
+            room.delete
+        end
+        @room1 = Room.where(:user => User.find(name).username)
+        @room1.each do |room1|
+            @messages = RoomMessage.where(:room_id => room1.id)
+            @messages.each do |message|
+                message.delete
+            end
+            room1.delete
+        end
         session.delete(:user_id)
         User.delete(name)
         redirect_to login_path
@@ -624,6 +640,22 @@ skip_before_action :verify_authenticity_token
                 @library = Store.where(:user_id => @user)
                 @library.each do |library|
                     library.delete
+                end
+                @room = Room.where(:user1 => name)
+                @room.each do |room|
+                    @messages = RoomMessage.where(:room_id => room.id)
+                    @messages.each do |message|
+                        message.delete
+                    end
+                    room.delete
+                end
+                @room1 = Room.where(:user => name)
+                @room1.each do |room1|
+                    @messages = RoomMessage.where(:room_id => room1.id)
+                    @messages.each do |message|
+                        message.delete
+                    end
+                    room1.delete
                 end
                 User.delete(@user)
                 redirect_to deletingUser_succes_path

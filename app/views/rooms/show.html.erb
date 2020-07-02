@@ -84,9 +84,18 @@
 
 
     <div class="page-content">
-        <a class="visitProfile" data-method="get" href="<%= METTIPROFILODELLUTENTE_path %>">
+        <a class="visitProfile" data-method="get" href="<%= visit_profile_path() %>">
             <span>Visit his profile</span>
         </a>
+        <%if (User.find(session[:user_id]).username==@room.user1)%>
+            <a class="visitProfile" data-method="get" href="<%= visit_profile_path(User.where(:username => @room.user)[0].id) %>">
+                <span>Visit his profile</span>
+            </a>
+        <%else%>
+            <a class="visitProfile" data-method="get" href="<%= visit_profile_path(User.where(:username => @room.user1)[0].id) %>">
+                <span>Visit his profile</span>
+            </a>
+        <%end%>
         <div class="chatBox">
             <br>
             <%if (User.find(session[:user_id]).username==@room.user1)%>
