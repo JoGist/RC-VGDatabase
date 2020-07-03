@@ -8,7 +8,7 @@ The site is based on a videogames database, where you can view many information 
 
 *   **Giovanni Roma** - roma.1808340@studenti.uniroma1.it - [GitHub](https://github.com/JoGist) - [LinkedIn](https://www.linkedin.com/in/giovanni-roma-a95a32127/)
 *   **Marco Musciaglia** - musciaglia.1816864@studenti.uniroma1.it - [GitHub](https://github.com/loldlink)
-*   **Gianmarco Montillo** - montillo.1801402@studenti.uniroma1.it - [GitHub](https://github.com/gianmarcomontillo)
+*   **Gianmarco Montillo** - montillo.1801402@studenti.uniroma1.it - [GitHub](https://github.com/gianmarcomontillo) - [LinkedIn](https://www.linkedin.com/in/gianmarco-montillo-1349371ab/)
 
 
 ## Dependencies
