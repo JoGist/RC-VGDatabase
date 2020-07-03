@@ -1,0 +1,67 @@
+<h1>
+  <%= @room.id %>
+</h1>
+
+<div class="row">
+
+
+  <div class="col">
+    <div class="chat" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
+      <% @room_messages.each do |room_message| %>
+        <div class="chat-message-container">
+          <div class="row no-gutters">
+
+            <div class="col">
+              <div class="message-content">
+                <p class="mb-1">
+                  <%= room_message.message %>
+                </p>
+
+                <div class="text-right">
+                  <small>
+                    <%= room_message.created_at %>
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+<%= form_tag  room_path(@room.id),  :method => :put do %>
+                <div class="chat__conversation-panel">
+                    <div class="chat__conversation-panel__container">
+                        <input class="chat__conversation-panel__input panel-item" autocomplete="off" required="" maxlength="250" name="text" placeholder="Type a message..." type="text" />
+                        <button class="chat__conversation-panel__button panel-item btn-icon send-message-button" type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-reactid="1036">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                        <% end %>
+  </div>
+</div>
+
+<div class="d-none" data-role="message-template">
+  <div class="chat-message-container">
+    <div class="row no-gutters">
+      <div class="col-auto text-center">
+        <img src="" class="avatar" alt="" data-role="user-avatar">
+      </div>
+
+      <div class="col">
+        <div class="message-content">
+          <p class="mb-1" data-role="message-text">
+
+          </p>
+
+          <div class="text-right">
+            <small data-role="message-date">
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

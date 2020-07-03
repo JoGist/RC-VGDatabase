@@ -1,0 +1,86 @@
+<h1>
+  <%= @room.id %>
+</h1>
+
+<div class="row">
+
+
+
+
+<%= form_tag  room_path(@room.id),  :method => :put do %>
+                <div class="chat__conversation-panel">
+                    <div class="chat__conversation-panel__container">
+                        <input class="chat__conversation-panel__input panel-item" autocomplete="off" required="" maxlength="250" name="text" placeholder="Type a message..." type="text" />
+                        <button class="chat__conversation-panel__button panel-item btn-icon send-message-button" type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-reactid="1036">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                        <% end %>
+  </div>
+</div>
+
+    <div class="floatChatHead">
+        <i class="return mdi mdi-arrow-left-bold">
+            <a data-method="get" href="<%= myProfile_path%>">back to your profile</a>
+        </i>
+        <%if (User.find(session[:user_id]).username==@room.user1)%>
+        <h1>
+            Chat with <%= @room.user %>
+        </h1>
+        <%else%>
+        <h1>
+            Chat with <%= @room.user1 %>
+        </h1>
+        <%end%>
+    </div>
+    <div class="rectangle"></div>
+    <div class="page-content">
+        <%if (User.find(session[:user_id]).username==@room.user1)%>
+            <a class="visitProfile" data-method="get" href="<%= visit_profile_path(User.where(:username => @room.user)[0].id) %>">
+                <span>Visit his profile</span>
+            </a>
+        <%else%>
+            <a class="visitProfile" data-method="get" href="<%= visit_profile_path(User.where(:username => @room.user1)[0].id) %>">
+                <span>Visit his profile</span>
+            </a>
+        <%end%>
+        <li class="nav-item">
+                <a class="nav-link digital-clock"> 00:00:00</a>
+        </li>
+        <div class="chatBox" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
+            <br>
+            <%if (User.find(session[:user_id]).username==@room.user1)%>
+            <% @room_messages.each do |room_message| %>
+            <% if User.find(room_message.user_id).username==@room.user1%>
+            <div class="from-me" data-role="message-template">
+                <p class="from-me-text" data-role="message-text"><%= room_message.message %></p>
+                <p class="from-me-date" data-role="message-date"><%= room_message.created_at.strftime('%d %B %Y - %H:%M') %></p>
+            </div>
+            <br>
+            <%else%>
+            <div class="from-them" data-role="message-template">
+                <p class="from-them-text" data-role="message-text"><%= room_message.message %></p>
+                <p class="from-them-date" data-role="message-date"><%= room_message.created_at.strftime('%d %B %Y - %H:%M') %></p>
+            </div>
+            <% end %>
+            <% end %>
+            <%else%>
+            <% @room_messages.each do |room_message| %>
+            <% if User.find(room_message.user_id).username!=@room.user1%>
+            <div class="from-me" data-role="message-template">
+                <p class="from-me-text" data-role="message-text"><%= room_message.message %></p>
+                <p class="from-me-date" data-role="message-date"><%= room_message.created_at.strftime('%d %B %Y - %H:%M') %></p>
+            </div>
+            <br>
+            <%else%>
+            <div class="from-them" data-role="message-template">
+                <p class="from-them-text" data-role="message-text"><%= room_message.message %></p>
+                <p class="from-them-date" data-role="message-date"><%= room_message.created_at.strftime('%d %B %Y - %H:%M') %></p>
+            </div>
+            <% end %>
+            <% end %>
+            <% end %>
+            <br><br><br>
+        </div>

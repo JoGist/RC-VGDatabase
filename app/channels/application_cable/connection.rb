@@ -9,7 +9,7 @@ module ApplicationCable
     private
 
     def find_verified_user
-      verified_user = true
+      verified_user = User.find(14)
       if verified_user
         verified_user
       else
