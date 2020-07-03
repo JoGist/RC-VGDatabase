@@ -5,7 +5,7 @@ RSpec.describe "add User", :type => :feature do
     visit "/login"
     fill_in "user[name]", with: user_1.username
     fill_in "user[password]", with: user_1.password
-    click_button "Log In"
+    click_button "Log in"
     expect(page).to have_content("Welcome back, #{user_1.username}!")
   end
 end

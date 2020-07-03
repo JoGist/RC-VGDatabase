@@ -236,9 +236,9 @@ skip_before_action :verify_authenticity_token
             @aux.each do |aux|
                 score = score+aux.score
             end
-            score = score/(@review.length+@aux.length) 
+            score = score/(@review.length+@aux.length)
             @games.update_attributes(:score => score)
-        else 
+        else
             score = 0
             @games.update_attributes(:score => score)
         end
@@ -658,7 +658,7 @@ skip_before_action :verify_authenticity_token
                     room1.delete
                 end
                 User.delete(@user)
-                redirect_to deletingUser_succes_path
+                redirect_to deletingUser_success_path
             else
                 redirect_to deletingUser_error_path
             end
