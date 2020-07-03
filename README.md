@@ -1,7 +1,7 @@
 ![logo/logo-normal.png](logo/logo-normal.png)
 **VGDatabase (VGDB)** is a platform designed and built for gamers by gamers.
 
-The site is based on a videogames database, where you can view many information about any games such as genre, developer, date of release, score and the reviews written by other users, with an additional external link for the purchase. You can also sell any games, specifying the condition and the price. The platform also provides a search functions by title or by genre, and a search for registered users. There is also a chat function between users, to get in contact for buying games and/or just chat and have fun. In addition, the site is updated periodically, always showing in the homepage the most popular games at the moment. Each user has his own library of games, a friends list and the possibility to group games and friends in Favorites lists. Enjoy!
+The site consists of a video game collection / sale platform. For each game you can view different information such as genre, developer, release date, score and reviews written by other users registered on the site, and an additional external link for purchase. Each game can be added to its collection, and possibly sell it, specifying its condition and price. The platform also offers a search function for games by title or genre, and a search for users. Finally, there is a chat function between users, to get in touch. The site is updated periodically, always showing the most popular games on the homepage at the moment. Each registered user therefore owns his own collection of owned games, games for sale and a list of friends (and a sub-list of favorite friends). Enjoy!
 
 
 ## Authors
