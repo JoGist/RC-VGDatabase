@@ -13375,3 +13375,426 @@ Processing by SessionsController#login as HTML
 Completed 200 OK in 171ms (Views: 169.0ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for ::1 at 2020-07-03 17:00:08 +0200
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.4.2) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.4.2) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.4.2) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1542670843460243595)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddGenreToGame (20200419125717)
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.4ms)[0m  [1m[35mALTER TABLE "games" ADD "genre" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(1542670843460243595)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (97.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "db/reti-development"[0m
+  [1m[35m (65.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "db/reti-test"[0m
+  [1m[35m (202.6ms)[0m  [1m[35mCREATE DATABASE "db/reti-development" ENCODING = 'unicode'[0m
+  [1m[35m (166.8ms)[0m  [1m[35mCREATE DATABASE "db/reti-test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (1.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "avatars" CASCADE[0m
+  [1m[35m (26.0ms)[0m  [1m[35mCREATE TABLE "avatars" ("id" bigserial primary key, "avatar" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "friends" CASCADE[0m
+  [1m[35m (12.8ms)[0m  [1m[35mCREATE TABLE "friends" ("id" bigserial primary key, "user_id" bigint, "friend_id" bigint, "favorite" character varying)[0m
+  [1m[35m (8.3ms)[0m  [1m[35mCREATE  INDEX  "index_friends_on_friend_id" ON "friends"  ("friend_id")[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE  INDEX  "index_friends_on_user_id" ON "friends"  ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "games" CASCADE[0m
+  [1m[35m (13.4ms)[0m  [1m[35mCREATE TABLE "games" ("id" bigserial primary key, "title" character varying, "serial" integer, "developer" character varying, "platform" character varying, "score" integer, "release_date" timestamp, "cover" character varying, "genre" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "reviews" CASCADE[0m
+  [1m[35m (12.5ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" bigserial primary key, "user_id" bigint, "game_id" bigint, "score" integer, "comments" text)[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_game_id" ON "reviews"  ("game_id")[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_user_id" ON "reviews"  ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "room_messages" CASCADE[0m
+  [1m[35m (13.2ms)[0m  [1m[35mCREATE TABLE "room_messages" ("id" bigserial primary key, "room_id" bigint, "user_id" bigint, "message" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "read" character varying)[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE  INDEX  "index_room_messages_on_room_id" ON "room_messages"  ("room_id")[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE  INDEX  "index_room_messages_on_user_id" ON "room_messages"  ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "rooms" CASCADE[0m
+  [1m[35m (14.2ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" bigserial primary key, "user1" character varying, "user" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "stores" CASCADE[0m
+  [1m[35m (12.0ms)[0m  [1m[35mCREATE TABLE "stores" ("id" bigserial primary key, "game_id" bigint, "user_id" bigint, "selling" character varying, "condition" character varying, "price" integer)[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE  INDEX  "index_stores_on_game_id" ON "stores"  ("game_id")[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE  INDEX  "index_stores_on_user_id" ON "stores"  ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (15.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying, "username" character varying, "password" character varying, "avatar" character varying, "background" character varying, "location" character varying, "social1" character varying, "social2" character varying, "social3" character varying, "latitude" float, "longitude" float, "google_token" decimal, "google_username" character varying, "steam_username" character varying, "steam_token" bigint)[0m
+  [1m[35m (12.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (3.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200702140302)[0m
+  [1m[35m (3.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200417122700),
+(20200418164117),
+(20200419125717),
+(20200421145537),
+(20200425131641),
+(20200425151922),
+(20200425155714),
+(20200428173530),
+(20200512171146),
+(20200513145344),
+(20200514135356),
+(20200514135553),
+(20200630132443),
+(20200630132503),
+(20200630141024),
+(20200630142909);
+
+[0m
+  [1m[35m (11.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-03 15:00:53.103823"], ["updated_at", "2020-07-03 15:00:53.103823"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "avatars" CASCADE[0m
+  [1m[35m (23.3ms)[0m  [1m[35mCREATE TABLE "avatars" ("id" bigserial primary key, "avatar" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "friends" CASCADE[0m
+  [1m[35m (13.4ms)[0m  [1m[35mCREATE TABLE "friends" ("id" bigserial primary key, "user_id" bigint, "friend_id" bigint, "favorite" character varying)[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE  INDEX  "index_friends_on_friend_id" ON "friends"  ("friend_id")[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE  INDEX  "index_friends_on_user_id" ON "friends"  ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "games" CASCADE[0m
+  [1m[35m (12.9ms)[0m  [1m[35mCREATE TABLE "games" ("id" bigserial primary key, "title" character varying, "serial" integer, "developer" character varying, "platform" character varying, "score" integer, "release_date" timestamp, "cover" character varying, "genre" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "reviews" CASCADE[0m
+  [1m[35m (12.4ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" bigserial primary key, "user_id" bigint, "game_id" bigint, "score" integer, "comments" text)[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_game_id" ON "reviews"  ("game_id")[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_user_id" ON "reviews"  ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "room_messages" CASCADE[0m
+  [1m[35m (16.0ms)[0m  [1m[35mCREATE TABLE "room_messages" ("id" bigserial primary key, "room_id" bigint, "user_id" bigint, "message" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "read" character varying)[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE  INDEX  "index_room_messages_on_room_id" ON "room_messages"  ("room_id")[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE  INDEX  "index_room_messages_on_user_id" ON "room_messages"  ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "rooms" CASCADE[0m
+  [1m[35m (17.7ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" bigserial primary key, "user1" character varying, "user" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "stores" CASCADE[0m
+  [1m[35m (13.3ms)[0m  [1m[35mCREATE TABLE "stores" ("id" bigserial primary key, "game_id" bigint, "user_id" bigint, "selling" character varying, "condition" character varying, "price" integer)[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE  INDEX  "index_stores_on_game_id" ON "stores"  ("game_id")[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE  INDEX  "index_stores_on_user_id" ON "stores"  ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (13.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying, "username" character varying, "password" character varying, "avatar" character varying, "background" character varying, "location" character varying, "social1" character varying, "social2" character varying, "social3" character varying, "latitude" float, "longitude" float, "google_token" decimal, "google_username" character varying, "steam_username" character varying, "steam_token" bigint)[0m
+  [1m[35m (12.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200702140302)[0m
+  [1m[35m (1.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200417122700),
+(20200418164117),
+(20200419125717),
+(20200421145537),
+(20200425131641),
+(20200425151922),
+(20200425155714),
+(20200428173530),
+(20200512171146),
+(20200513145344),
+(20200514135356),
+(20200514135553),
+(20200630132443),
+(20200630132503),
+(20200630141024),
+(20200630142909);
+
+[0m
+  [1m[35m (12.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-03 15:00:53.417579"], ["updated_at", "2020-07-03 15:00:53.417579"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-07-03 15:00:53.423798"], ["key", "environment"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1542670843460243595)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1542670843460243595)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2020-07-03 17:01:23 +0200
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.haml within layouts/application
+  Rendered sessions/login.haml within layouts/application (9981.1ms)
+Completed 200 OK in 11471ms (Views: 11402.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/homepage_guest" for ::1 at 2020-07-03 17:01:38 +0200
+Processing by SessionsController#homepageGuest as HTML
+  Parameters: {"authenticity_token"=>"qY4uHeu2ybie+a/RjzYAELk0zaAcBSwAB9m5vkb0ecVGHoPNvdUBt1wCIhGaZGL/Fs4xrF5ori8Zmlpo4BN3Ag=="}
+  Rendering sessions/homepageGuest.haml within layouts/application
+  [1m[36mGame Load (0.8ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  Rendered sessions/homepageGuest.haml within layouts/application (53.0ms)
+Completed 200 OK in 1497ms (Views: 1321.0ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/contactUs_guest" for ::1 at 2020-07-03 17:01:41 +0200
+Processing by SessionsController#contactUsGuest as HTML
+  Parameters: {"authenticity_token"=>"1ONhdNoHedQDjENer7pkt4z77w/pIzr6Gkg4IEwMczA7c8ykjGSx28F3zp666AZYIwETA6tOuNUEC9v26ut99w=="}
+  Rendering sessions/contactUsGuest.haml within layouts/application
+  Rendered sessions/contactUsGuest.haml within layouts/application (56.2ms)
+Completed 200 OK in 1409ms (Views: 1338.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for ::1 at 2020-07-03 17:01:52 +0200
+Processing by SessionsController#signup as HTML
+  Parameters: {"authenticity_token"=>"hafLZMsz4maiLYNC1Sf8zHbZmC97lImRutpHrHx4fu5qN2a0nVAqaWDWDoLAdZ4j2SNkIzn5C76kmaR62p9wKQ=="}
+  Rendering sessions/signup.haml within layouts/application
+  Rendered sessions/signup.haml within layouts/application (45.1ms)
+Completed 200 OK in 1365ms (Views: 1299.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2020-07-03 17:01:54 +0200
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.haml within layouts/application
+  Rendered sessions/login.haml within layouts/application (76.4ms)
+Completed 200 OK in 1356ms (Views: 1279.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/google_oauth2" for ::1 at 2020-07-03 17:01:57 +0200
+Started GET "/auth/google_oauth2" for ::1 at 2020-07-03 17:01:57 +0200
+Started GET "/auth/google_oauth2/callback?state=94efb7f25aa017d8d74037bbc8c1d0fa38e10d09bfb13b86&code=4%2F1gE6s86Gw9MQsD34OoE8WxwEzuRkWDcS10Gn6MYykGW2mG5OKPy-cd-NTRGeU-PCern4gaIyIDAtsvj8G5qI_SI&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=0&prompt=none" for ::1 at 2020-07-03 17:01:57 +0200
+Processing by GooglesController#googleAuth as HTML
+  Parameters: {"state"=>"94efb7f25aa017d8d74037bbc8c1d0fa38e10d09bfb13b86", "code"=>"4/1gE6s86Gw9MQsD34OoE8WxwEzuRkWDcS10Gn6MYykGW2mG5OKPy-cd-NTRGeU-PCern4gaIyIDAtsvj8G5qI_SI", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email openid https://www.googleapis.com/auth/userinfo.profile", "authuser"=>"0", "prompt"=>"none", "provider"=>"google_oauth2"}
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."google_token" = $1 LIMIT $2[0m  [["google_token", "107806051862803998824"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 84ms (ActiveRecord: 7.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=1):
+  
+app/controllers/googles_controller.rb:19:in `googleAuth'
+Started GET "/auth/google_oauth2" for ::1 at 2020-07-03 17:02:09 +0200
+Started GET "/auth/google_oauth2" for ::1 at 2020-07-03 17:02:09 +0200
+Started GET "/auth/google_oauth2/callback?state=f453e8791e7f5716a624367cfdec6e56532d25c7450c116c&code=4%2F1gHSo371o0Mj1BT4FAimyXauT77V8TTlfaNtCSp_r-0pa1nZ-ZOz4UgUGKbCROGogzuh_VQog1Wnxuo8b4tmctU&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=none" for ::1 at 2020-07-03 17:02:09 +0200
+Processing by GooglesController#googleAuth as HTML
+  Parameters: {"state"=>"f453e8791e7f5716a624367cfdec6e56532d25c7450c116c", "code"=>"4/1gHSo371o0Mj1BT4FAimyXauT77V8TTlfaNtCSp_r-0pa1nZ-ZOz4UgUGKbCROGogzuh_VQog1Wnxuo8b4tmctU", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email openid", "authuser"=>"0", "prompt"=>"none", "provider"=>"google_oauth2"}
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."google_token" = $1 LIMIT $2[0m  [["google_token", "107806051862803998824"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 8ms (ActiveRecord: 0.8ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=1):
+  
+app/controllers/googles_controller.rb:19:in `googleAuth'
+Started GET "/callback?utf8=%E2%9C%93&user%5Bname%5D=Nidran&user%5Bpassword%5D=[FILTERED]" for ::1 at 2020-07-03 17:02:18 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"Nidran", "password"=>"[FILTERED]"}}
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" IN (SELECT "users"."id" FROM "users" WHERE "users"."username" = $1) LIMIT $2[0m  [["username", "Nidran"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/login_error
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/login_error" for ::1 at 2020-07-03 17:02:18 +0200
+Processing by SessionsController#login_error as HTML
+  Rendering sessions/login_error.haml within layouts/application
+  Rendered sessions/login_error.haml within layouts/application (75.6ms)
+Completed 200 OK in 1335ms (Views: 1274.3ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/login" for ::1 at 2020-07-03 17:02:21 +0200
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"/i9+QTpXPEvnw1y62T65mSMlbX0TguCKLzEnuYBgmmsRv9ORbDT0RCU40XrMbNt2jN+RcVHvYqUxcsRvJoeUrA=="}
+Redirected to http://localhost:3000/login
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2020-07-03 17:02:21 +0200
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.haml within layouts/application
+  Rendered sessions/login.haml within layouts/application (89.2ms)
+Completed 200 OK in 1300ms (Views: 1241.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/steam" for ::1 at 2020-07-03 17:02:23 +0200
+Started GET "/auth/steam" for ::1 at 2020-07-03 17:02:23 +0200
+Started GET "/auth/steam" for ::1 at 2020-07-03 17:02:24 +0200
+Started GET "/auth/steam/callback?_method=post&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.mode=id_res&openid.op_endpoint=https%3A%2F%2Fsteamcommunity.com%2Fopenid%2Flogin&openid.claimed_id=https%3A%2F%2Fsteamcommunity.com%2Fopenid%2Fid%2F76561198053742229&openid.identity=https%3A%2F%2Fsteamcommunity.com%2Fopenid%2Fid%2F76561198053742229&openid.return_to=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Fsteam%2Fcallback%3F_method%3Dpost&openid.response_nonce=2020-07-03T15%3A02%3A32Z7eed2IDLRs0nWDuYCoc3KAmiyFo%3D&openid.assoc_handle=1234567890&openid.signed=signed%2Cop_endpoint%2Cclaimed_id%2Cidentity%2Creturn_to%2Cresponse_nonce%2Cassoc_handle&openid.sig=wczu8RODaDq4G4MC6lZ%2FOM4I2d0%3D" for ::1 at 2020-07-03 17:02:30 +0200
+Processing by SteamsController#auth_callback as HTML
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."steam_token" = $1 LIMIT $2[0m  [["steam_token", 76561198053742229], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "avatar", "background", "social1", "social2", "social3", "steam_username", "steam_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["username", "Jo"], ["avatar", "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ee/eed6ce8d3c2c26c83a5e7a260cb6504af6244ac9_full.jpg"], ["background", "deafult.png"], ["social1", ""], ["social2", ""], ["social3", ""], ["steam_username", "giovanni9813"], ["steam_token", 76561198053742229]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."steam_token" = $1[0m  [["steam_token", 76561198053742229]]
+Redirected to http://localhost:3000/editProfileOauth
+Completed 302 Found in 42ms (ActiveRecord: 5.5ms)
+
+
+Started GET "/editProfileOauth" for ::1 at 2020-07-03 17:02:32 +0200
+Processing by GamesController#editProfileOauth as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/editProfileOauth.haml within layouts/application
+  [1m[36mFriend Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "friends" WHERE "friends"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered games/editProfileOauth.haml within layouts/application (61.1ms)
+Completed 200 OK in 1417ms (Views: 1238.8ms | ActiveRecord: 5.2ms)
+
+
+Started POST "/editProfileOauth?method=post" for ::1 at 2020-07-03 17:02:43 +0200
+Processing by GamesController#editingProfileOauth as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6C7Zxz1rbmmMGTUgty9FUP6007/X2sS0tMpb1vWaPSAHvnQXawimZk7iuOCifSe/UU4vs5W3RpuqibgAU30z5w==", "user"=>{"name"=>"Jo", "email"=>"r.giovanni.98@gmail.com", "newp"=>"crashbug", "newp1"=>"crashbug", "location"=>"Via Stefano Borgia 167"}, "method"=>"post"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "email" = $1, "password" = $2, "location" = $3, "latitude" = $4, "longitude" = $5 WHERE "users"."id" = $6[0m  [["email", "r.giovanni.98@gmail.com"], ["password", "crashbug"], ["location", "Via Stefano Borgia 167"], ["latitude", 41.1294487], ["longitude", 14.7812542], ["id", 1]]
+  [1m[35m (9.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/editProfileOauth_success
+Completed 302 Found in 1386ms (ActiveRecord: 11.0ms)
+
+
+Started GET "/editProfileOauth_success" for ::1 at 2020-07-03 17:02:45 +0200
+Processing by GamesController#editProfileOauth_success as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/editProfileOauth_success.haml within layouts/application
+  [1m[36mFriend Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "friends" WHERE "friends"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  Rendered games/editProfileOauth_success.haml within layouts/application (62.7ms)
+Completed 200 OK in 1320ms (Views: 1256.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/myProfile" for ::1 at 2020-07-03 17:02:48 +0200
+Processing by GamesController#myProfile as HTML
+  Parameters: {"authenticity_token"=>"MpW8JpW5T2li4msvjXkaYzv0LB7pd1KnXrmnYslqnzbdBRH2w9qHZqAZ5u+YK3iMlA7QEqsa0IhA+kS0b42R8Q=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/myProfile.haml within layouts/application
+  [1m[36mStore Load (0.8ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mFriend Load (0.3ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 1], ["favorite", "true"]]
+  [1m[36mFriend Load (0.5ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 1], ["favorite", "false"]]
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."user1" = $1[0m  [["user1", "Jo"]]
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."user" = $1[0m  [["user", "Jo"]]
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered games/myProfile.haml within layouts/application (153.6ms)
+Completed 200 OK in 1461ms (Views: 1345.2ms | ActiveRecord: 6.3ms)
+
+
+Started DELETE "/login" for ::1 at 2020-07-03 17:03:02 +0200
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"pl8V231giq+4MgmTD5OT7E9oCL9YKX+Sit7wCiC9s59Jz7gLKwNCoHrJhFMawfED4JL0sxpE/b2UnRPchlq9WA=="}
+Redirected to http://localhost:3000/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2020-07-03 17:03:02 +0200
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.haml within layouts/application
+  Rendered sessions/login.haml within layouts/application (74.2ms)
+Completed 200 OK in 1303ms (Views: 1247.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/google_oauth2" for ::1 at 2020-07-03 17:03:04 +0200
+Started GET "/auth/google_oauth2" for ::1 at 2020-07-03 17:03:05 +0200
+Started GET "/auth/google_oauth2/callback?state=434eaa2c1cd8e7ec92e9d266349aa7baba2f54d998bf676b&code=4%2F1gH5Eq0Hz76e5Fznzz20QWl-DXkgLmK7Z_llbbfBdALW3284O_G41PVAh_eVOmj9h3VFORXE6i-DRfx-0kQdCtA&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=none" for ::1 at 2020-07-03 17:03:05 +0200
+Processing by GooglesController#googleAuth as HTML
+  Parameters: {"state"=>"434eaa2c1cd8e7ec92e9d266349aa7baba2f54d998bf676b", "code"=>"4/1gH5Eq0Hz76e5Fznzz20QWl-DXkgLmK7Z_llbbfBdALW3284O_G41PVAh_eVOmj9h3VFORXE6i-DRfx-0kQdCtA", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid", "authuser"=>"0", "prompt"=>"none", "provider"=>"google_oauth2"}
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."google_token" = $1 LIMIT $2[0m  [["google_token", "107806051862803998824"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "username", "avatar", "background", "social1", "social2", "social3", "google_token", "google_username") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "r.giovanni.98@gmail.com"], ["username", "Giovanni Roma"], ["avatar", "https://lh3.googleusercontent.com/a-/AOh14Gg0_DPM6uqJTmTvdo3fUr3BLjhBt2Ryy5ltL9WxSJI"], ["background", "deafult.png"], ["social1", ""], ["social2", ""], ["social3", ""], ["google_token", "107806051862803998824.0"], ["google_username", "Giovanni Roma"]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."google_token" = $1[0m  [["google_token", "107806051862803998824"]]
+Redirected to http://localhost:3000/editProfileOauth
+Completed 302 Found in 16ms (ActiveRecord: 8.1ms)
+
+
+Started GET "/editProfileOauth" for ::1 at 2020-07-03 17:03:05 +0200
+Processing by GamesController#editProfileOauth as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering games/editProfileOauth.haml within layouts/application
+  [1m[36mFriend Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "friends" WHERE "friends"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  Rendered games/editProfileOauth.haml within layouts/application (60.9ms)
+Completed 200 OK in 1276ms (Views: 1217.0ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/editProfileOauth?method=post" for ::1 at 2020-07-03 17:03:19 +0200
+Processing by GamesController#editingProfileOauth as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fTfcn7w1w1W7cheyhqgeHbDfCxABpmsfXz+UpjPYFPKSp3FP6lYLWnmJmnKT+nzyHyX3HEPL6TBBfHdwlT8aNQ==", "user"=>{"name"=>"Giovanni Roma", "email"=>"r.giovanni.98@gmail.com", "newp"=>"crashbug", "newp1"=>"crashbug", "location"=>"via stefano borgia"}, "method"=>"post"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "password" = $1, "location" = $2, "latitude" = $3, "longitude" = $4 WHERE "users"."id" = $5[0m  [["password", "crashbug"], ["location", "via stefano borgia"], ["latitude", 41.1294487], ["longitude", 14.7812542], ["id", 2]]
+  [1m[35m (8.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/editProfileOauth_success
+Completed 302 Found in 1183ms (ActiveRecord: 10.6ms)
+
+
+Started GET "/editProfileOauth_success" for ::1 at 2020-07-03 17:03:20 +0200
+Processing by GamesController#editProfileOauth_success as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering games/editProfileOauth_success.haml within layouts/application
+  [1m[36mFriend Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "friends" WHERE "friends"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  Rendered games/editProfileOauth_success.haml within layouts/application (62.0ms)
+Completed 200 OK in 1277ms (Views: 1216.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/myProfile" for ::1 at 2020-07-03 17:03:25 +0200
+Processing by GamesController#myProfile as HTML
+  Parameters: {"authenticity_token"=>"LKUf0+lsEcju8aWMxKpV7V0ShZR0rUO/Wv/FH2kgW1/DNbIDvw/ZxywKKEzR+DcC8uh5mDbAwZBEvCbJz8dVmA=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering games/myProfile.haml within layouts/application
+  [1m[36mStore Load (0.5ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mFriend Load (0.4ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 2], ["favorite", "true"]]
+  [1m[36mFriend Load (0.4ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 2], ["favorite", "false"]]
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."user1" = $1[0m  [["user1", "Giovanni Roma"]]
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."user" = $1[0m  [["user", "Giovanni Roma"]]
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 2]]
+  Rendered games/myProfile.haml within layouts/application (70.6ms)
+Completed 200 OK in 1317ms (Views: 1254.8ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/contactUs" for ::1 at 2020-07-03 17:03:28 +0200
+Processing by GamesController#contactUs as HTML
+  Parameters: {"authenticity_token"=>"zWKj6VqFF/UuIrMIfg/54XH69GvNZ5QMsaXlnKM6BNYi8g45DObf+uzZPshrXZsO3gAIZ48KFiOv5gZKBd0KEQ=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering games/contactUs.haml within layouts/application
+  Rendered games/contactUs.haml within layouts/application (45.8ms)
+Completed 200 OK in 1247ms (Views: 1187.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2020-07-03 17:11:32 +0200
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.haml within layouts/application
+  Rendered sessions/login.haml within layouts/application (75.2ms)
+Completed 200 OK in 1433ms (Views: 1347.4ms | ActiveRecord: 0.0ms)
+
+
