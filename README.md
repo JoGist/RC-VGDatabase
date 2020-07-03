@@ -12,7 +12,7 @@ The site is based on a videogames database, where you can view many information 
 
 
 ## Technologies used
-*   [Ruby/RailsI](https://www.ruby-lang.org/) - for the base server and infrastructure
+*   [Ruby/Rails](https://www.ruby-lang.org/) - for the base server and infrastructure
 *   [Google Maps API](https://cloud.google.com/maps-platform) - for the map which show where each game is sold
 *   [Google OAuth](https://support.google.com/cloud/answer/6158849?hl=en) - for autenticating with Google into the site
 *   [Steam OAuth](https://partner.steamgames.com/doc/webapi_overview/oauth) - for autenticating with Steam into the site
