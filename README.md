@@ -12,12 +12,12 @@ The site is based on a videogames database, where you can view many information 
 
 
 ## Technologies used
-*   Ruby/Rails - for the base server and infrastructure
-*   Google Maps API - for the map which show where each game is sold
-*   Google OAuth - for autenticating with Google into the site
-*   Steam OAuth - for autenticating with Steam into the site
-*   IGDB API - for retreiving all games  information and cover art
-*   Redis-server - to establish the action cable and manage the WebSockets across chatrooms
+*   [Ruby/RailsI](https://www.ruby-lang.org/) - for the base server and infrastructure
+*   [Google Maps API](https://cloud.google.com/maps-platform) - for the map which show where each game is sold
+*   [Google OAuth](https://support.google.com/cloud/answer/6158849?hl=en) - for autenticating with Google into the site
+*   [Steam OAuth](https://partner.steamgames.com/doc/webapi_overview/oauth) - for autenticating with Steam into the site
+*   [IGDB API](https://www.igdb.com/api) - for retreiving all games  information and cover art
+*   [Redis-server](https://redis.io/) - to establish the action cable and manage the WebSockets across chatrooms
 
 Plans for the future:
 *   Deploy on Heroku
@@ -40,7 +40,11 @@ In order to successfully run the project, you have to obtain a valid API key on 
 * IGDB - https://www.igdb.com/api
 * Google - https://support.google.com/cloud/answer/6158849?hl=en
 * Steam - https://steamcommunity.com/dev/apikey
-
+* Google Maps API on the [Google Cloud Platform](https://cloud.google.com/maps-platform/), making sure to also enable all of these API's: 
+  *  Geocoding, 
+  *  Maps Embed, 
+  *  Maps JavaScript, 
+  *  Places
 
 
 To build and run the Rails app, go into the root folder of the repo and run the following commands:
