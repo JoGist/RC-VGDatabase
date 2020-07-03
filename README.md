@@ -13,10 +13,11 @@ The site is based on a videogames database, where you can view many information 
 
 
 ## Dependencies
-In order to build and run the Rails server in your machine, you must have installed:
+In order to build and run the Rails server in your machine, you must have already installed and configured:
 *   _Ruby 2.4_
 *   _Rails 6_
 *   _Bundler 2_
+*   _Redis server (any version)_
 *   _Postgres 9 or above_
 *   _JavaScript (any version)_
 
@@ -87,14 +88,19 @@ To build and run the Rails app, go into the root folder of the repo and run the 
 
 After the first setup, execute these commmands to start the server and deploy the application:
 
-* Start the rails server:
+* Start Redis server:
+  ```sh
+  redis-server
+  ```
+  
+  * Start the rails server:
   ```sh
   rails server
   ```
   
 * Then simply go on this page with your browser of choice and you're done!
   ```sh
-  localhost:3000/login
+  localhost:3000
   ```
 
 ## Cucumber & RSpec testing
