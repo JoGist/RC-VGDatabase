@@ -41,9 +41,9 @@ In order to successfully run the project, you have to obtain a valid API key on 
 * Google - https://support.google.com/cloud/answer/6158849?hl=en
 * Steam - https://steamcommunity.com/dev/apikey
 * Google Maps API on the [Google Cloud Platform](https://cloud.google.com/maps-platform/), making sure to also enable all of these API's: 
-  *  Geocoding, 
-  *  Maps Embed, 
-  *  Maps JavaScript, 
+  *  Geocoding
+  *  Maps Embed
+  *  Maps JavaScript
   *  Places
 
 
@@ -83,7 +83,7 @@ To build and run the Rails app, go into the root folder of the repo and run the 
     igdb: '[your-igdb-api-key-here]'
   ```
 
-* Edit in /config/database.yml the username and password with the one you have set in your local machine.
+* Edit in [config/database.yml](config/database.yml) the username and password with the one you have set in your local machine.
 
 * Ensure that the Postgres service is started:
   ```sh
