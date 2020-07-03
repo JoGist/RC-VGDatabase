@@ -2,12 +2,12 @@ class ApiController < ApplicationController
     skip_before_action :verify_authenticity_token
     skip_before_action :set_current_user
 
-    def apiRest #Gioco con quel titolo
+    def apiRest #Gioco con quel titolo get
         title = params[:title]
         @games = Game.where(:title => title)
         render json: @games
     end
-    def apiRest2 #Mostra utente tramite id/email/username
+    def apiRest2 #Mostra utente tramite id/email/username get
         key = params[:key]
         id = params[:id]
         username = params[:username]
@@ -29,7 +29,7 @@ class ApiController < ApplicationController
             render json: 401
         end
     end
-    def apiRest3 #Mostra le review dell'utente o di un gioco specifico tramite id
+    def apiRest3 #Mostra le review dell'utente o di un gioco specifico tramite id get
         game_id = params[:game_id]
         user_id = params[:user_id]
         key = params[:key]
@@ -52,7 +52,7 @@ class ApiController < ApplicationController
             render json: 401
         end
     end
-    def apiRest4 #Amici di un dato utente
+    def apiRest4 #Amici di un dato utente get
         user_id = params[:user_id]
         key = params[:key]
         if key=='123456789'
@@ -66,7 +66,7 @@ class ApiController < ApplicationController
             render json: 401
         end
     end
-    def apiRest5 #Collezione di un dato utente
+    def apiRest5 #Collezione di un dato utente get
         user_id = params[:user_id]
         key = params[:key]
         if key=='123456789'
@@ -81,7 +81,7 @@ class ApiController < ApplicationController
         end
     end
 
-    def apiRest6 #Creazione di un utente
+    def apiRest6 #Creazione di un utente post
         username = params[:username]
         password = params[:password]
         email = params[:email]
@@ -98,7 +98,7 @@ class ApiController < ApplicationController
         end
     end
 
-    def apiRest7 #Eliminazione di un dato utente
+    def apiRest7 #Eliminazione di un dato utente delete
         username = params[:username]
         key = params[:key]
         if key=='123456789'
@@ -113,7 +113,7 @@ class ApiController < ApplicationController
         end
     end
 
-    def apiRest8 #Modifica di alcuni attributi del profilo di un utente
+    def apiRest8 #Modifica di alcuni attributi del profilo di un utente put
         usernameold = params[:usernameold]
         usernamenew = params[:usernamenew]
         password = params[:password]
