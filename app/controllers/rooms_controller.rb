@@ -26,6 +26,6 @@ class RoomsController < ApplicationController
         @message.user_id = session[:user_id]
         @message.save!
         redirect_to room_path(id)
-        RoomChannel.broadcast_to Room.find(id), @message
+        RoomChannel.broadcast_to(Room.find(id), @message)
     end
   end
