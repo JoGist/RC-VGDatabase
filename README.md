@@ -11,7 +11,9 @@ The site is based on a videogames database, where you can view many information 
 *   **Matteo Sabatini** - sabatini.1794627@studenti.uniroma1.it - [GitHub](https://github.com/ZioSaba)
 
 
-## API REST
+## REST API
+This Rails server also provides some REST API method, the documentation can be found here. For some methods, an API KEY is needed in order to increase security and prevent. For this project, the API KEY is a proof-of-concept, in the future it will be fully implemented with a request form and a key generation method. The default key is 2345678.
+
 *   Search game by title
 *   Search user by user_id, user_email, user_username
 *   Search review of specific user or game by user_id or game_id
