@@ -3,13 +3,25 @@
 
 The site is based on a videogames database, where you can view many information about any games such as genre, developer, date of release, score and the reviews written by other users, with an additional external link for the purchase. The platform also provides a search functions by title or by genre, and a search for registered users. In addition, the site is updated periodically, always showing in the homepage the most popular games at the moment. Each user has his own library of games, a friends list and the possibility to group games and friends in Favorites lists. Enjoy!
 
-**The site is now live, [check it out](https://vgdatabase.herokuapp.com/)!**
 
 ## Authors
 
 *   **Giovanni Roma** - roma.1808340@studenti.uniroma1.it - [GitHub](https://github.com/JoGist) - [LinkedIn](https://www.linkedin.com/in/giovanni-roma-a95a32127/)
 *   **Marco Musciaglia** - musciaglia.1816864@studenti.uniroma1.it - [GitHub](https://github.com/loldlink)
 *   **Matteo Sabatini** - sabatini.1794627@studenti.uniroma1.it - [GitHub](https://github.com/ZioSaba)
+
+
+## API REST
+*   Search game by title
+*   Search user by user_id, user_email, user_username
+*   Search review of specific user or game by user_id or game_id
+*   Search user friends by user_id
+*   Search user's game collection by user_id
+*   New user registration
+*   Delete user
+*   Edit user attributes
+
+
 
 
 ## Dependencies
