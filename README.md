@@ -11,6 +11,19 @@ The site is based on a videogames database, where you can view many information 
 *   **Gianmarco Montillo** - montillo.1801402@studenti.uniroma1.it - [GitHub](https://github.com/gianmarcomontillo) - [LinkedIn](https://www.linkedin.com/in/gianmarco-montillo-1349371ab/)
 
 
+## Technologies used
+*   Ruby/Rails - for the base server and infrastructure
+*   Google Maps API - for the map which show where each game is sold
+*   Google OAuth - for autenticating with Google into the site
+*   Steam OAuth - for autenticating with Steam into the site
+*   IGDB API - for retreiving all games  information and cover art
+*   Redis-server - to establish the action cable and manage the WebSockets across chatrooms
+
+Plans for the future:
+*   Deploy on Heroku
+*   Dockerized version
+
+
 ## Dependencies
 In order to build and run the Rails server in your machine, you must have already installed and configured:
 *   _Ruby 2.4_
