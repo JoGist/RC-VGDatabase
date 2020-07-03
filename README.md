@@ -116,19 +116,21 @@ This Rails server also provides some REST API method, the documentation can be f
 *   Edit user attributes
 
 
-## Cucumber & RSpec testing
+## RSpec testing
 
-This project also includes several test cases to test the functioning of the main functions of the site. A detailed description of each test and what they do is avaiable [here](Relazione.pdf). 
-To execute them, you need to launch respectively:
+This project also includes four test cases to test the main functions of the site. The test are:
 
-* Cucumber test:
+*   1. Test login of an user
+*   2. Add a friend to an user
+*   3. Delete an user by admin
+*   4. Delete a review by admin
+
+* To launch them, run:
   ```sh
-  cucumber ./features/*.feature
-  ```
-  
-* RSpec test:
-  ```sh
-  bundle exec rspec ./spec/*_spec.rb
+  bundle exec rspec ./spec/1_addUser_spec.rb
+  bundle exec rspec ./spec/2_addFriend_spec.rb
+  bundle exec rspec ./spec/3_adminDeleteUser_spec.rb
+  bundle exec rspec ./spec/4_adminDeleteReview_spec.rb
   ```
 
 ### Other useful command
