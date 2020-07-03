@@ -8,22 +8,7 @@ The site is based on a videogames database, where you can view many information 
 
 *   **Giovanni Roma** - roma.1808340@studenti.uniroma1.it - [GitHub](https://github.com/JoGist) - [LinkedIn](https://www.linkedin.com/in/giovanni-roma-a95a32127/)
 *   **Marco Musciaglia** - musciaglia.1816864@studenti.uniroma1.it - [GitHub](https://github.com/loldlink)
-*   **Matteo Sabatini** - sabatini.1794627@studenti.uniroma1.it - [GitHub](https://github.com/ZioSaba)
-
-
-## REST API
-This Rails server also provides some REST API method, the documentation can be found here. For some methods, an API KEY is needed in order to increase security and prevent. For this project, the API KEY is a proof-of-concept, in the future it will be fully implemented with a request form and a key generation method. The default key is 2345678.
-
-*   Search game by title
-*   Search user by user_id, user_email, user_username
-*   Search review of specific user or game by user_id or game_id
-*   Search user friends by user_id
-*   Search user's game collection by user_id
-*   New user registration
-*   Delete user
-*   Edit user attributes
-
-
+*   **Gianmarco Montillo** - montillo.1801402@studenti.uniroma1.it - [GitHub](https://github.com/gianmarcomontillo)
 
 
 ## Dependencies
@@ -116,6 +101,20 @@ After the first setup, execute these commmands to start the server and deploy th
   ```sh
   localhost:3000
   ```
+  
+  
+## REST API
+This Rails server also provides some REST API method, the documentation can be found here. For some methods, an API KEY is needed in order to increase security and prevent. For this project, the API KEY is a proof-of-concept, in the future it will be fully implemented with a request form and a key generation method. Any method listed here is fully functional and implemented, and in the future we'll plan to add every other API method, in order to be able to create other client or apps that can work and can be integrated with the site. The default key is 2345678.
+
+*   Search game by title
+*   Search user by user_id, user_email, user_username
+*   Search review of specific user or game by user_id or game_id
+*   Search user friends by user_id
+*   Search user's game collection by user_id
+*   New user registration
+*   Delete user
+*   Edit user attributes
+
 
 ## Cucumber & RSpec testing
 
