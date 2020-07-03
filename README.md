@@ -92,7 +92,7 @@ After the first setup, execute these commmands to start the server and deploy th
   redis-server
   ```
   
-  * Start the rails server:
+* Start the rails server:
   ```sh
   rails server
   ```
