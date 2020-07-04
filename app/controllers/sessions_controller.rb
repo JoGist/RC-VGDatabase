@@ -13,7 +13,7 @@ def signin
         password1 = params[:user][:password1]
         if User.exists?(:email => name)         # Vede se esiste già la mail
             redirect_to signup_error_mail_path
-        elsif name1 == 'admin'                  # Non può creare un nuovo admin
+        elsif name1 == 'vgdb_admin'             # Non può creare un nuovo admin
             redirect_to signup_error_username_path
         elsif User.exists?(:username => name1)  # Username già esistente
             redirect_to signup_error_username_path
@@ -30,7 +30,7 @@ def create
     password = params[:user][:password]
     if User.exists?(User.where(:username => name))
         @users = User.where(:username => name)[0]
-        if name == 'admin' && @users.username == name && @users.password == password
+        if name == 'vgdb_admin' && @users.username == name && @users.password == password && password == 'rdc2020'
             session[:user_id]= @users.id
             redirect_to settings_path
         elsif @users.username == name && @users.password == password

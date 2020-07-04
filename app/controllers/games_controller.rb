@@ -556,18 +556,38 @@ skip_before_action :verify_authenticity_token
 #admin
 
     def settings
-        @users = User.all
+        @users = User.where('username != ?', 'vgdb_admin')
         @reviews = Review.all
         @libraries = Store.all
+        @user = session[:user_id]
+
+        if !(User.find(@user).username == 'vgdb_admin' && User.find(@user).password == 'rdc2020')
+            redirect_to homepage_path
+        end
     end
 
     def deleteReviewsGame
+        @user = session[:user_id]
+
+        if !(User.find(@user).username == 'vgdb_admin' && User.find(@user).password == 'rdc2020')
+            redirect_to homepage_path
+        end
     end
 
     def deleteReviewsGame_success
+        @user = session[:user_id]
+
+        if !(User.find(@user).username == 'vgdb_admin' && User.find(@user).password == 'rdc2020')
+            redirect_to homepage_path
+        end
     end
 
     def deleteReviewsGame_error
+        @user = session[:user_id]
+
+        if !(User.find(@user).username == 'vgdb_admin' && User.find(@user).password == 'rdc2020')
+            redirect_to homepage_path
+        end
     end
 
     def deletingReviewsGame
@@ -589,12 +609,28 @@ skip_before_action :verify_authenticity_token
     end
 
     def deleteReviewsUser
+        @user = session[:user_id]
+
+        if !(User.find(@user).username == 'vgdb_admin' && User.find(@user).password == 'rdc2020')
+            redirect_to homepage_path
+        end
     end
 
     def deleteReviewsUser_success
+        @user = session[:user_id]
+
+        if !(User.find(@user).username == 'vgdb_admin' && User.find(@user).password == 'rdc2020')
+            redirect_to homepage_path
+        end
     end
+    
 
     def deleteReviewsUser_error
+        @user = session[:user_id]
+
+        if !(User.find(@user).username == 'vgdb_admin' && User.find(@user).password == 'rdc2020')
+            redirect_to homepage_path
+        end
     end
 
     def deletingReviewsUser
@@ -616,11 +652,16 @@ skip_before_action :verify_authenticity_token
     end
 
     def deletingUser
+        @user = session[:user_id]
+
+        if !(User.find(@user).username == 'vgdb_admin' && User.find(@user).password == 'rdc2020')
+            redirect_to homepage_path
+        end
     end
 
     def deletingAdminUser
         name = params[:user][:name]
-        if name == 'admin'
+        if name == 'vgdb_admin'
             redirect_to deletingUser_error_path
         else
             if User.exists?(User.where(:username => name))
@@ -666,12 +707,27 @@ skip_before_action :verify_authenticity_token
     end
 
     def deletingUser_success
+        @user = session[:user_id]
+
+        if !(User.find(@user).username == 'vgdb_admin' && User.find(@user).password == 'rdc2020')
+            redirect_to homepage_path
+        end
     end
 
     def deletingUser_error
+        @user = session[:user_id]
+
+        if !(User.find(@user).username == 'vgdb_admin' && User.find(@user).password == 'rdc2020')
+            redirect_to homepage_path
+        end
     end
 
     def deleteGameLibrary
+        @user = session[:user_id]
+
+        if !(User.find(@user).username == 'vgdb_admin' && User.find(@user).password == 'rdc2020')
+            redirect_to homepage_path
+        end
     end
 
     def deletingGameLibrary
@@ -693,9 +749,19 @@ skip_before_action :verify_authenticity_token
     end
 
     def deleteGameLibrary_success
+        @user = session[:user_id]
+
+        if !(User.find(@user).username == 'vgdb_admin' && User.find(@user).password == 'rdc2020')
+            redirect_to homepage_path
+        end
     end
 
     def deleteGameLibrary_error
+        @user = session[:user_id]
+        
+        if !(User.find(@user).username == 'vgdb_admin' && User.find(@user).password == 'rdc2020')
+            redirect_to homepage_path
+        end
     end
 
 end
