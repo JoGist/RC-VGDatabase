@@ -18,6 +18,7 @@ The site consists of a video game collection / sale platform. For each game you 
 *   [Steam OAuth](https://partner.steamgames.com/doc/webapi_overview/oauth) - for autenticating with Steam into the site
 *   [IGDB API](https://www.igdb.com/api) - for retreiving all games  information and cover art
 *   [Redis-server](https://redis.io/) - to establish the action cable and manage the WebSockets across chatrooms
+*   [PostgreSQL](https://www.postgresql.org/) - relational database in which we save all data
 
 Plans for the future:
 *   Deploy on Heroku
@@ -137,10 +138,10 @@ This Rails server also provides some REST API method, the documentation can be f
 
 This project also includes four test cases to test the main functions of the site. The test are:
 
-*   1. Test login of an user
-*   2. Add a friend to an user
-*   3. Delete an user by admin
-*   4. Delete a review by admin
+1. Test login of an user
+2. Add a friend to an user
+3. Delete an user by admin
+4. Delete a review by admin
 
 * To launch them, run:
   ```sh
