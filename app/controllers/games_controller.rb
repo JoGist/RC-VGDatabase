@@ -254,7 +254,7 @@ skip_before_action :verify_authenticity_token
                 marker.lat User.find(user.user_id).latitude
                 marker.lng User.find(user.user_id).longitude
                 marker.json({:id => user.id })
-                marker.infowindow "You"+" sells it for "+user.price.to_s+"€"
+                marker.infowindow "You"+" sell it for "+user.price.to_s+"€"
                 marker.picture({
                 "url" => ActionController::Base.helpers.asset_path("marker.png"),
                 "width" =>  20,
