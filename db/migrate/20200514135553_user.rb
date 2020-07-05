@@ -12,7 +12,7 @@ class User < ActiveRecord::Migration[5.2]
     t.string "social3"
     t.float "latitude"
     t.float "longitude"
-    t.integer "google_token", limit: 16
+    t.integer "google_token"
     t.string "google_username"
     t.string "steam_username"
     t.integer "steam_token"
