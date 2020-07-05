@@ -19,10 +19,8 @@ The site consists of a video game collection / sale platform. For each game you 
 *   [IGDB API](https://www.igdb.com/api) - for retreiving all games  information and cover art
 *   [Redis-server](https://redis.io/) - to establish the action cable and manage the WebSockets across chatrooms
 *   [PostgreSQL](https://www.postgresql.org/) - relational database in which we save all data
-
-Plans for the future:
-*   Deploy on Heroku
-*   Dockerized version
+*   [Heroku](https://www.heroku.com/) - application hosting
+*   [Swagger](https://swagger.io/) - REST API documentation
 
 
 ## Dependencies
