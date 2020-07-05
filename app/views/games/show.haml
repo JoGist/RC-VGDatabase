@@ -135,7 +135,7 @@
             .reviewDiv
               -if (@review.length==0 && @aux.length==0)
                 .reviewUser
-                  %h5.reviewText_alt This game doesn't have any review
+                  %h5.reviewText_alt "This game doesn't have any review"
               -else
                 - @review.each do |review|
                   - @users = User.where(:id => review.user_id)[0]
