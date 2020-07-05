@@ -19,14 +19,14 @@ get '/forgot_password_error' => 'sessions#forgot_password_error'
 get '/forgot_password_error_password' => 'sessions#forgot_password_error_password'
 
 #api
-get '/api' => 'api#apiRest'
-get '/api2' => 'api#apiRest2'
-get '/api3' => 'api#apiRest3'
-get '/api4' => 'api#apiRest4'
-get '/api5' => 'api#apiRest5'
-post '/api6' => 'api#apiRest6'
-delete '/api7' => 'api#apiRest7'
-put '/api8' => 'api#apiRest8'
+get '/api_game' => 'api#apiRest'
+get '/api_userinfo' => 'api#apiRest2'
+get '/api_userreview' => 'api#apiRest3'
+get '/api_userfriend' => 'api#apiRest4'
+get '/api_usercollection' => 'api#apiRest5'
+post '/api_createuser' => 'api#apiRest6'
+delete '/api_deleteuser' => 'api#apiRest7'
+put '/api_edituser' => 'api#apiRest8'
 
 #Steam
 post '/auth/steam/callback' => 'steams#auth_callback'
