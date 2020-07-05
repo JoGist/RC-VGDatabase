@@ -16015,3 +16015,45 @@ Processing by ApiController#apiRest8 as */*
 Completed 200 OK in 20ms (Views: 0.5ms | ActiveRecord: 11.3ms)
 
 
+Started GET "/login" for ::1 at 2020-07-05 17:08:30 +0200
+  [1m[35m (3.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.haml within layouts/application
+  Rendered sessions/login.haml within layouts/application (53804.9ms)
+Completed 200 OK in 58282ms (Views: 58057.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2020-07-05 17:11:39 +0200
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.haml within layouts/application
+  Rendered sessions/login.haml within layouts/application (37019.3ms)
+Completed 200 OK in 41096ms (Views: 40941.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2020-07-05 17:12:25 +0200
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.haml within layouts/application
+  Rendered sessions/login.haml within layouts/application (285.5ms)
+Completed 200 OK in 4600ms (Views: 4365.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/homepage_guest" for ::1 at 2020-07-05 17:12:36 +0200
+Processing by SessionsController#homepageGuest as HTML
+  Parameters: {"authenticity_token"=>"5EViwUV92k5s+xhVybwpTaqhS95Dd7kJ2ftclgZTrB2j5I6EKTf5YAZW/lSO+vUTf0+dnpXV9RiZP7mnMhnmHw=="}
+  Rendering sessions/homepageGuest.haml within layouts/application
+  [1m[36mGame Load (5.9ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  Rendered sessions/homepageGuest.haml within layouts/application (220.6ms)
+Completed 200 OK in 4469ms (Views: 3843.5ms | ActiveRecord: 36.1ms)
+
+
+Started GET "/guest/show/6" for ::1 at 2020-07-05 17:12:44 +0200
+Processing by Guest::ShowController#show as HTML
+  Parameters: {"authenticity_token"=>"Po59jbNC7LZvuRBQCHDAsWpdvwEwrKtUrLyp0KwLsnN5L5HI3wjPmAUU9lFPNhzvv7NpQeYO50XseEzhmEH4cQ==", "id"=>"6"}
+  [1m[36mGame Load (2.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering guest/show/show.haml within layouts/application
+  [1m[36mReview Load (3.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."game_id" = $1[0m  [["game_id", 6]]
+  Rendered guest/show/show.haml within layouts/application (186.9ms)
+Completed 200 OK in 6366ms (Views: 4300.4ms | ActiveRecord: 8.9ms)
+
+
