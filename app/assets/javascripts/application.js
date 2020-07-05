@@ -11,11 +11,11 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require_tree .
 //= require underscore
-//= require gmaps/google
 //= require jquery3
 //= require jquery_ujs
+//= require gmaps/google
+//= require_tree .
 
 $(document).ready(function () {
     clockUpdate();
