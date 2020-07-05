@@ -12,10 +12,10 @@ class User < ActiveRecord::Migration[5.2]
     t.string "social3"
     t.float "latitude"
     t.float "longitude"
-    t.integer "google_token"
+    t.numeric "google_token"
     t.string "google_username"
     t.string "steam_username"
-    t.integer "steam_token"
+    t.bigint "steam_token"
   end
   end
 end
