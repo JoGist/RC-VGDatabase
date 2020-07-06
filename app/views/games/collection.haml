@@ -51,7 +51,7 @@
       %h1 You have #{@lunghezza} games in your collection
     %div.page-content
       %a.editText{:href => editCollection_path, "data-method" => "get"}
-        %span Start editing
+        %span Edit
         %i.mdi.mdi-pencil
       - @library.each do |game|
         - if (game.user_id == @user.id) 
