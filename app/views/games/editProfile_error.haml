@@ -84,13 +84,6 @@
                 %input{id: :autocomplete_address, :name => 'user[location]' , :value => @user.location , :autocomplete => "street-address", :type => "text"}/
                 = form_tag id: :autocomplete_address
               .grid-item-details
-                %h5.sub-header-details Background
-                %input{:name => 'user[background]' , :value => @user.background, :autocomplete => "text", :type => "text"}/
-                %br
-                %span Enter your custom background url (img or gif)
-              %a.grid-item-details.white{:href => revert_path, "data-method" => "post"}
-                %span Revert to default background
-              .grid-item-details
                 %h5.sub-header-details Linked account:
                 %br
                 %a

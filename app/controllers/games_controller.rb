@@ -173,26 +173,25 @@ skip_before_action :verify_authenticity_token
         oldp = params[:user][:oldp]
         newp = params[:user][:newp]
         newp1 = params[:user][:newp1]
-        back = params[:user][:background]
         location = params[:user][:location]
         social1 = params[:user][:social1]
         social2 = params[:user][:social2]
         social3 = params[:user][:social3]
         @user = User.find(session[:user_id])
-        if username.length!=0 && email.length!=0 && newp.length!=0 && newp==newp1 && oldp==@user.password && location.length!=0 && back.length!=0
+        if username.length!=0 && email.length!=0 && newp.length!=0 && newp==newp1 && oldp==@user.password && location.length!=0
             if Geocoder.search(location) != []
                 lat = Geocoder.search(location).last.latitude
                 lng = Geocoder.search(location).last.longitude
-                @user.update_attributes!(:latitude => lat, :longitude => lng, :password => newp, :username => username, :email => email, :background => back, :location => location, :social1 => social1, :social2 => social2, :social3 => social3)
+                @user.update_attributes!(:latitude => lat, :longitude => lng, :password => newp, :username => username, :email => email, :location => location, :social1 => social1, :social2 => social2, :social3 => social3)
                 redirect_to editProfile_success_path
             else
                 redirect_to editProfile_error_path
             end
-        elsif username.length!=0 && email.length!=0 && oldp.length==0 && location.length!=0 && back.length!=0
+        elsif username.length!=0 && email.length!=0 && oldp.length==0 && location.length!=0
             if Geocoder.search(location) != []
                 lat = Geocoder.search(location).last.latitude
                 lng = Geocoder.search(location).last.longitude
-                @user.update_attributes!(:latitude => lat, :longitude => lng, :username => username, :email => email, :background => back, :location => location, :social1 => social1, :social2 => social2, :social3 => social3)
+                @user.update_attributes!(:latitude => lat, :longitude => lng, :username => username, :email => email, :location => location, :social1 => social1, :social2 => social2, :social3 => social3)
                 redirect_to editProfile_success_path
             else
                 redirect_to editProfile_error_path
