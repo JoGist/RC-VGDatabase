@@ -68,7 +68,7 @@
                 %span #{@user.location}
             .grid-item-details
               %h5.sub-header-details Selling games:
-              %span #{Store.where(:user_id => @user.id).length}
+              %span #{Store.where(:user_id => @user.id, :selling => 'true').length}
             -if @user.social1!='' || @user.social2!='' || @user.social3!='' || @user.steam_username!=nil
               .grid-item-details
                 %h5.sub-header-details Social account
