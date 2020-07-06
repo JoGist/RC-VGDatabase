@@ -123,7 +123,7 @@ After the first setup, execute these commmands to start the server and deploy th
 ## REST API
 This Rails server also provides some REST API method, the documentation can be found here. For some methods, an API KEY is needed in order to increase security and prevent. For this project, the API KEY is a proof-of-concept, in the future it will be fully implemented with a request form and a key generation method. Any method listed here is fully functional and implemented, and in the future we'll plan to add every other API method, in order to be able to create other client or apps that can work and can be integrated with the site. The default key is '123456789'.
 
-### [API DOCUMENTATION](https://app.swaggerhub.com/apis-docs/JoGist/VGDatabase/1.0.2#/)
+### [API DOCUMENTATION](https://app.swaggerhub.com/apis-docs/JoGist/VGDatabase/1.0.3)
 
 *   Search game by title
 *   Search user by user_id, user_email, user_username
@@ -144,7 +144,12 @@ This project also includes four test cases to test the main functions of the sit
 3. Delete an user by admin
 4. Delete a review by admin
 
-* To launch them, run:
+* To launch them all at once, run:
+  ```sh
+  bundle exec rspec ./spec/*_spec.rb
+  ```
+  
+  * To launch them individually, run:
   ```sh
   bundle exec rspec ./spec/1_addUser_spec.rb
   bundle exec rspec ./spec/2_addFriend_spec.rb
