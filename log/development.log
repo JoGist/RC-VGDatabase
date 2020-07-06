@@ -25062,3 +25062,385 @@ Processing by SessionsController#login as HTML
 Completed 200 OK in 175ms (Views: 173.6ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/homepage_guest" for ::1 at 2020-07-06 15:49:25 +0200
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#homepageGuest as HTML
+  Parameters: {"authenticity_token"=>"J3SDChb8YfqxnVy4WusGUdZC8hdW/ndIKDanoUtO5SQxtHz+WB/lhUbcyj7Pahs2g7JXeZ2veV0iIhHDkA1EPg=="}
+  Rendering sessions/homepageGuest.haml within layouts/application
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  Rendered sessions/homepageGuest.haml within layouts/application (889.9ms)
+Completed 200 OK in 993ms (Views: 970.9ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/guest/show/1" for ::1 at 2020-07-06 15:49:28 +0200
+Processing by Guest::ShowController#show as HTML
+  Parameters: {"authenticity_token"=>"nIgr47wZ7yU8rOLDoHFxDrNuLIrElByiesZ/gB206OmKSNQX8vprWsvtdEU18Gxp5p6J5A/FErdw0snixvdJ8w==", "id"=>"1"}
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering guest/show/show.haml within layouts/application
+  [1m[36mReview Load (2.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."game_id" = $1[0m  [["game_id", 1]]
+  Rendered guest/show/show.haml within layouts/application (63.6ms)
+Completed 200 OK in 1448ms (Views: 174.2ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/guest/show/1" for ::1 at 2020-07-06 15:50:31 +0200
+Processing by Guest::ShowController#show as HTML
+  Parameters: {"authenticity_token"=>"nIgr47wZ7yU8rOLDoHFxDrNuLIrElByiesZ/gB206OmKSNQX8vprWsvtdEU18Gxp5p6J5A/FErdw0snixvdJ8w==", "id"=>"1"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering guest/show/show.html.erb within layouts/application
+  Rendered guest/show/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 1271ms (Views: 127.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/guest/show/1" for ::1 at 2020-07-06 15:50:50 +0200
+Processing by Guest::ShowController#show as HTML
+  Parameters: {"authenticity_token"=>"nIgr47wZ7yU8rOLDoHFxDrNuLIrElByiesZ/gB206OmKSNQX8vprWsvtdEU18Gxp5p6J5A/FErdw0snixvdJ8w==", "id"=>"1"}
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering guest/show/show.html.erb within layouts/application
+  Rendered guest/show/show.html.erb within layouts/application (12.1ms)
+Completed 500 Internal Server Error in 1129ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    1: <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    2: <html class="container" lang="en">
+    3:   <head>
+    4:     <title><%=@games.title%> - VGDatabase</title>
+    5:     <script src='//maps.google.com/maps/api/js?key=AIzaSyDPyLaza4pTmIuuxKeZodgrmHOxUGRbrGA'></script>
+    6:     <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+    7:     <script src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js'> </script>
+  
+app/views/guest/show/show.html.erb:4:in `_app_views_guest_show_show_html_erb__1310848717586142852_70226930295120'
+Started GET "/guest/show/1" for ::1 at 2020-07-06 15:51:40 +0200
+Processing by Guest::ShowController#show as HTML
+  Parameters: {"authenticity_token"=>"nIgr47wZ7yU8rOLDoHFxDrNuLIrElByiesZ/gB206OmKSNQX8vprWsvtdEU18Gxp5p6J5A/FErdw0snixvdJ8w==", "id"=>"1"}
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering guest/show/show.html.erb within layouts/application
+  Rendered guest/show/show.html.erb within layouts/application (50.3ms)
+Completed 500 Internal Server Error in 1173ms (ActiveRecord: 3.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/views/guest/show/show.html.erb:50:in `_app_views_guest_show_show_html_erb__1310848717586142852_70226930724440'
+Started GET "/guest/show/1" for ::1 at 2020-07-06 15:52:05 +0200
+Processing by Guest::ShowController#show as HTML
+  Parameters: {"authenticity_token"=>"nIgr47wZ7yU8rOLDoHFxDrNuLIrElByiesZ/gB206OmKSNQX8vprWsvtdEU18Gxp5p6J5A/FErdw0snixvdJ8w==", "id"=>"1"}
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering guest/show/show.html.erb within layouts/application
+  Rendered guest/show/show.html.erb within layouts/application (10.3ms)
+Completed 500 Internal Server Error in 1122ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `cover' for nil:NilClass):
+    48:       <br>
+    49:         <ul>
+    50:           <li class="left">
+    51:             <img alt="Game image cover" class="fullSize" src="<%= @games.cover %>"/>
+    52:             <br/>
+    53:             <br/>
+    54:             <br/>
+  
+app/views/guest/show/show.html.erb:51:in `_app_views_guest_show_show_html_erb__1310848717586142852_70226922465140'
+Started GET "/guest/show/1" for ::1 at 2020-07-06 15:53:44 +0200
+Processing by Guest::ShowController#show as HTML
+  Parameters: {"authenticity_token"=>"nIgr47wZ7yU8rOLDoHFxDrNuLIrElByiesZ/gB206OmKSNQX8vprWsvtdEU18Gxp5p6J5A/FErdw0snixvdJ8w==", "id"=>"1"}
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering guest/show/show.html.erb within layouts/application
+  Rendered guest/show/show.html.erb within layouts/application (20.5ms)
+Completed 500 Internal Server Error in 2389ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `cover' for nil:NilClass):
+    48:       <br>
+    49:         <ul>
+    50:           <li class="left">
+    51:             <img alt="Game image cover" class="fullSize" src="<%= @games.cover %>"/>
+    52:             <br/>
+    53:             <br/>
+    54:             <br/>
+  
+app/views/guest/show/show.html.erb:51:in `_app_views_guest_show_show_html_erb__1310848717586142852_70226811819620'
+Started GET "/guest/show/1" for ::1 at 2020-07-06 15:55:35 +0200
+Processing by Guest::ShowController#show as HTML
+  Parameters: {"authenticity_token"=>"nIgr47wZ7yU8rOLDoHFxDrNuLIrElByiesZ/gB206OmKSNQX8vprWsvtdEU18Gxp5p6J5A/FErdw0snixvdJ8w==", "id"=>"1"}
+  [1m[36mGame Load (0.7ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering guest/show/show.html.erb within layouts/application
+  [1m[36mReview Load (1.0ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."game_id" = $1[0m  [["game_id", 1]]
+  Rendered guest/show/show.html.erb within layouts/application (24.3ms)
+Completed 500 Internal Server Error in 1211ms (ActiveRecord: 1.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `length' for nil:NilClass):
+    52:             <br/>
+    53:             <br/>
+    54:             <br/>
+    55:             <% if (@review.length != 0 || @aux.length != 0) %>
+    56:               <% score = 0 %>
+    57:               <% @review.each do |review| %>
+    58:                 <% score = score+review.score %>
+  
+app/views/guest/show/show.html.erb:55:in `_app_views_guest_show_show_html_erb__1310848717586142852_70226922513400'
+Started GET "/guest/show/1" for ::1 at 2020-07-06 15:57:20 +0200
+Processing by Guest::ShowController#show as HTML
+  Parameters: {"authenticity_token"=>"nIgr47wZ7yU8rOLDoHFxDrNuLIrElByiesZ/gB206OmKSNQX8vprWsvtdEU18Gxp5p6J5A/FErdw0snixvdJ8w==", "id"=>"1"}
+  [1m[36mGame Load (1.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering guest/show/show.html.erb within layouts/application
+  [1m[36mReview Load (0.8ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."game_id" = $1[0m  [["game_id", 1]]
+  Rendered guest/show/show.html.erb within layouts/application (12.3ms)
+Completed 500 Internal Server Error in 1221ms (ActiveRecord: 2.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `release_date' for nil:NilClass):
+    101:                 <i class="mdi mdi-star reviewStar"></i>
+    102:               </div>
+    103:             <% end %>
+    104:             <% if @games.release_date == nil %>
+    105:               <h4>Release date: not available</h4>
+    106:               <br/>
+    107:             <% else %>
+  
+app/views/guest/show/show.html.erb:104:in `_app_views_guest_show_show_html_erb__1310848717586142852_70226811833180'
+Started GET "/guest/show/1" for ::1 at 2020-07-06 15:57:33 +0200
+Processing by Guest::ShowController#show as HTML
+  Parameters: {"authenticity_token"=>"nIgr47wZ7yU8rOLDoHFxDrNuLIrElByiesZ/gB206OmKSNQX8vprWsvtdEU18Gxp5p6J5A/FErdw0snixvdJ8w==", "id"=>"1"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering guest/show/show.html.erb within layouts/application
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."game_id" = $1[0m  [["game_id", 1]]
+  Rendered guest/show/show.html.erb within layouts/application (18.5ms)
+Completed 500 Internal Server Error in 1066ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    113:               <span class="hidden">. </span>
+    114:               <span class="sidebar__nav__text">Sign up to add</span>
+    115:             </a>
+    116:             <a class="buttonSmall" href="https://www.amazon.it/s?k=<%= @games.title %>&i=videogames" target="_blank">
+    117:               <i class="mdi mdi-amazon"></i>
+    118:               <span class="hidden">. </span>
+    119:               <span class="sidebar__nav__text">BUY NEW</span>
+  
+app/views/guest/show/show.html.erb:116:in `_app_views_guest_show_show_html_erb__1310848717586142852_70226922675020'
+Started GET "/guest/show/1" for ::1 at 2020-07-06 15:57:49 +0200
+Processing by Guest::ShowController#show as HTML
+  Parameters: {"authenticity_token"=>"nIgr47wZ7yU8rOLDoHFxDrNuLIrElByiesZ/gB206OmKSNQX8vprWsvtdEU18Gxp5p6J5A/FErdw0snixvdJ8w==", "id"=>"1"}
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering guest/show/show.html.erb within layouts/application
+  [1m[36mReview Load (1.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."game_id" = $1[0m  [["game_id", 1]]
+  [1m[36mReview Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "reviews" WHERE "reviews"."game_id" = $1 AND "reviews"."user_id" IS NULL LIMIT $2[0m  [["game_id", 1], ["LIMIT", 1]]
+  Rendered guest/show/show.html.erb within layouts/application (9.8ms)
+Completed 500 Internal Server Error in 1079ms (ActiveRecord: 2.2ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"reviews", :game_id=>nil}, missing required keys: [:game_id]):
+    234:                   <i class="mdi mdi-pencil right5"></i>
+    235:                 </a>
+    236:               <% else  %>
+    237:                 <a data-method="get" href="<%= new_game_review_path(@games) %>">
+    238:                   <h6 class="right5">Add a review</h6>
+    239:                   <i class="mdi mdi-plus right5"></i>
+    240:                 </a>
+  
+app/views/guest/show/show.html.erb:237:in `_app_views_guest_show_show_html_erb__1310848717586142852_70226811913840'
+Started GET "/guest/show/1" for ::1 at 2020-07-06 15:58:38 +0200
+Processing by Guest::ShowController#show as HTML
+  Parameters: {"authenticity_token"=>"nIgr47wZ7yU8rOLDoHFxDrNuLIrElByiesZ/gB206OmKSNQX8vprWsvtdEU18Gxp5p6J5A/FErdw0snixvdJ8w==", "id"=>"1"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering guest/show/show.html.erb within layouts/application
+  [1m[36mReview Load (2.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."game_id" = $1[0m  [["game_id", 1]]
+  Rendered guest/show/show.html.erb within layouts/application (17.0ms)
+Completed 500 Internal Server Error in 1073ms (ActiveRecord: 2.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `length' for nil:NilClass):
+    231:               <h5>Reviews</h5>
+    232:             </div>
+    233:             <div class="reviewDiv">
+    234:               <% if (@review.length==0 && @aux.length==0) %>
+    235:                 <div class="reviewUser">
+    236:                   <h5 class="reviewText_alt">This game doesn't have any review</h5>
+    237:                 </div>
+  
+app/views/guest/show/show.html.erb:234:in `_app_views_guest_show_show_html_erb__1310848717586142852_70226929799860'
+Started GET "/guest/show/1" for ::1 at 2020-07-06 15:59:05 +0200
+Processing by Guest::ShowController#show as HTML
+  Parameters: {"authenticity_token"=>"nIgr47wZ7yU8rOLDoHFxDrNuLIrElByiesZ/gB206OmKSNQX8vprWsvtdEU18Gxp5p6J5A/FErdw0snixvdJ8w==", "id"=>"1"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering guest/show/show.html.erb within layouts/application
+  Rendered guest/show/show.html.erb within layouts/application (2.2ms)
+Completed 500 Internal Server Error in 1097ms (ActiveRecord: 0.2ms)
+
+
+  
+SyntaxError (/home/biar/Progetto-Reti-di-Calcolatori/app/views/guest/show/show.html.erb:286: syntax error, unexpected ensure, expecting end-of-input
+          ensure
+          ^~~~~~):
+  
+app/views/guest/show/show.html.erb:286: syntax error, unexpected ensure, expecting end-of-input
+Started GET "/guest/show/1" for ::1 at 2020-07-06 15:59:27 +0200
+Processing by Guest::ShowController#show as HTML
+  Parameters: {"authenticity_token"=>"nIgr47wZ7yU8rOLDoHFxDrNuLIrElByiesZ/gB206OmKSNQX8vprWsvtdEU18Gxp5p6J5A/FErdw0snixvdJ8w==", "id"=>"1"}
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering guest/show/show.html.erb within layouts/application
+  Rendered guest/show/show.html.erb within layouts/application (7.6ms)
+Completed 500 Internal Server Error in 1052ms (ActiveRecord: 0.3ms)
+
+
+  
+SyntaxError (/home/biar/Progetto-Reti-di-Calcolatori/app/views/guest/show/show.html.erb:285: syntax error, unexpected end-of-input, expecting end):
+  
+app/views/guest/show/show.html.erb:285: syntax error, unexpected end-of-input, expecting end
+Started GET "/guest/show/1" for ::1 at 2020-07-06 16:01:01 +0200
+Processing by Guest::ShowController#show as HTML
+  Parameters: {"authenticity_token"=>"nIgr47wZ7yU8rOLDoHFxDrNuLIrElByiesZ/gB206OmKSNQX8vprWsvtdEU18Gxp5p6J5A/FErdw0snixvdJ8w==", "id"=>"1"}
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering guest/show/show.html.erb within layouts/application
+  Rendered guest/show/show.html.erb within layouts/application (2.7ms)
+Completed 500 Internal Server Error in 1277ms (ActiveRecord: 0.3ms)
+
+
+  
+SyntaxError (/home/biar/Progetto-Reti-di-Calcolatori/app/views/guest/show/show.html.erb:284: syntax error, unexpected ensure, expecting end
+          ensure
+          ^~~~~~
+/home/biar/Progetto-Reti-di-Calcolatori/app/views/guest/show/show.html.erb:286: syntax error, unexpected end-of-input, expecting end):
+  
+app/views/guest/show/show.html.erb:284: syntax error, unexpected ensure, expecting end
+app/views/guest/show/show.html.erb:286: syntax error, unexpected end-of-input, expecting end
+Started GET "/guest/show/1" for ::1 at 2020-07-06 16:01:56 +0200
+Processing by Guest::ShowController#show as HTML
+  Parameters: {"authenticity_token"=>"nIgr47wZ7yU8rOLDoHFxDrNuLIrElByiesZ/gB206OmKSNQX8vprWsvtdEU18Gxp5p6J5A/FErdw0snixvdJ8w==", "id"=>"1"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering guest/show/show.html.erb within layouts/application
+  [1m[36mReview Load (1.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."game_id" = $1[0m  [["game_id", 1]]
+  Rendered guest/show/show.html.erb within layouts/application (21.9ms)
+Completed 200 OK in 1145ms (Views: 110.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/guest/show/1" for ::1 at 2020-07-06 16:02:37 +0200
+Processing by Guest::ShowController#show as HTML
+  Parameters: {"authenticity_token"=>"nIgr47wZ7yU8rOLDoHFxDrNuLIrElByiesZ/gB206OmKSNQX8vprWsvtdEU18Gxp5p6J5A/FErdw0snixvdJ8w==", "id"=>"1"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering guest/show/show.html.erb within layouts/application
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."game_id" = $1[0m  [["game_id", 1]]
+  Rendered guest/show/show.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 1260ms (Views: 103.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/homepage_guest" for ::1 at 2020-07-06 16:02:56 +0200
+Processing by SessionsController#homepageGuest as HTML
+  Parameters: {"authenticity_token"=>"5EsjO+0Cd9Qg5SncFFEy99Z3sSFc2GuyBoWlOt81gJLyi9zPo+Hzq9ekv1qB0C+Qg4cUT5eJZacMkRNYBHYhiA=="}
+  Rendering sessions/homepageGuest.haml within layouts/application
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  Rendered sessions/homepageGuest.haml within layouts/application (27.1ms)
+Completed 200 OK in 102ms (Views: 98.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/search_guest_game" for ::1 at 2020-07-06 16:03:02 +0200
+Processing by SessionsController#searchGuestGame as HTML
+  Parameters: {"authenticity_token"=>"FgS1e2jOyTBQNjocjsKAiD5YwtBfZ11lpwguRnixyqoAxEqPJi1NT6d3rJobQ53va6hnvpQ2U3CtHJgko/JrsA=="}
+  Rendering sessions/searchGuestGame.haml within layouts/application
+  Rendered sessions/searchGuestGame.haml within layouts/application (36.3ms)
+Completed 200 OK in 104ms (Views: 100.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/homepage_guest" for ::1 at 2020-07-06 16:03:02 +0200
+Processing by SessionsController#homepageGuest as HTML
+  Parameters: {"authenticity_token"=>"LTjOOqP78FqVuNeNeYlKdfiInu8Ww6lRYwDF4XGAIZE7+DHO7Rh0JWL5QQvsCFcSrXg7gd2Sp0RpFHODqsOAiw=="}
+  Rendering sessions/homepageGuest.haml within layouts/application
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  Rendered sessions/homepageGuest.haml within layouts/application (31.0ms)
+Completed 200 OK in 130ms (Views: 128.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/guest/show/1" for ::1 at 2020-07-06 16:03:04 +0200
+Processing by Guest::ShowController#show as HTML
+  Parameters: {"authenticity_token"=>"ve56gBwaw/kw3dUjTpTyM+ESPPymred8FXdjq5g5C2CrLoV0UvlHhsecQ6XbFe9UtOKZkm386WkfY9XJQ3qqeg==", "id"=>"1"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering guest/show/show.html.erb within layouts/application
+  [1m[36mReview Load (3.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."game_id" = $1[0m  [["game_id", 1]]
+  Rendered guest/show/show.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 1237ms (Views: 123.9ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/search_guest_game" for ::1 at 2020-07-06 16:03:12 +0200
+Processing by SessionsController#searchGuestGame as HTML
+  Parameters: {"authenticity_token"=>"odRciYd2onPPzFFgkWJVciznJ3dYJN16m0EHiwdXqDa3FKN9yZUmDDiNx+YE40gVeReCGZN102+RVbHp3BQJLA=="}
+  Rendering sessions/searchGuestGame.haml within layouts/application
+  Rendered sessions/searchGuestGame.haml within layouts/application (34.6ms)
+Completed 200 OK in 117ms (Views: 115.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search_guest_user" for ::1 at 2020-07-06 16:03:16 +0200
+Processing by SessionsController#searchGuestUser as HTML
+  Parameters: {"authenticity_token"=>"2tuy0ylsgLO7tNL1zElZCxF7Zf1FLgH98hXBymFNEG3MG00nZ48EzEz1RHNZyERsRIvAk45/D+j4AXeoug6xdw=="}
+  Rendering sessions/searchGuestUser.haml within layouts/application
+  Rendered sessions/searchGuestUser.haml within layouts/application (31.8ms)
+Completed 200 OK in 149ms (Views: 145.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/search_guest_user?method=get" for ::1 at 2020-07-06 16:03:27 +0200
+Processing by SessionsController#searchingGuestUser as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Aiu+q8Ga5nJQYy7O9qlirm7Y1sxjomTc540J8nEA/MoU60Ffj3liDaciuEhjKH/JOyhzoqjzasntmb+QqkNd0A==", "username"=>"Marco Musciaglia", "method"=>"get"}
+  [1m[36mUser Exists (2.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" IN (SELECT "users"."id" FROM "users" WHERE "users"."username" = $1) LIMIT $2[0m  [["username", "Marco Musciaglia"], ["LIMIT", 1]]
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1[0m  [["username", "Marco Musciaglia"]]
+Redirected to http://localhost:3000/visit/profile/1
+Completed 302 Found in 37ms (ActiveRecord: 4.5ms)
+
+
+Started GET "/visit/profile/1" for ::1 at 2020-07-06 16:03:27 +0200
+Processing by Visit::ProfileController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering visit/profile/show.haml within layouts/application
+  [1m[36mStore Load (0.4ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mFriend Load (0.4ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 1], ["favorite", "true"]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 1], ["favorite", "false"]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered visit/profile/show.haml within layouts/application (96.6ms)
+Completed 200 OK in 183ms (Views: 165.5ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/signup" for ::1 at 2020-07-06 16:04:09 +0200
+Processing by SessionsController#signup as HTML
+  Parameters: {"authenticity_token"=>"rIL2e335V43s0Cgb6Q8UZy/4/r8yEC6Tb9HPdr2V3BO6QgmPMxrT8huRvp18jgkAeghb0flBIIZlxXkUZtZ9CQ=="}
+  Rendering sessions/signup.haml within layouts/application
+  Rendered sessions/signup.haml within layouts/application (46.8ms)
+Completed 200 OK in 529ms (Views: 525.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2020-07-06 16:05:18 +0200
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.haml within layouts/application
+  Rendered sessions/login.haml within layouts/application (28.4ms)
+Completed 200 OK in 136ms (Views: 134.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/homepage_guest" for ::1 at 2020-07-06 16:05:34 +0200
+Processing by SessionsController#homepageGuest as HTML
+  Parameters: {"authenticity_token"=>"ykTpxrNlLbkzDE2WIiwCu8Ylk20f9cJuppMaKuV92kjchBYy/YapxsRN2xC3rR/ck9U2A9SkzHush6xIPj57Ug=="}
+  Rendering sessions/homepageGuest.haml within layouts/application
+  [1m[36mGame Load (2.7ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  Rendered sessions/homepageGuest.haml within layouts/application (32.3ms)
+Completed 200 OK in 129ms (Views: 125.0ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/guest/show/1" for ::1 at 2020-07-06 16:05:35 +0200
+Processing by Guest::ShowController#show as HTML
+  Parameters: {"authenticity_token"=>"EKbyTAIuOGvNIedKurBIhTa329wdgu9a8vozuZ0TB/AGZg24TM28FDpgccwvMVXiY0d+stbT4U/47oXbRlCm6g==", "id"=>"1"}
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering guest/show/show.html.erb within layouts/application
+  [1m[36mReview Load (1.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."game_id" = $1[0m  [["game_id", 1]]
+  Rendered guest/show/show.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 1342ms (Views: 201.5ms | ActiveRecord: 1.4ms)
+
+
