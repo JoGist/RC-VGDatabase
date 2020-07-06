@@ -180,3 +180,7 @@ This project also includes four test cases to test the main functions of the sit
   rake db:migrate
   ```
  
+### Known issues
+Unbfortunately, because the site is still under development and always expanding, there are current things that didn't work as we expected. Those are the currently known issues, feel free to report any other issue, feature or suggestion in the Issue tab.
+
+*   Sometimes when logging in with Google or Steam, the site will redirect you to an error page instead of homepage, just close the pop-up and you will be redirected
