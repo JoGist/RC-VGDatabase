@@ -80,8 +80,6 @@
             .friendGrid
               .profile-pic-details
                 %a.overlayImgFriend{:href => visit_profile_path(friend.friend_id), "data-method" => "get"}
-                  %i.mdi.mdi-pencil
-                  %span.hidden _
                   %span View profile
                 =image_tag (User.find(friend.friend_id).avatar) ,class: "reviewImg"
               .grid-item-detailsProfile
