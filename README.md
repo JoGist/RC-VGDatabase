@@ -123,7 +123,7 @@ After the first setup, execute these commmands to start the server and deploy th
 ## REST API
 This Rails server also provides some REST API method, the documentation can be found here. For some methods, an API KEY is needed in order to increase security and prevent. For this project, the API KEY is a proof-of-concept, in the future it will be fully implemented with a request form and a key generation method. Any method listed here is fully functional and implemented, and in the future we'll plan to add every other API method, in order to be able to create other client or apps that can work and can be integrated with the site. The default key is '123456789'.
 
-### [API DOCUMENTATION](https://app.swaggerhub.com/apis-docs/JoGist/VGDatabase/1.0.2#/)
+### [API DOCUMENTATION](https://app.swaggerhub.com/apis-docs/JoGist/VGDatabase/1.0.3)
 
 *   Search game by title
 *   Search user by user_id, user_email, user_username
