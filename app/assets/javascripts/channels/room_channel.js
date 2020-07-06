@@ -19,7 +19,7 @@ $(function() {
             content.find('[data-role="message-text"]').text(data.message);
             content.find('[data-role="message-date"]').text(data.updated_at);
             $element.append(content);
-            $element.animate({ scrollTop: $element.prop("scrollHeight")}, 1000);
+            $element.animate({ scrollTop: $element.prop("scrollHeight")}, 500);
             lastmessage=data;}
         }
       }

@@ -1789,7 +1789,7 @@ th {
  overflow-y: scroll;
 }
 .chatBox {
-  z-index: -1;
+  z-index: -2;
 	font-size: 20px;
 	font-weight: normal;
   max-width: 90%;
@@ -1882,7 +1882,7 @@ th {
   color: #f26657;
 }
 .floatChatHead{
-  z-index: 0;
+  z-index: 5;
   top: 0px;
   margin-left: 12.5em;
   margin-right: 0.5em;
@@ -1979,4 +1979,7 @@ th {
   float: right;
   margin-right: 5rem;
   margin-top: -8rem;
+}
+.notDisplay{
+  display: none;
 }
