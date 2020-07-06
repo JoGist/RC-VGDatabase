@@ -5,6 +5,8 @@ The site consists of a video game collection / sale platform. For each game you 
 
 **The site is now live, [check it out](https://vgdatabase-rc.herokuapp.com/)!**
 
+[Project overview (slides)](https://docs.google.com/presentation/d/e/2PACX-1vSeA_ezsfpQZcQRt0905mgQuVz5gjKw_SDKSvPaoy1c3JJOdPxcRv91MF2_Fw84KIYaAOXsirQWwcrZ/pub?start=true&loop=false&delayms=30000)
+
 ## Authors
 
 *   **Giovanni Roma** - roma.1808340@studenti.uniroma1.it - [GitHub](https://github.com/JoGist) - [LinkedIn](https://www.linkedin.com/in/giovanni-roma-a95a32127/)
