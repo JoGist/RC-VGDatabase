@@ -9,11 +9,12 @@ module ApplicationCable
     private
 
     def find_verified_user
-      verified_user = User.find(14)
-      if verified_user
+      if verified_user = User.find_by(id: cookies.signed["user.id"])
         verified_user
       else
+        User.create(:username => cookies.signed["user.id"])
         reject_unauthorized_connection
+
       end
     end
   end

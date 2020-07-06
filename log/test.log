@@ -1947,3 +1947,928 @@ Processing by GamesController#friends as HTML
   Rendered games/friends.haml within layouts/application (33.9ms)
 Completed 200 OK in 40ms (Views: 36.5ms | ActiveRecord: 1.8ms)
   [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (3.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.9ms)[0m  [1m[35mALTER TABLE "friends" DISABLE TRIGGER ALL;ALTER TABLE "games" DISABLE TRIGGER ALL;ALTER TABLE "reviews" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "stores" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "rooms" DISABLE TRIGGER ALL;ALTER TABLE "room_messages" DISABLE TRIGGER ALL;ALTER TABLE "avatars" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (5.6ms)[0m  [1m[34m          SELECT schemaname || '.' || tablename
+          FROM pg_tables
+          WHERE
+            tablename !~ '_prt_' AND
+             tablename <> 'schema_migrations'  AND tablename <> 'ar_internal_metadata'  AND
+            schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (2.8ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'db/reti-test'[0m
+  [1m[35m (48.7ms)[0m  [1m[35mTRUNCATE TABLE "public"."friends", "public"."games", "public"."reviews", "public"."stores", "public"."users", "public"."rooms", "public"."room_messages", "public"."avatars" RESTART IDENTITY CASCADE;[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "friends" ENABLE TRIGGER ALL;ALTER TABLE "games" ENABLE TRIGGER ALL;ALTER TABLE "reviews" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "stores" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "rooms" ENABLE TRIGGER ALL;ALTER TABLE "room_messages" ENABLE TRIGGER ALL;ALTER TABLE "avatars" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "username", "password", "avatar") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["email", "example@mail.com"], ["username", "John Doe"], ["password", "secret"], ["avatar", "Avatars/avatar_0"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/login" for 127.0.0.1 at 2020-07-06 12:24:15 +0200
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.haml within layouts/application
+  Rendered sessions/login.haml within layouts/application (1437.0ms)
+Completed 200 OK in 1459ms (Views: 1449.5ms | ActiveRecord: 0.0ms)
+Started GET "/callback?utf8=%E2%9C%93&user[name]=John+Doe&user[password]=[FILTERED]" for 127.0.0.1 at 2020-07-06 12:24:17 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"John Doe", "password"=>"[FILTERED]"}}
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" IN (SELECT "users"."id" FROM "users" WHERE "users"."username" = $1) LIMIT $2[0m  [["username", "John Doe"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1[0m  [["username", "John Doe"]]
+Redirected to http://www.example.com/homepage
+Completed 302 Found in 8ms (ActiveRecord: 1.1ms)
+Started GET "/homepage" for 127.0.0.1 at 2020-07-06 12:24:17 +0200
+Processing by GamesController#homepage as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGame Load (1.6ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.4ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Rune Factory 4 Special"], ["serial", 115278], ["developer", "XSEED Games"], ["platform", "Nintendo Switch"], ["release_date", "2019-07-25 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co203s.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Children of Morta"], ["serial", 36198], ["developer", "Dead Mage"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-09-03 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1q4k.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Monster Hunter: World - Iceborne"], ["serial", 113344], ["developer", "Capcom"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-09-06 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1pds.jpg"], ["genre", "Adventure"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.7ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Pokémon Shield"], ["serial", 115653], ["developer", "The Pokémon Company"], ["platform", "Nintendo Switch"], ["release_date", "2019-11-15 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1zk1.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Zombie Driver: Immortal Edition"], ["serial", 120268], ["developer", "Exor Studios"], ["platform", "Nintendo Switch"], ["release_date", "2019-07-25 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1rs9.jpg"], ["genre", "Racing"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (1.2ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Borderlands 3"], ["serial", 19164], ["developer", "2K Games"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-09-13 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co20r3.jpg"], ["genre", "Shooter"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.5ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Cyberpunk 2077"], ["serial", 1877], ["developer", "Digital Scapes Studios"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2020-11-19 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1rft.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Remnant: From the Ashes"], ["serial", 105049], ["developer", "Gunfire Games"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-08-20 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1m4w.jpg"], ["genre", "Shooter"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering games/homepage.haml within layouts/application
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY games.title ASC[0m
+  [1m[36mStore Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 6], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 2], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 7], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 3], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 4], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 8], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 1], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 5], ["LIMIT", 1]]
+  Rendered games/homepage.haml within layouts/application (32.6ms)
+Completed 200 OK in 29289ms (Views: 32.3ms | ActiveRecord: 15.6ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "username", "password", "avatar") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["email", "example@mail.com"], ["username", "John Doe"], ["password", "secret"], ["avatar", "Avatars/avatar_0"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "username", "password", "avatar") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 2], ["email", "mail_2@example.com"], ["username", "rspec_user"], ["password", "secret"], ["avatar", "Avatars/avatar_0"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/rack_session/edit" for 127.0.0.1 at 2020-07-06 12:24:46 +0200
+Started PUT "/rack_session" for 127.0.0.1 at 2020-07-06 12:24:46 +0200
+Started GET "/rack_session" for 127.0.0.1 at 2020-07-06 12:24:46 +0200
+Started GET "/homepage" for 127.0.0.1 at 2020-07-06 12:24:46 +0200
+Processing by GamesController#homepage as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Rune Factory 4 Special"], ["serial", 115278], ["developer", "XSEED Games"], ["platform", "Nintendo Switch"], ["release_date", "2019-07-25 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co203s.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Children of Morta"], ["serial", 36198], ["developer", "Dead Mage"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-09-03 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1q4k.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Monster Hunter: World - Iceborne"], ["serial", 113344], ["developer", "Capcom"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-09-06 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1pds.jpg"], ["genre", "Adventure"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.6ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Pokémon Shield"], ["serial", 115653], ["developer", "The Pokémon Company"], ["platform", "Nintendo Switch"], ["release_date", "2019-11-15 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1zk1.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Zombie Driver: Immortal Edition"], ["serial", 120268], ["developer", "Exor Studios"], ["platform", "Nintendo Switch"], ["release_date", "2019-07-25 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1rs9.jpg"], ["genre", "Racing"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.4ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Borderlands 3"], ["serial", 19164], ["developer", "2K Games"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-09-13 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co20r3.jpg"], ["genre", "Shooter"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.1ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Cyberpunk 2077"], ["serial", 1877], ["developer", "Digital Scapes Studios"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2020-11-19 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1rft.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.5ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Remnant: From the Ashes"], ["serial", 105049], ["developer", "Gunfire Games"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-08-20 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1m4w.jpg"], ["genre", "Shooter"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering games/homepage.haml within layouts/application
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY games.title ASC[0m
+  [1m[36mStore Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 14], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 10], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 15], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 11], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 12], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 16], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 9], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 13], ["LIMIT", 1]]
+  Rendered games/homepage.haml within layouts/application (10.6ms)
+Completed 200 OK in 23743ms (Views: 9.2ms | ActiveRecord: 9.5ms)
+Started GET "/searchGame" for 127.0.0.1 at 2020-07-06 12:25:10 +0200
+Processing by GamesController#searchGame as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/searchGame.haml within layouts/application
+  Rendered games/searchGame.haml within layouts/application (23.6ms)
+Completed 200 OK in 29ms (Views: 25.6ms | ActiveRecord: 0.3ms)
+Started GET "/searchUser" for 127.0.0.1 at 2020-07-06 12:25:10 +0200
+Processing by GamesController#searchUser as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/searchUser.haml within layouts/application
+  Rendered games/searchUser.haml within layouts/application (19.6ms)
+Completed 200 OK in 45ms (Views: 41.9ms | ActiveRecord: 0.3ms)
+Started POST "/searchUser?method=get" for 127.0.0.1 at 2020-07-06 12:25:10 +0200
+Processing by GamesController#searchingUser as HTML
+  Parameters: {"utf8"=>"✓", "username"=>"rspec_user", "method"=>"get"}
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" IN (SELECT "users"."id" FROM "users" WHERE "users"."username" = $1) LIMIT $2[0m  [["username", "rspec_user"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1[0m  [["username", "rspec_user"]]
+Redirected to http://www.example.com/visit/profile/2
+Completed 302 Found in 4ms (ActiveRecord: 0.8ms)
+Started GET "/visit/profile/2" for 127.0.0.1 at 2020-07-06 12:25:10 +0200
+Processing by Visit::ProfileController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering visit/profile/show.haml within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 2], ["LIMIT", 1]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mCACHE Friend Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 2], ["LIMIT", 1]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 2], ["favorite", "true"]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 2], ["favorite", "false"]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 2]]
+  Rendered visit/profile/show.haml within layouts/application (83.2ms)
+Completed 200 OK in 99ms (Views: 84.4ms | ActiveRecord: 5.6ms)
+Started PUT "/friends/2" for 127.0.0.1 at 2020-07-06 12:25:10 +0200
+Processing by FriendsController#update as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFriend Create (0.5ms)[0m  [1m[32mINSERT INTO "friends" ("user_id", "friend_id", "favorite") VALUES ($1, $2, $3) RETURNING "id"[0m  [["user_id", 1], ["friend_id", 2], ["favorite", "false"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/visit/profile/2
+Completed 302 Found in 8ms (ActiveRecord: 2.1ms)
+Started GET "/visit/profile/2" for 127.0.0.1 at 2020-07-06 12:25:10 +0200
+Processing by Visit::ProfileController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering visit/profile/show.haml within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 2], ["LIMIT", 1]]
+  [1m[36mFriend Load (0.3ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."friend_id" = $2[0m  [["user_id", 1], ["friend_id", 2]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mCACHE Friend Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 2], ["LIMIT", 1]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 2], ["favorite", "true"]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 2], ["favorite", "false"]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 2]]
+  Rendered visit/profile/show.haml within layouts/application (7.7ms)
+Completed 200 OK in 12ms (Views: 8.2ms | ActiveRecord: 1.9ms)
+Started GET "/friends" for 127.0.0.1 at 2020-07-06 12:25:10 +0200
+Processing by GamesController#friends as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/friends.haml within layouts/application
+  [1m[36mFriend Load (0.4ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2 AND "friends"."user_id" = $3[0m  [["user_id", 1], ["favorite", "true"], ["user_id", 1]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2 AND "friends"."user_id" = $3[0m  [["user_id", 1], ["favorite", "false"], ["user_id", 1]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 1], ["favorite", "true"]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 1], ["favorite", "false"]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 2]]
+  Rendered games/friends.haml within layouts/application (50.6ms)
+Completed 200 OK in 56ms (Views: 51.5ms | ActiveRecord: 1.6ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "username", "password", "avatar") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 0], ["email", "admin@mail"], ["username", "vgdb_admin"], ["password", "labassi2020"], ["avatar", "Avatars/avatar_0"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "username", "password", "avatar") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["email", "example@mail.com"], ["username", "John Doe"], ["password", "secret"], ["avatar", "Avatars/avatar_0"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/rack_session/edit" for 127.0.0.1 at 2020-07-06 12:25:10 +0200
+Started PUT "/rack_session" for 127.0.0.1 at 2020-07-06 12:25:10 +0200
+Started GET "/rack_session" for 127.0.0.1 at 2020-07-06 12:25:10 +0200
+Started GET "/settings" for 127.0.0.1 at 2020-07-06 12:25:10 +0200
+Processing by GamesController#settings as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Redirected to http://www.example.com/homepage
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+Started GET "/homepage" for 127.0.0.1 at 2020-07-06 12:25:10 +0200
+Processing by GamesController#homepage as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Rune Factory 4 Special"], ["serial", 115278], ["developer", "XSEED Games"], ["platform", "Nintendo Switch"], ["release_date", "2019-07-25 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co203s.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Children of Morta"], ["serial", 36198], ["developer", "Dead Mage"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-09-03 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1q4k.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.5ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Monster Hunter: World - Iceborne"], ["serial", 113344], ["developer", "Capcom"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-09-06 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1pds.jpg"], ["genre", "Adventure"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.8ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Pokémon Shield"], ["serial", 115653], ["developer", "The Pokémon Company"], ["platform", "Nintendo Switch"], ["release_date", "2019-11-15 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1zk1.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.9ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Zombie Driver: Immortal Edition"], ["serial", 120268], ["developer", "Exor Studios"], ["platform", "Nintendo Switch"], ["release_date", "2019-07-25 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1rs9.jpg"], ["genre", "Racing"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Borderlands 3"], ["serial", 19164], ["developer", "2K Games"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-09-13 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co20r3.jpg"], ["genre", "Shooter"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.4ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Cyberpunk 2077"], ["serial", 1877], ["developer", "Digital Scapes Studios"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2020-11-19 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1rft.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Remnant: From the Ashes"], ["serial", 105049], ["developer", "Gunfire Games"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-08-20 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1m4w.jpg"], ["genre", "Shooter"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering games/homepage.haml within layouts/application
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY games.title ASC[0m
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 0], ["game_id", 22], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 0], ["game_id", 18], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 0], ["game_id", 23], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 0], ["game_id", 19], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 0], ["game_id", 20], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 0], ["game_id", 24], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 0], ["game_id", 17], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 0], ["game_id", 21], ["LIMIT", 1]]
+  Rendered games/homepage.haml within layouts/application (11.4ms)
+Completed 200 OK in 19046ms (Views: 10.4ms | ActiveRecord: 11.1ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "username", "password", "avatar") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 0], ["email", "admin@mail"], ["username", "vgdb_admin"], ["password", "labassi2020"], ["avatar", "Avatars/avatar_0"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "username", "password", "avatar") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["email", "example@mail.com"], ["username", "John Doe"], ["password", "secret"], ["avatar", "Avatars/avatar_0"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.2ms)[0m  [1m[32mINSERT INTO "games" ("id", "title", "serial") VALUES ($1, $2, $3) RETURNING "id"[0m  [["id", 1], ["title", "Rspec_game"], ["serial", 12345]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mReview Create (0.5ms)[0m  [1m[32mINSERT INTO "reviews" ("user_id", "game_id") VALUES ($1, $2) RETURNING "id"[0m  [["user_id", 1], ["game_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/rack_session/edit" for 127.0.0.1 at 2020-07-06 12:25:29 +0200
+Started PUT "/rack_session" for 127.0.0.1 at 2020-07-06 12:25:29 +0200
+Started GET "/rack_session" for 127.0.0.1 at 2020-07-06 12:25:29 +0200
+Started GET "/settings" for 127.0.0.1 at 2020-07-06 12:25:29 +0200
+Processing by GamesController#settings as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Redirected to http://www.example.com/homepage
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+Started GET "/homepage" for 127.0.0.1 at 2020-07-06 12:25:29 +0200
+Processing by GamesController#homepage as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  Rendering games/homepage.haml within layouts/application
+  [1m[36mGame Load (1.0ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY games.title ASC[0m
+  [1m[36mStore Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 0], ["game_id", 1], ["LIMIT", 1]]
+  Rendered games/homepage.haml within layouts/application (5.6ms)
+Completed 200 OK in 11ms (Views: 6.5ms | ActiveRecord: 2.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "friends" DISABLE TRIGGER ALL;ALTER TABLE "games" DISABLE TRIGGER ALL;ALTER TABLE "reviews" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "stores" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "rooms" DISABLE TRIGGER ALL;ALTER TABLE "room_messages" DISABLE TRIGGER ALL;ALTER TABLE "avatars" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.0ms)[0m  [1m[34m          SELECT schemaname || '.' || tablename
+          FROM pg_tables
+          WHERE
+            tablename !~ '_prt_' AND
+             tablename <> 'schema_migrations'  AND tablename <> 'ar_internal_metadata'  AND
+            schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.0ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'db/reti-test'[0m
+  [1m[35m (40.2ms)[0m  [1m[35mTRUNCATE TABLE "public"."friends", "public"."games", "public"."reviews", "public"."stores", "public"."users", "public"."rooms", "public"."room_messages", "public"."avatars" RESTART IDENTITY CASCADE;[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "friends" ENABLE TRIGGER ALL;ALTER TABLE "games" ENABLE TRIGGER ALL;ALTER TABLE "reviews" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "stores" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "rooms" ENABLE TRIGGER ALL;ALTER TABLE "room_messages" ENABLE TRIGGER ALL;ALTER TABLE "avatars" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "username", "password", "avatar") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["email", "example@mail.com"], ["username", "John Doe"], ["password", "secret"], ["avatar", "Avatars/avatar_0"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/login" for 127.0.0.1 at 2020-07-06 12:32:32 +0200
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.haml within layouts/application
+  Rendered sessions/login.haml within layouts/application (319.6ms)
+Completed 200 OK in 338ms (Views: 330.6ms | ActiveRecord: 0.0ms)
+Started GET "/callback?utf8=%E2%9C%93&user[name]=John+Doe&user[password]=[FILTERED]" for 127.0.0.1 at 2020-07-06 12:32:33 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"John Doe", "password"=>"[FILTERED]"}}
+  [1m[36mUser Exists (3.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" IN (SELECT "users"."id" FROM "users" WHERE "users"."username" = $1) LIMIT $2[0m  [["username", "John Doe"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1[0m  [["username", "John Doe"]]
+Redirected to http://www.example.com/homepage
+Completed 302 Found in 12ms (ActiveRecord: 3.8ms)
+Started GET "/homepage" for 127.0.0.1 at 2020-07-06 12:32:33 +0200
+Processing by GamesController#homepage as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.4ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Rune Factory 4 Special"], ["serial", 115278], ["developer", "XSEED Games"], ["platform", "Nintendo Switch"], ["release_date", "2019-07-25 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co203s.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (1.0ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Children of Morta"], ["serial", 36198], ["developer", "Dead Mage"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-09-03 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1q4k.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.9ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Monster Hunter: World - Iceborne"], ["serial", 113344], ["developer", "Capcom"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-09-06 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1pds.jpg"], ["genre", "Adventure"]]
+  [1m[35m (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Pokémon Shield"], ["serial", 115653], ["developer", "The Pokémon Company"], ["platform", "Nintendo Switch"], ["release_date", "2019-11-15 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1zk1.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.7ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Zombie Driver: Immortal Edition"], ["serial", 120268], ["developer", "Exor Studios"], ["platform", "Nintendo Switch"], ["release_date", "2019-07-25 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1rs9.jpg"], ["genre", "Racing"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.5ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Borderlands 3"], ["serial", 19164], ["developer", "2K Games"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-09-13 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co20r3.jpg"], ["genre", "Shooter"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Cyberpunk 2077"], ["serial", 1877], ["developer", "Digital Scapes Studios"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2020-11-19 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1rft.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Remnant: From the Ashes"], ["serial", 105049], ["developer", "Gunfire Games"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-08-20 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1m4w.jpg"], ["genre", "Shooter"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering games/homepage.haml within layouts/application
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY games.title ASC[0m
+  [1m[36mStore Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 6], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 2], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 7], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 3], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 4], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 8], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 1], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 5], ["LIMIT", 1]]
+  Rendered games/homepage.haml within layouts/application (76.6ms)
+Completed 200 OK in 29232ms (Views: 77.6ms | ActiveRecord: 16.2ms)
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "username", "password", "avatar") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["email", "example@mail.com"], ["username", "John Doe"], ["password", "secret"], ["avatar", "Avatars/avatar_0"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "username", "password", "avatar") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 2], ["email", "mail_2@example.com"], ["username", "rspec_user"], ["password", "secret"], ["avatar", "Avatars/avatar_0"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/rack_session/edit" for 127.0.0.1 at 2020-07-06 12:33:02 +0200
+Started PUT "/rack_session" for 127.0.0.1 at 2020-07-06 12:33:02 +0200
+Started GET "/rack_session" for 127.0.0.1 at 2020-07-06 12:33:02 +0200
+Started GET "/homepage" for 127.0.0.1 at 2020-07-06 12:33:02 +0200
+Processing by GamesController#homepage as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.9ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Rune Factory 4 Special"], ["serial", 115278], ["developer", "XSEED Games"], ["platform", "Nintendo Switch"], ["release_date", "2019-07-25 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co203s.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (1.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (1.6ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Children of Morta"], ["serial", 36198], ["developer", "Dead Mage"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-09-03 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1q4k.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (1.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.5ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Monster Hunter: World - Iceborne"], ["serial", 113344], ["developer", "Capcom"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-09-06 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1pds.jpg"], ["genre", "Adventure"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.7ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Pokémon Shield"], ["serial", 115653], ["developer", "The Pokémon Company"], ["platform", "Nintendo Switch"], ["release_date", "2019-11-15 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1zk1.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.5ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Zombie Driver: Immortal Edition"], ["serial", 120268], ["developer", "Exor Studios"], ["platform", "Nintendo Switch"], ["release_date", "2019-07-25 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1rs9.jpg"], ["genre", "Racing"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Borderlands 3"], ["serial", 19164], ["developer", "2K Games"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-09-13 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co20r3.jpg"], ["genre", "Shooter"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.5ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Cyberpunk 2077"], ["serial", 1877], ["developer", "Digital Scapes Studios"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2020-11-19 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1rft.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.2ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Remnant: From the Ashes"], ["serial", 105049], ["developer", "Gunfire Games"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-08-20 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1m4w.jpg"], ["genre", "Shooter"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering games/homepage.haml within layouts/application
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY games.title ASC[0m
+  [1m[36mStore Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 14], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 10], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 15], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 11], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 12], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 16], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 9], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 13], ["LIMIT", 1]]
+  Rendered games/homepage.haml within layouts/application (9.0ms)
+Completed 200 OK in 19909ms (Views: 9.6ms | ActiveRecord: 14.1ms)
+Started GET "/searchGame" for 127.0.0.1 at 2020-07-06 12:33:22 +0200
+Processing by GamesController#searchGame as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/searchGame.haml within layouts/application
+  Rendered games/searchGame.haml within layouts/application (25.3ms)
+Completed 200 OK in 32ms (Views: 27.3ms | ActiveRecord: 0.3ms)
+Started GET "/searchUser" for 127.0.0.1 at 2020-07-06 12:33:22 +0200
+Processing by GamesController#searchUser as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/searchUser.haml within layouts/application
+  Rendered games/searchUser.haml within layouts/application (21.2ms)
+Completed 200 OK in 26ms (Views: 23.7ms | ActiveRecord: 0.3ms)
+Started POST "/searchUser?method=get" for 127.0.0.1 at 2020-07-06 12:33:22 +0200
+Processing by GamesController#searchingUser as HTML
+  Parameters: {"utf8"=>"✓", "username"=>"rspec_user", "method"=>"get"}
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" IN (SELECT "users"."id" FROM "users" WHERE "users"."username" = $1) LIMIT $2[0m  [["username", "rspec_user"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1[0m  [["username", "rspec_user"]]
+Redirected to http://www.example.com/visit/profile/2
+Completed 302 Found in 6ms (ActiveRecord: 1.8ms)
+Started GET "/visit/profile/2" for 127.0.0.1 at 2020-07-06 12:33:22 +0200
+Processing by Visit::ProfileController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering visit/profile/show.haml within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Exists (3.1ms)[0m  [1m[34mSELECT  1 AS one FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 2], ["LIMIT", 1]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mCACHE Friend Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 2], ["LIMIT", 1]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 2], ["favorite", "true"]]
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 2], ["favorite", "false"]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mReview Load (1.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 2]]
+  Rendered visit/profile/show.haml within layouts/application (84.7ms)
+Completed 200 OK in 100ms (Views: 82.1ms | ActiveRecord: 9.6ms)
+Started PUT "/friends/2" for 127.0.0.1 at 2020-07-06 12:33:22 +0200
+Processing by FriendsController#update as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("user_id", "friend_id", "favorite") VALUES ($1, $2, $3) RETURNING "id"[0m  [["user_id", 1], ["friend_id", 2], ["favorite", "false"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/visit/profile/2
+Completed 302 Found in 8ms (ActiveRecord: 1.4ms)
+Started GET "/visit/profile/2" for 127.0.0.1 at 2020-07-06 12:33:22 +0200
+Processing by Visit::ProfileController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering visit/profile/show.haml within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 2], ["LIMIT", 1]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."friend_id" = $2[0m  [["user_id", 1], ["friend_id", 2]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mCACHE Friend Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 2], ["LIMIT", 1]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 2], ["favorite", "true"]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 2], ["favorite", "false"]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 2]]
+  Rendered visit/profile/show.haml within layouts/application (6.8ms)
+Completed 200 OK in 11ms (Views: 7.8ms | ActiveRecord: 1.7ms)
+Started GET "/friends" for 127.0.0.1 at 2020-07-06 12:33:22 +0200
+Processing by GamesController#friends as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/friends.haml within layouts/application
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2 AND "friends"."user_id" = $3[0m  [["user_id", 1], ["favorite", "true"], ["user_id", 1]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2 AND "friends"."user_id" = $3[0m  [["user_id", 1], ["favorite", "false"], ["user_id", 1]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 1], ["favorite", "true"]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 1], ["favorite", "false"]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 2]]
+  Rendered games/friends.haml within layouts/application (34.3ms)
+Completed 200 OK in 39ms (Views: 35.5ms | ActiveRecord: 1.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "username", "password", "avatar") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 0], ["email", "admin@mail"], ["username", "vgdb_admin"], ["password", "rdc2020"], ["avatar", "Avatars/avatar_0"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "username", "password", "avatar") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["email", "example@mail.com"], ["username", "John Doe"], ["password", "secret"], ["avatar", "Avatars/avatar_0"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/rack_session/edit" for 127.0.0.1 at 2020-07-06 12:33:22 +0200
+Started PUT "/rack_session" for 127.0.0.1 at 2020-07-06 12:33:22 +0200
+Started GET "/rack_session" for 127.0.0.1 at 2020-07-06 12:33:22 +0200
+Started GET "/settings" for 127.0.0.1 at 2020-07-06 12:33:22 +0200
+Processing by GamesController#settings as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  Rendering games/settings.haml within layouts/application
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username != 'vgdb_admin')[0m
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  Rendered games/settings.haml within layouts/application (19.9ms)
+Completed 200 OK in 28ms (Views: 21.1ms | ActiveRecord: 1.8ms)
+Started GET "/deletingUser" for 127.0.0.1 at 2020-07-06 12:33:22 +0200
+Processing by GamesController#deletingUser as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  Rendering games/deletingUser.haml within layouts/application
+  Rendered games/deletingUser.haml within layouts/application (14.5ms)
+Completed 200 OK in 19ms (Views: 16.6ms | ActiveRecord: 0.2ms)
+Started POST "/deletingUser?method=get" for 127.0.0.1 at 2020-07-06 12:33:22 +0200
+Processing by GamesController#deletingAdminUser as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"John Doe"}, "method"=>"get"}
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" IN (SELECT "users"."id" FROM "users" WHERE "users"."username" = $1) LIMIT $2[0m  [["username", "John Doe"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1[0m  [["username", "John Doe"]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."friend_id" = $1[0m  [["friend_id", 1]]
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mRoom Load (1.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."user1" = $1[0m  [["user1", "John Doe"]]
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."user" = $1[0m  [["user", "John Doe"]]
+  [1m[36mUser Destroy (0.7ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+Redirected to http://www.example.com/deletingUser_success
+Completed 302 Found in 14ms (ActiveRecord: 5.0ms)
+Started GET "/deletingUser_success" for 127.0.0.1 at 2020-07-06 12:33:22 +0200
+Processing by GamesController#deletingUser_success as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  Rendering games/deletingUser_success.haml within layouts/application
+  Rendered games/deletingUser_success.haml within layouts/application (15.9ms)
+Completed 200 OK in 21ms (Views: 18.2ms | ActiveRecord: 0.3ms)
+Started GET "/settings" for 127.0.0.1 at 2020-07-06 12:33:22 +0200
+Processing by GamesController#settings as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  Rendering games/settings.haml within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username != 'vgdb_admin')[0m
+  [1m[36mStore Load (0.6ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  Rendered games/settings.haml within layouts/application (3.5ms)
+Completed 200 OK in 7ms (Views: 4.2ms | ActiveRecord: 1.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "username", "password", "avatar") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 0], ["email", "admin@mail"], ["username", "vgdb_admin"], ["password", "rdc2020"], ["avatar", "Avatars/avatar_0"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "username", "password", "avatar") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["email", "example@mail.com"], ["username", "John Doe"], ["password", "secret"], ["avatar", "Avatars/avatar_0"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("id", "title", "serial") VALUES ($1, $2, $3) RETURNING "id"[0m  [["id", 1], ["title", "Rspec_game"], ["serial", 12345]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mReview Create (0.6ms)[0m  [1m[32mINSERT INTO "reviews" ("user_id", "game_id") VALUES ($1, $2) RETURNING "id"[0m  [["user_id", 1], ["game_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/rack_session/edit" for 127.0.0.1 at 2020-07-06 12:33:23 +0200
+Started PUT "/rack_session" for 127.0.0.1 at 2020-07-06 12:33:23 +0200
+Started GET "/rack_session" for 127.0.0.1 at 2020-07-06 12:33:23 +0200
+Started GET "/settings" for 127.0.0.1 at 2020-07-06 12:33:23 +0200
+Processing by GamesController#settings as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  Rendering games/settings.haml within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username != 'vgdb_admin')[0m
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered games/settings.haml within layouts/application (4.5ms)
+Completed 200 OK in 10ms (Views: 6.2ms | ActiveRecord: 1.4ms)
+Started GET "/deleteReviewsUser" for 127.0.0.1 at 2020-07-06 12:33:23 +0200
+Processing by GamesController#deleteReviewsUser as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  Rendering games/deleteReviewsUser.haml within layouts/application
+  Rendered games/deleteReviewsUser.haml within layouts/application (16.1ms)
+Completed 200 OK in 23ms (Views: 18.6ms | ActiveRecord: 0.3ms)
+Started POST "/deleteReviewsUser?method=post" for 127.0.0.1 at 2020-07-06 12:33:23 +0200
+Processing by GamesController#deletingReviewsUser as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"John Doe"}, "game"=>{"title"=>"Rspec_game"}, "method"=>"post"}
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "John Doe"], ["LIMIT", 1]]
+  [1m[36mGame Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "games" WHERE "games"."title" = $1 LIMIT $2[0m  [["title", "Rspec_game"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1[0m  [["username", "John Doe"]]
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."title" = $1[0m  [["title", "Rspec_game"]]
+  [1m[36mReview Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "reviews" WHERE "reviews"."user_id" = $1 AND "reviews"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 1], ["LIMIT", 1]]
+  [1m[36mReview Load (0.0ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1 AND "reviews"."game_id" = $2[0m  [["user_id", 1], ["game_id", 1]]
+  [1m[36mReview Destroy (0.2ms)[0m  [1m[31mDELETE FROM "reviews" WHERE "reviews"."id" = $1[0m  [["id", 1]]
+Redirected to http://www.example.com/deleteReviewsUser_success
+Completed 302 Found in 7ms (ActiveRecord: 1.5ms)
+Started GET "/deleteReviewsUser_success" for 127.0.0.1 at 2020-07-06 12:33:23 +0200
+Processing by GamesController#deleteReviewsUser_success as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  Rendering games/deleteReviewsUser_success.haml within layouts/application
+  Rendered games/deleteReviewsUser_success.haml within layouts/application (18.5ms)
+Completed 200 OK in 24ms (Views: 21.0ms | ActiveRecord: 0.2ms)
+Started GET "/settings" for 127.0.0.1 at 2020-07-06 12:33:23 +0200
+Processing by GamesController#settings as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  Rendering games/settings.haml within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username != 'vgdb_admin')[0m
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  Rendered games/settings.haml within layouts/application (2.9ms)
+Completed 200 OK in 7ms (Views: 4.4ms | ActiveRecord: 1.1ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.0ms)[0m  [1m[35mALTER TABLE "friends" DISABLE TRIGGER ALL;ALTER TABLE "games" DISABLE TRIGGER ALL;ALTER TABLE "reviews" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "stores" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "rooms" DISABLE TRIGGER ALL;ALTER TABLE "room_messages" DISABLE TRIGGER ALL;ALTER TABLE "avatars" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (5.3ms)[0m  [1m[34m          SELECT schemaname || '.' || tablename
+          FROM pg_tables
+          WHERE
+            tablename !~ '_prt_' AND
+             tablename <> 'schema_migrations'  AND tablename <> 'ar_internal_metadata'  AND
+            schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.9ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'db/reti-test'[0m
+  [1m[35m (33.2ms)[0m  [1m[35mTRUNCATE TABLE "public"."friends", "public"."games", "public"."reviews", "public"."stores", "public"."users", "public"."rooms", "public"."room_messages", "public"."avatars" RESTART IDENTITY CASCADE;[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "friends" ENABLE TRIGGER ALL;ALTER TABLE "games" ENABLE TRIGGER ALL;ALTER TABLE "reviews" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "stores" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "rooms" ENABLE TRIGGER ALL;ALTER TABLE "room_messages" ENABLE TRIGGER ALL;ALTER TABLE "avatars" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "username", "password", "avatar") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["email", "example@mail.com"], ["username", "John Doe"], ["password", "secret"], ["avatar", "Avatars/avatar_0"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/login" for 127.0.0.1 at 2020-07-06 12:33:36 +0200
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.haml within layouts/application
+  Rendered sessions/login.haml within layouts/application (359.1ms)
+Completed 200 OK in 375ms (Views: 367.2ms | ActiveRecord: 0.0ms)
+Started GET "/callback?utf8=%E2%9C%93&user[name]=John+Doe&user[password]=[FILTERED]" for 127.0.0.1 at 2020-07-06 12:33:37 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"John Doe", "password"=>"[FILTERED]"}}
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" IN (SELECT "users"."id" FROM "users" WHERE "users"."username" = $1) LIMIT $2[0m  [["username", "John Doe"], ["LIMIT", 1]]
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1[0m  [["username", "John Doe"]]
+Redirected to http://www.example.com/homepage
+Completed 302 Found in 11ms (ActiveRecord: 2.3ms)
+Started GET "/homepage" for 127.0.0.1 at 2020-07-06 12:33:37 +0200
+Processing by GamesController#homepage as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.7ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Rune Factory 4 Special"], ["serial", 115278], ["developer", "XSEED Games"], ["platform", "Nintendo Switch"], ["release_date", "2019-07-25 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co203s.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.4ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Children of Morta"], ["serial", 36198], ["developer", "Dead Mage"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-09-03 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1q4k.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.4ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Monster Hunter: World - Iceborne"], ["serial", 113344], ["developer", "Capcom"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-09-06 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1pds.jpg"], ["genre", "Adventure"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.5ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Pokémon Shield"], ["serial", 115653], ["developer", "The Pokémon Company"], ["platform", "Nintendo Switch"], ["release_date", "2019-11-15 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1zk1.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.6ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Zombie Driver: Immortal Edition"], ["serial", 120268], ["developer", "Exor Studios"], ["platform", "Nintendo Switch"], ["release_date", "2019-07-25 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1rs9.jpg"], ["genre", "Racing"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.6ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Borderlands 3"], ["serial", 19164], ["developer", "2K Games"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-09-13 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co20r3.jpg"], ["genre", "Shooter"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (2.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.7ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Cyberpunk 2077"], ["serial", 1877], ["developer", "Digital Scapes Studios"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2020-11-19 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1rft.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Remnant: From the Ashes"], ["serial", 105049], ["developer", "Gunfire Games"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-08-20 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1m4w.jpg"], ["genre", "Shooter"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering games/homepage.haml within layouts/application
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY games.title ASC[0m
+  [1m[36mStore Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 6], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 2], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 7], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 3], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 4], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 8], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 1], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 5], ["LIMIT", 1]]
+  Rendered games/homepage.haml within layouts/application (73.6ms)
+Completed 200 OK in 18714ms (Views: 78.0ms | ActiveRecord: 17.2ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "username", "password", "avatar") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["email", "example@mail.com"], ["username", "John Doe"], ["password", "secret"], ["avatar", "Avatars/avatar_0"]]
+  [1m[35m (1.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "username", "password", "avatar") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 2], ["email", "mail_2@example.com"], ["username", "rspec_user"], ["password", "secret"], ["avatar", "Avatars/avatar_0"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/rack_session/edit" for 127.0.0.1 at 2020-07-06 12:33:56 +0200
+Started PUT "/rack_session" for 127.0.0.1 at 2020-07-06 12:33:56 +0200
+Started GET "/rack_session" for 127.0.0.1 at 2020-07-06 12:33:56 +0200
+Started GET "/homepage" for 127.0.0.1 at 2020-07-06 12:33:56 +0200
+Processing by GamesController#homepage as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.4ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Rune Factory 4 Special"], ["serial", 115278], ["developer", "XSEED Games"], ["platform", "Nintendo Switch"], ["release_date", "2019-07-25 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co203s.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Children of Morta"], ["serial", 36198], ["developer", "Dead Mage"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-09-03 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1q4k.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Monster Hunter: World - Iceborne"], ["serial", 113344], ["developer", "Capcom"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-09-06 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1pds.jpg"], ["genre", "Adventure"]]
+  [1m[35m (1.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (1.7ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Pokémon Shield"], ["serial", 115653], ["developer", "The Pokémon Company"], ["platform", "Nintendo Switch"], ["release_date", "2019-11-15 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1zk1.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Zombie Driver: Immortal Edition"], ["serial", 120268], ["developer", "Exor Studios"], ["platform", "Nintendo Switch"], ["release_date", "2019-07-25 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1rs9.jpg"], ["genre", "Racing"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (1.2ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Borderlands 3"], ["serial", 19164], ["developer", "2K Games"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-09-13 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co20r3.jpg"], ["genre", "Shooter"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.4ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Cyberpunk 2077"], ["serial", 1877], ["developer", "Digital Scapes Studios"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2020-11-19 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1rft.jpg"], ["genre", "Role-playing (RPG)"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.4ms)[0m  [1m[32mINSERT INTO "games" ("title", "serial", "developer", "platform", "release_date", "cover", "genre") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Remnant: From the Ashes"], ["serial", 105049], ["developer", "Gunfire Games"], ["platform", "PC (Microsoft Windows)"], ["release_date", "2019-08-20 00:00:00"], ["cover", "//images.igdb.com/igdb/image/upload/t_cover_big/co1m4w.jpg"], ["genre", "Shooter"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering games/homepage.haml within layouts/application
+  [1m[36mGame Load (0.9ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY games.title ASC[0m
+  [1m[36mStore Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 14], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 10], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 15], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 11], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 12], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 16], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 9], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 13], ["LIMIT", 1]]
+  Rendered games/homepage.haml within layouts/application (14.5ms)
+Completed 200 OK in 19647ms (Views: 13.4ms | ActiveRecord: 14.4ms)
+Started GET "/searchGame" for 127.0.0.1 at 2020-07-06 12:34:15 +0200
+Processing by GamesController#searchGame as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/searchGame.haml within layouts/application
+  Rendered games/searchGame.haml within layouts/application (25.4ms)
+Completed 200 OK in 30ms (Views: 27.4ms | ActiveRecord: 0.3ms)
+Started GET "/searchUser" for 127.0.0.1 at 2020-07-06 12:34:15 +0200
+Processing by GamesController#searchUser as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/searchUser.haml within layouts/application
+  Rendered games/searchUser.haml within layouts/application (20.7ms)
+Completed 200 OK in 49ms (Views: 23.7ms | ActiveRecord: 0.3ms)
+Started POST "/searchUser?method=get" for 127.0.0.1 at 2020-07-06 12:34:15 +0200
+Processing by GamesController#searchingUser as HTML
+  Parameters: {"utf8"=>"✓", "username"=>"rspec_user", "method"=>"get"}
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" IN (SELECT "users"."id" FROM "users" WHERE "users"."username" = $1) LIMIT $2[0m  [["username", "rspec_user"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1[0m  [["username", "rspec_user"]]
+Redirected to http://www.example.com/visit/profile/2
+Completed 302 Found in 4ms (ActiveRecord: 0.9ms)
+Started GET "/visit/profile/2" for 127.0.0.1 at 2020-07-06 12:34:15 +0200
+Processing by Visit::ProfileController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering visit/profile/show.haml within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 2], ["LIMIT", 1]]
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mCACHE Friend Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 2], ["LIMIT", 1]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 2], ["favorite", "true"]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 2], ["favorite", "false"]]
+  [1m[36mCACHE Store Load (0.0ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 2]]
+  Rendered visit/profile/show.haml within layouts/application (86.8ms)
+Completed 200 OK in 101ms (Views: 87.8ms | ActiveRecord: 5.3ms)
+Started PUT "/friends/2" for 127.0.0.1 at 2020-07-06 12:34:15 +0200
+Processing by FriendsController#update as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mFriend Create (0.6ms)[0m  [1m[32mINSERT INTO "friends" ("user_id", "friend_id", "favorite") VALUES ($1, $2, $3) RETURNING "id"[0m  [["user_id", 1], ["friend_id", 2], ["favorite", "false"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/visit/profile/2
+Completed 302 Found in 11ms (ActiveRecord: 2.7ms)
+Started GET "/visit/profile/2" for 127.0.0.1 at 2020-07-06 12:34:15 +0200
+Processing by Visit::ProfileController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering visit/profile/show.haml within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 2], ["LIMIT", 1]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."friend_id" = $2[0m  [["user_id", 1], ["friend_id", 2]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mCACHE Friend Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 2], ["LIMIT", 1]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 2], ["favorite", "true"]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 2], ["favorite", "false"]]
+  [1m[36mCACHE Store Load (0.1ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 2]]
+  Rendered visit/profile/show.haml within layouts/application (8.9ms)
+Completed 200 OK in 14ms (Views: 9.5ms | ActiveRecord: 2.3ms)
+Started GET "/friends" for 127.0.0.1 at 2020-07-06 12:34:15 +0200
+Processing by GamesController#friends as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering games/friends.haml within layouts/application
+  [1m[36mFriend Load (0.3ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2 AND "friends"."user_id" = $3[0m  [["user_id", 1], ["favorite", "true"], ["user_id", 1]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2 AND "friends"."user_id" = $3[0m  [["user_id", 1], ["favorite", "false"], ["user_id", 1]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 1], ["favorite", "true"]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 1], ["favorite", "false"]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 2]]
+  Rendered games/friends.haml within layouts/application (51.5ms)
+Completed 200 OK in 56ms (Views: 52.7ms | ActiveRecord: 1.4ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "username", "password", "avatar") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 0], ["email", "admin@mail"], ["username", "vgdb_admin"], ["password", "rdc2020"], ["avatar", "Avatars/avatar_0"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "username", "password", "avatar") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["email", "example@mail.com"], ["username", "John Doe"], ["password", "secret"], ["avatar", "Avatars/avatar_0"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/rack_session/edit" for 127.0.0.1 at 2020-07-06 12:34:16 +0200
+Started PUT "/rack_session" for 127.0.0.1 at 2020-07-06 12:34:16 +0200
+Started GET "/rack_session" for 127.0.0.1 at 2020-07-06 12:34:16 +0200
+Started GET "/settings" for 127.0.0.1 at 2020-07-06 12:34:16 +0200
+Processing by GamesController#settings as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  Rendering games/settings.haml within layouts/application
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username != 'vgdb_admin')[0m
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  Rendered games/settings.haml within layouts/application (21.6ms)
+Completed 200 OK in 29ms (Views: 21.6ms | ActiveRecord: 2.5ms)
+Started GET "/deletingUser" for 127.0.0.1 at 2020-07-06 12:34:16 +0200
+Processing by GamesController#deletingUser as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  Rendering games/deletingUser.haml within layouts/application
+  Rendered games/deletingUser.haml within layouts/application (13.4ms)
+Completed 200 OK in 19ms (Views: 15.8ms | ActiveRecord: 0.3ms)
+Started POST "/deletingUser?method=get" for 127.0.0.1 at 2020-07-06 12:34:16 +0200
+Processing by GamesController#deletingAdminUser as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"John Doe"}, "method"=>"get"}
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" IN (SELECT "users"."id" FROM "users" WHERE "users"."username" = $1) LIMIT $2[0m  [["username", "John Doe"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1[0m  [["username", "John Doe"]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."friend_id" = $1[0m  [["friend_id", 1]]
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."user1" = $1[0m  [["user1", "John Doe"]]
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."user" = $1[0m  [["user", "John Doe"]]
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+Redirected to http://www.example.com/deletingUser_success
+Completed 302 Found in 13ms (ActiveRecord: 4.0ms)
+Started GET "/deletingUser_success" for 127.0.0.1 at 2020-07-06 12:34:16 +0200
+Processing by GamesController#deletingUser_success as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  Rendering games/deletingUser_success.haml within layouts/application
+  Rendered games/deletingUser_success.haml within layouts/application (16.8ms)
+Completed 200 OK in 21ms (Views: 18.3ms | ActiveRecord: 0.2ms)
+Started GET "/settings" for 127.0.0.1 at 2020-07-06 12:34:16 +0200
+Processing by GamesController#settings as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  Rendering games/settings.haml within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username != 'vgdb_admin')[0m
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  Rendered games/settings.haml within layouts/application (2.4ms)
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "username", "password", "avatar") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 0], ["email", "admin@mail"], ["username", "vgdb_admin"], ["password", "rdc2020"], ["avatar", "Avatars/avatar_0"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "username", "password", "avatar") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["email", "example@mail.com"], ["username", "John Doe"], ["password", "secret"], ["avatar", "Avatars/avatar_0"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("id", "title", "serial") VALUES ($1, $2, $3) RETURNING "id"[0m  [["id", 1], ["title", "Rspec_game"], ["serial", 12345]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("user_id", "game_id") VALUES ($1, $2) RETURNING "id"[0m  [["user_id", 1], ["game_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/rack_session/edit" for 127.0.0.1 at 2020-07-06 12:34:16 +0200
+Started PUT "/rack_session" for 127.0.0.1 at 2020-07-06 12:34:16 +0200
+Started GET "/rack_session" for 127.0.0.1 at 2020-07-06 12:34:16 +0200
+Started GET "/settings" for 127.0.0.1 at 2020-07-06 12:34:16 +0200
+Processing by GamesController#settings as HTML
+  [1m[36mUser Load (17.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  Rendering games/settings.haml within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username != 'vgdb_admin')[0m
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered games/settings.haml within layouts/application (4.3ms)
+Completed 200 OK in 25ms (Views: 5.1ms | ActiveRecord: 18.0ms)
+Started GET "/deleteReviewsUser" for 127.0.0.1 at 2020-07-06 12:34:16 +0200
+Processing by GamesController#deleteReviewsUser as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  Rendering games/deleteReviewsUser.haml within layouts/application
+  Rendered games/deleteReviewsUser.haml within layouts/application (17.0ms)
+Completed 200 OK in 23ms (Views: 19.0ms | ActiveRecord: 0.2ms)
+Started POST "/deleteReviewsUser?method=post" for 127.0.0.1 at 2020-07-06 12:34:16 +0200
+Processing by GamesController#deletingReviewsUser as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"John Doe"}, "game"=>{"title"=>"Rspec_game"}, "method"=>"post"}
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "John Doe"], ["LIMIT", 1]]
+  [1m[36mGame Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "games" WHERE "games"."title" = $1 LIMIT $2[0m  [["title", "Rspec_game"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1[0m  [["username", "John Doe"]]
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."title" = $1[0m  [["title", "Rspec_game"]]
+  [1m[36mReview Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "reviews" WHERE "reviews"."user_id" = $1 AND "reviews"."game_id" = $2 LIMIT $3[0m  [["user_id", 1], ["game_id", 1], ["LIMIT", 1]]
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1 AND "reviews"."game_id" = $2[0m  [["user_id", 1], ["game_id", 1]]
+  [1m[36mReview Destroy (0.2ms)[0m  [1m[31mDELETE FROM "reviews" WHERE "reviews"."id" = $1[0m  [["id", 1]]
+Redirected to http://www.example.com/deleteReviewsUser_success
+Completed 302 Found in 7ms (ActiveRecord: 1.9ms)
+Started GET "/deleteReviewsUser_success" for 127.0.0.1 at 2020-07-06 12:34:16 +0200
+Processing by GamesController#deleteReviewsUser_success as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  Rendering games/deleteReviewsUser_success.haml within layouts/application
+  Rendered games/deleteReviewsUser_success.haml within layouts/application (16.1ms)
+Completed 200 OK in 22ms (Views: 18.6ms | ActiveRecord: 0.4ms)
+Started GET "/settings" for 127.0.0.1 at 2020-07-06 12:34:16 +0200
+Processing by GamesController#settings as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  Rendering games/settings.haml within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username != 'vgdb_admin')[0m
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  Rendered games/settings.haml within layouts/application (2.3ms)
+Completed 200 OK in 7ms (Views: 3.7ms | ActiveRecord: 1.1ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
