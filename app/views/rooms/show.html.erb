@@ -91,10 +91,6 @@
                 <span>Visit his profile</span>
             </a>
         <%end%>
-        <li class="nav-item">
-                <a class="nav-link digital-clock"> 00:00:00</a>
-        </li>
-
         <div class="chatBox" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
             <br>
             <%if (User.find(session[:user_id]).username==@room.user1)%>
@@ -149,18 +145,14 @@
         </div>
     </div>
     <script>
-$("#new_message").bind("ajax:complete", function(event, xhr, status) {
-        $('#message_content').val('');
-    })</script>
-<div class="d-none" data-role="message-template">
-    <div class="mb-3 mr-1">
-        <div class="comment">
+        $("#new_message").bind("ajax:complete", function(event, xhr, status) {
+            $('#message_content').val('');
+        })
+    </script>
+
+<div class="chatBox" data-role="message-template">
+        <div class="from-them">
             <p class="from-them-text" data-role="message-text"></p>
-            <div class="text-right">
-                <small class="from-them-date" data-role="message-date"></small>
-            </div>
+            <small class="from-them-date" data-role="message-date"></small>
         </div>
-    </div>
 </div>
-
-
