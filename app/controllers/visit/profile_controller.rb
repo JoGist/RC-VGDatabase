@@ -7,7 +7,7 @@ module Visit
             @user = User.find(id)
             @users = session[:user_id]
             @review = Review.where(:user_id => @user)
-            @library = Store.where(:user_id => @user)
+            @library = Store.where(:user_id => @user,:selling => 'true')
             @friends = Friend.where(:user_id => @user.id,:favorite => 'true')
             @friends1 = Friend.where(:user_id => @user.id,:favorite => 'false')
         end
