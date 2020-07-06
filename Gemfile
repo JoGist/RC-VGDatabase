@@ -69,6 +69,5 @@ gem 'jquery-rails'
 gem 'redis'
 gem 'devise'
 gem 'devise-token_authenticatable'
-gem 'simple_form'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

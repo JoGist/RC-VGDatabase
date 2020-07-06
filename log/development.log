@@ -26282,3 +26282,376 @@ Processing by SessionsController#login as HTML
 Completed 200 OK in 137ms (Views: 135.9ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for ::1 at 2020-07-06 18:01:04 +0200
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.haml within layouts/application
+Started GET "/" for ::1 at 2020-07-06 18:01:05 +0200
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.haml within layouts/application
+  Rendered sessions/login.haml within layouts/application (12599.0ms)
+  Rendered sessions/login.haml within layouts/application (11982.9ms)
+Completed 200 OK in 13497ms (Views: 13421.5ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 12866ms (Views: 12796.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/callback?utf8=%E2%9C%93&user%5Bname%5D=ok&user%5Bpassword%5D=[FILTERED]" for ::1 at 2020-07-06 18:01:23 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"ok", "password"=>"[FILTERED]"}}
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" IN (SELECT "users"."id" FROM "users" WHERE "users"."username" = $1) LIMIT $2[0m  [["username", "ok"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1[0m  [["username", "ok"]]
+Redirected to http://localhost:3000/homepage
+Completed 302 Found in 216ms (ActiveRecord: 6.0ms)
+
+
+Started GET "/homepage" for ::1 at 2020-07-06 18:01:24 +0200
+Processing by GamesController#homepage as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  Rendering games/homepage.haml within layouts/application
+  [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" ORDER BY games.title ASC[0m
+  [1m[36mStore Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 3], ["game_id", 6], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 3], ["game_id", 2], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 3], ["game_id", 7], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 3], ["game_id", 3], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 3], ["game_id", 4], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 3], ["game_id", 8], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 3], ["game_id", 1], ["LIMIT", 1]]
+  [1m[36mStore Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."game_id" = $2 LIMIT $3[0m  [["user_id", 3], ["game_id", 5], ["LIMIT", 1]]
+  Rendered games/homepage.haml within layouts/application (103.8ms)
+Completed 200 OK in 1611ms (Views: 1376.3ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/collection" for ::1 at 2020-07-06 18:01:27 +0200
+Processing by GamesController#collection as HTML
+  Parameters: {"authenticity_token"=>"vJ2tAHHsDaXx61xaXrNkKAi3PyZ8B+EVGWsGf3KEFyyxI6dzTWpMIzsJMP3gu50GrlnwO/PEjjEu4Q0Kp9nN0A=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/collection.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 3]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  Rendered games/collection.haml within layouts/application (73.9ms)
+Completed 200 OK in 1161ms (Views: 1089.9ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/editCollection" for ::1 at 2020-07-06 18:01:37 +0200
+Processing by GamesController#collectionEdit as HTML
+  Parameters: {"authenticity_token"=>"M5GLQhbXoT25k0GbRacq5+n5hP/MfhWYuSizXyzhppQ+L4ExKlHgu3NxLTz7r9PJTxdL4kO9eryOorgq+bx8aA=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/collectionEdit.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  Rendered games/collectionEdit.haml within layouts/application (142.6ms)
+Completed 200 OK in 1250ms (Views: 1167.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/editCollection" for ::1 at 2020-07-06 18:02:10 +0200
+Processing by GamesController#collectionEdit as HTML
+  Parameters: {"authenticity_token"=>"M5GLQhbXoT25k0GbRacq5+n5hP/MfhWYuSizXyzhppQ+L4ExKlHgu3NxLTz7r9PJTxdL4kO9eryOorgq+bx8aA=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/collectionEdit.haml within layouts/application
+  [1m[36mStore Load (0.4ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  Rendered games/collectionEdit.haml within layouts/application (158.8ms)
+Completed 200 OK in 1925ms (Views: 1742.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/collection" for ::1 at 2020-07-06 18:02:13 +0200
+Processing by GamesController#collection as HTML
+  Parameters: {"authenticity_token"=>"VKKNc0n9eKUKOStL5T87fZelzFZCFOFJsyKA0t2q/RhZHIcAdXs5I8DbR+xbN8JTMUsDS83Xjm2EqIunCPcn5A=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/collection.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 3]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  Rendered games/collection.haml within layouts/application (81.5ms)
+Completed 200 OK in 1205ms (Views: 1165.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/selling" for ::1 at 2020-07-06 18:02:16 +0200
+Processing by GamesController#selling as HTML
+  Parameters: {"authenticity_token"=>"Z0D1TFcw9hG7SeSF9um6AgHBIs7WE1voRYX1oTcf3hFq/v8/a7a3l3GriCJI4UMspy/t01nQNMxyD/7U4kIE7Q=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/selling.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."selling" = $1 AND "stores"."user_id" = $2[0m  [["selling", "true"], ["user_id", 3]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."selling" = $1[0m  [["selling", "true"]]
+  Rendered games/selling.haml within layouts/application (87.0ms)
+Completed 200 OK in 1253ms (Views: 1185.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/selling" for ::1 at 2020-07-06 18:02:32 +0200
+Processing by GamesController#selling as HTML
+  Parameters: {"authenticity_token"=>"Z0D1TFcw9hG7SeSF9um6AgHBIs7WE1voRYX1oTcf3hFq/v8/a7a3l3GriCJI4UMspy/t01nQNMxyD/7U4kIE7Q=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/selling.haml within layouts/application
+  [1m[36mStore Load (0.4ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."selling" = $1 AND "stores"."user_id" = $2[0m  [["selling", "true"], ["user_id", 3]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."selling" = $1[0m  [["selling", "true"]]
+  Rendered games/selling.haml within layouts/application (61.3ms)
+Completed 200 OK in 1051ms (Views: 973.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/editSelling" for ::1 at 2020-07-06 18:02:43 +0200
+Processing by GamesController#editSelling as HTML
+  Parameters: {"authenticity_token"=>"so3Ptz4TM+OYkRHUTO1xT5B/XJvZhyyUoXADkvh5qfu/M8XEApVyZVJzfXPy5YhhNpGThlZEQ7CW+gjnLSRzBw=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/editSelling.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."selling" = $1[0m  [["selling", "true"]]
+  Rendered games/editSelling.haml within layouts/application (79.9ms)
+Completed 200 OK in 1038ms (Views: 959.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/selling" for ::1 at 2020-07-06 18:02:45 +0200
+Processing by GamesController#selling as HTML
+  Parameters: {"authenticity_token"=>"KhP3bgwi9k494+hke1rA2oHY3Rd9LdAoZu8x+b8rEgYnrf0dMKS3yPcBhMPFUjn0JzYSCvLuvwxRZTqManbI+g=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/selling.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."selling" = $1 AND "stores"."user_id" = $2[0m  [["selling", "true"], ["user_id", 3]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."selling" = $1[0m  [["selling", "true"]]
+  Rendered games/selling.haml within layouts/application (63.9ms)
+Completed 200 OK in 1056ms (Views: 978.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/friends" for ::1 at 2020-07-06 18:02:50 +0200
+Processing by GamesController#friends as HTML
+  Parameters: {"authenticity_token"=>"6cd3ixne5b08quTQ8NAfWTflpa/eoLMnccS+h1w0KLvkeX34JVikO/ZIiHdO2OZ3kQtqslFj3ANGTrXyiWnyRw=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/friends.haml within layouts/application
+  [1m[36mFriend Load (0.4ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2 AND "friends"."user_id" = $3[0m  [["user_id", 3], ["favorite", "true"], ["user_id", 3]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2 AND "friends"."user_id" = $3[0m  [["user_id", 3], ["favorite", "false"], ["user_id", 3]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 3], ["favorite", "true"]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 3], ["favorite", "false"]]
+  Rendered games/friends.haml within layouts/application (69.2ms)
+Completed 200 OK in 1055ms (Views: 939.6ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/friends" for ::1 at 2020-07-06 18:03:07 +0200
+Processing by GamesController#friends as HTML
+  Parameters: {"authenticity_token"=>"6cd3ixne5b08quTQ8NAfWTflpa/eoLMnccS+h1w0KLvkeX34JVikO/ZIiHdO2OZ3kQtqslFj3ANGTrXyiWnyRw=="}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/friends.haml within layouts/application
+  [1m[36mFriend Load (0.3ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2 AND "friends"."user_id" = $3[0m  [["user_id", 3], ["favorite", "true"], ["user_id", 3]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2 AND "friends"."user_id" = $3[0m  [["user_id", 3], ["favorite", "false"], ["user_id", 3]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 3], ["favorite", "true"]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 3], ["favorite", "false"]]
+  Rendered games/friends.haml within layouts/application (73.6ms)
+Completed 200 OK in 1211ms (Views: 1138.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/collection" for ::1 at 2020-07-06 18:03:58 +0200
+Processing by GamesController#collection as HTML
+  Parameters: {"authenticity_token"=>"zpGILVp8JzEqRJRI5n8iFy3Ca0G5KzC3LWel5Sv3RgPDL4JeZvpmt+Cm+O9Yd9s5iyykXDboX5Ma7a6Q/qqc/w=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/collection.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 3]]
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  Rendered games/collection.haml within layouts/application (73.4ms)
+Completed 200 OK in 1182ms (Views: 1118.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/editCollection" for ::1 at 2020-07-06 18:04:00 +0200
+Processing by GamesController#collectionEdit as HTML
+  Parameters: {"authenticity_token"=>"7IuwDCRvdKvOOl9a9Gt7RRm6OYzAilvYDoYkEQPQlBLhNbp/GOk1LQTYM/1KY4Jrv1T2kU9JNPw5DC9k1o1O7g=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/collectionEdit.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  Rendered games/collectionEdit.haml within layouts/application (70.9ms)
+Completed 200 OK in 1160ms (Views: 1099.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/editCollection" for ::1 at 2020-07-06 18:04:06 +0200
+Processing by GamesController#collectionEdit as HTML
+  Parameters: {"authenticity_token"=>"7IuwDCRvdKvOOl9a9Gt7RRm6OYzAilvYDoYkEQPQlBLhNbp/GOk1LQTYM/1KY4Jrv1T2kU9JNPw5DC9k1o1O7g=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/collectionEdit.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  Rendered games/collectionEdit.haml within layouts/application (70.3ms)
+Completed 200 OK in 1151ms (Views: 1089.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/editCollection" for ::1 at 2020-07-06 18:04:21 +0200
+Processing by GamesController#collectionEdit as HTML
+  Parameters: {"authenticity_token"=>"7IuwDCRvdKvOOl9a9Gt7RRm6OYzAilvYDoYkEQPQlBLhNbp/GOk1LQTYM/1KY4Jrv1T2kU9JNPw5DC9k1o1O7g=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/collectionEdit.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  Rendered games/collectionEdit.haml within layouts/application (71.3ms)
+Completed 200 OK in 1149ms (Views: 1084.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/collection" for ::1 at 2020-07-06 18:04:24 +0200
+Processing by GamesController#collection as HTML
+  Parameters: {"authenticity_token"=>"/CXDViWT+Z76eEhiLTgL2NDVT3xz6vWsKN5cKuD4n7fxm8klGRW4GDCaJMWTMPL2djuAYfwpmogfVFdfNaVFSw=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/collection.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 3]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  Rendered games/collection.haml within layouts/application (77.0ms)
+Completed 200 OK in 1218ms (Views: 1149.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/selling" for ::1 at 2020-07-06 18:04:31 +0200
+Processing by GamesController#selling as HTML
+  Parameters: {"authenticity_token"=>"PZb0XT64vMALi6BVCU0dn234LBq8WwZ6v4y0hC4U5HkwKP4uAj79RsFpzPK3ReSxyxbjBzOYaV6IBr/x+0k+hQ=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/selling.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."selling" = $1 AND "stores"."user_id" = $2[0m  [["selling", "true"], ["user_id", 3]]
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."selling" = $1[0m  [["selling", "true"]]
+  Rendered games/selling.haml within layouts/application (70.0ms)
+Completed 200 OK in 1162ms (Views: 1094.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/collection" for ::1 at 2020-07-06 18:04:33 +0200
+Processing by GamesController#collection as HTML
+  Parameters: {"authenticity_token"=>"8uxjA69v0GHDVcWRLTqI6q6ub/izm17Q0vlLaZ28tH3/Umlwk+mR5wm3qTaTMnHECECg5TxYMfTlc0AcSOFugQ=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/collection.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 3]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  Rendered games/collection.haml within layouts/application (70.3ms)
+Completed 200 OK in 1202ms (Views: 1132.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/editCollection" for ::1 at 2020-07-06 18:04:35 +0200
+Processing by GamesController#collectionEdit as HTML
+  Parameters: {"authenticity_token"=>"QxupklnQ8cofn2A75ffZLgwITDuahW3IprzdWh3phvZOpaPhZVawTNV9DJxb/yAAquaDJhVGAuyRNtYvyLRcCg=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/collectionEdit.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  Rendered games/collectionEdit.haml within layouts/application (78.4ms)
+Completed 200 OK in 1223ms (Views: 1154.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/editCollection" for ::1 at 2020-07-06 18:04:45 +0200
+Processing by GamesController#collectionEdit as HTML
+  Parameters: {"authenticity_token"=>"QxupklnQ8cofn2A75ffZLgwITDuahW3IprzdWh3phvZOpaPhZVawTNV9DJxb/yAAquaDJhVGAuyRNtYvyLRcCg=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/collectionEdit.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  Rendered games/collectionEdit.haml within layouts/application (68.4ms)
+Completed 200 OK in 1153ms (Views: 1088.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/editCollection" for ::1 at 2020-07-06 18:05:23 +0200
+Processing by GamesController#collectionEdit as HTML
+  Parameters: {"authenticity_token"=>"QxupklnQ8cofn2A75ffZLgwITDuahW3IprzdWh3phvZOpaPhZVawTNV9DJxb/yAAquaDJhVGAuyRNtYvyLRcCg=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/collectionEdit.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  Rendered games/collectionEdit.haml within layouts/application (65.3ms)
+Completed 200 OK in 1140ms (Views: 1058.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/editCollection" for ::1 at 2020-07-06 18:05:37 +0200
+Processing by GamesController#collectionEdit as HTML
+  Parameters: {"authenticity_token"=>"QxupklnQ8cofn2A75ffZLgwITDuahW3IprzdWh3phvZOpaPhZVawTNV9DJxb/yAAquaDJhVGAuyRNtYvyLRcCg=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/collectionEdit.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  Rendered games/collectionEdit.haml within layouts/application (66.1ms)
+Completed 200 OK in 1060ms (Views: 987.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/editCollection" for ::1 at 2020-07-06 18:06:01 +0200
+Processing by GamesController#collectionEdit as HTML
+  Parameters: {"authenticity_token"=>"QxupklnQ8cofn2A75ffZLgwITDuahW3IprzdWh3phvZOpaPhZVawTNV9DJxb/yAAquaDJhVGAuyRNtYvyLRcCg=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/collectionEdit.haml within layouts/application
+  [1m[36mStore Load (0.4ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  Rendered games/collectionEdit.haml within layouts/application (69.7ms)
+Completed 200 OK in 1321ms (Views: 1260.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/editCollection" for ::1 at 2020-07-06 18:06:11 +0200
+Processing by GamesController#collectionEdit as HTML
+  Parameters: {"authenticity_token"=>"QxupklnQ8cofn2A75ffZLgwITDuahW3IprzdWh3phvZOpaPhZVawTNV9DJxb/yAAquaDJhVGAuyRNtYvyLRcCg=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/collectionEdit.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  Rendered games/collectionEdit.haml within layouts/application (71.9ms)
+Completed 200 OK in 1304ms (Views: 1244.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/editCollection" for ::1 at 2020-07-06 18:06:28 +0200
+Processing by GamesController#collectionEdit as HTML
+  Parameters: {"authenticity_token"=>"QxupklnQ8cofn2A75ffZLgwITDuahW3IprzdWh3phvZOpaPhZVawTNV9DJxb/yAAquaDJhVGAuyRNtYvyLRcCg=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/collectionEdit.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  Rendered games/collectionEdit.haml within layouts/application (74.0ms)
+Completed 200 OK in 1296ms (Views: 1236.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/collection" for ::1 at 2020-07-06 18:07:14 +0200
+Processing by GamesController#collection as HTML
+  Parameters: {"authenticity_token"=>"JMNe3vLX3rb4+6yk5MN1T93NoI3QvPU26xAktPokVIApfVStzlGfMDIZwANay4xheyNvkF9/mhLcmi/BL3mOfA=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/collection.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1[0m  [["user_id", 3]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores"[0m
+  Rendered games/collection.haml within layouts/application (74.5ms)
+Completed 200 OK in 1516ms (Views: 1433.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/searchGame" for ::1 at 2020-07-06 18:07:18 +0200
+Processing by GamesController#searchGame as HTML
+  Parameters: {"authenticity_token"=>"7bDOl3/yMy1eOKmgdIJBEFRnLrlIpkmyMTiZsxzLKn/gDsTkQ3Ryq5TaxQfKirg+8onhpMdlJpYGspLGyZbwgw=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/searchGame.haml within layouts/application
+Started GET "/selling" for ::1 at 2020-07-06 18:07:18 +0200
+Processing by GamesController#selling as HTML
+  Parameters: {"authenticity_token"=>"7bDOl3/yMy1eOKmgdIJBEFRnLrlIpkmyMTiZsxzLKn/gDsTkQ3Ryq5TaxQfKirg+8onhpMdlJpYGspLGyZbwgw=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/selling.haml within layouts/application
+  Rendered games/searchGame.haml within layouts/application (266.6ms)
+  [1m[36mStore Load (0.4ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."selling" = $1 AND "stores"."user_id" = $2[0m  [["selling", "true"], ["user_id", 3]]
+  [1m[36mStore Load (0.2ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."selling" = $1[0m  [["selling", "true"]]
+  Rendered games/selling.haml within layouts/application (75.8ms)
+Completed 200 OK in 1130ms (Views: 1064.3ms | ActiveRecord: 0.3ms)
+
+
+Completed 200 OK in 939ms (Views: 878.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/searchGame" for ::1 at 2020-07-06 18:07:20 +0200
+Processing by GamesController#searchGame as HTML
+  Parameters: {"authenticity_token"=>"IHK19YEgIPtQOoWwuDMz2zjRSI3hGeSSzDGLePiJSHgtzL+GvaZhfZrY6RcGO8r1nj+HkG7ai7b7u4ANLdSShA=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/searchGame.haml within layouts/application
+  Rendered games/searchGame.haml within layouts/application (71.6ms)
+Completed 200 OK in 1146ms (Views: 1086.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/friends" for ::1 at 2020-07-06 18:07:22 +0200
+Processing by GamesController#friends as HTML
+  Parameters: {"authenticity_token"=>"94Ayu6qeWM8bp2FLNZ7oarNOdXuY6EaxyJL89J4pkZT6PjjIlhgZSdFFDeyLlhFEFaC6ZhcrKZX/GPeBS3RLaA=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/friends.haml within layouts/application
+  [1m[36mFriend Load (0.4ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2 AND "friends"."user_id" = $3[0m  [["user_id", 3], ["favorite", "true"], ["user_id", 3]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2 AND "friends"."user_id" = $3[0m  [["user_id", 3], ["favorite", "false"], ["user_id", 3]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 3], ["favorite", "true"]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 3], ["favorite", "false"]]
+  Rendered games/friends.haml within layouts/application (75.2ms)
+Completed 200 OK in 1147ms (Views: 1086.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/myProfile" for ::1 at 2020-07-06 18:07:24 +0200
+Processing by GamesController#myProfile as HTML
+  Parameters: {"authenticity_token"=>"x8pW56fx6LWrYmXvUwBjWRQvMIvY/iwEYJuTheoFNH3KdFyUm3epM2GACUjtCJp3ssH/llc9QyBXEZjwP1jugQ=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering games/myProfile.haml within layouts/application
+  [1m[36mStore Load (0.3ms)[0m  [1m[34mSELECT "stores".* FROM "stores" WHERE "stores"."user_id" = $1 AND "stores"."selling" = $2[0m  [["user_id", 3], ["selling", "true"]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 3], ["favorite", "true"]]
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = $1 AND "friends"."favorite" = $2[0m  [["user_id", 3], ["favorite", "false"]]
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."user1" = $1[0m  [["user1", "ok"]]
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."user" = $1[0m  [["user", "ok"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1[0m  [["username", "Giovanni Roma"]]
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."user1" = $1 AND "rooms"."user" = $2[0m  [["user1", "Giovanni Roma"], ["user", "ok"]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1[0m  [["username", "Giovanni Roma"]]
+  [1m[36mRoomMessage Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "room_messages" WHERE "room_messages"."room_id" = $1 LIMIT $2[0m  [["room_id", 1], ["LIMIT", 1]]
+  [1m[36mRoomMessage Load (0.3ms)[0m  [1m[34mSELECT  "room_messages".* FROM "room_messages" WHERE "room_messages"."room_id" = $1 ORDER BY "room_messages"."id" DESC LIMIT $2[0m  [["room_id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1[0m  [["username", "ok"]]
+  [1m[36mCACHE RoomMessage Load (0.0ms)[0m  [1m[34mSELECT  "room_messages".* FROM "room_messages" WHERE "room_messages"."room_id" = $1 ORDER BY "room_messages"."id" DESC LIMIT $2[0m  [["room_id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE RoomMessage Load (0.0ms)[0m  [1m[34mSELECT  "room_messages".* FROM "room_messages" WHERE "room_messages"."room_id" = $1 ORDER BY "room_messages"."id" DESC LIMIT $2[0m  [["room_id", 1], ["LIMIT", 1]]
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered games/myProfile.haml within layouts/application (176.9ms)
+Completed 200 OK in 1324ms (Views: 1174.4ms | ActiveRecord: 11.5ms)
+
+
