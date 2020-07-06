@@ -77,25 +77,24 @@
                   %a{:href => "https://steamcommunity.com/id/"+@user.steam_username, :target => "_blank"}
                     %span.mdi.mdi-steam
                     %span #{@user.steam_username} 
-                    %br
-                    %br
                 -if @user.social1!=''
+                  %br
+                  %br
                   %a{:href => @user.social1, :target => "_blank"}  
                     %span.mdi.mdi-youtube
                     %span Youtube channel
-                    %br
-                    %br
                 -if @user.social2!=''
+                  %br
+                  %br
                   %a{:href => @user.social2, :target => "_blank"}  
                     %span.mdi.mdi-twitch
                     %span Twitch channel
-                    %br
-                    %br
                 -if @user.social3!=''
+                  %br
+                  %br
                   %a{:href => @user.social3, :target => "_blank"}  
                     %span.mdi.mdi-facebook
                     %span Facebook profile
-                %br   
             - if (Friend.exists?(:user_id => @users, :friend_id => @user.id))
               .grid-item-details
                 %p.profile-hyper-links
@@ -231,7 +230,7 @@
               %span #{@user.username}
             .grid-item-details
               %h5.sub-header-details Selling games:
-              %span #{Store.where(:user_id => @user.id).length}
+              %span #{Store.where(:user_id => @user.id, :selling => 'true').length}
             -if @user.social1!='' || @user.social2!='' || @user.social3!='' || @user.steam_username!=nil
               .grid-item-details
                 %h5.sub-header-details Social account
@@ -239,25 +238,24 @@
                   %a{:href => "https://steamcommunity.com/id/"+@user.steam_username, :target => "_blank"}
                     %span.mdi.mdi-steam
                     %span #{@user.steam_username} 
-                    %br
-                    %br
                 -if @user.social1!=''
+                  %br
+                  %br
                   %a{:href => @user.social1, :target => "_blank"}  
                     %span.mdi.mdi-youtube
                     %span Youtube channel
-                    %br
-                    %br
                 -if @user.social2!=''
+                  %br
+                  %br
                   %a{:href => @user.social2, :target => "_blank"}  
                     %span.mdi.mdi-twitch
                     %span Twitch channel
-                    %br
-                    %br
                 -if @user.social3!=''
+                  %br
+                  %br
                   %a{:href => @user.social3, :target => "_blank"}  
                     %span.mdi.mdi-facebook
                     %span Facebook profile
-                %br   
           .account-grid-item-3
             .grid-item-details
               %span Friends
