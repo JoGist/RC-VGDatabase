@@ -115,7 +115,7 @@ form_tag {
   margin-top: -550px;
   margin-bottom: 20px;
   list-style-type: none;
-  padding-right: 60px;
+  padding-right: 50px;
   width: 50%;
 }
 .right4 {
@@ -1643,7 +1643,7 @@ a .profile-hyper-links:hover a{
   font-weight: 700;
 }
 
-@media (max-width: 2000px) {
+@media (max-width: 3000px) {
   .right3 {
     float: left;
     margin-top: 0;
