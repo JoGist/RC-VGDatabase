@@ -8,9 +8,11 @@ class SteamsController < ApplicationController
         if !User.exists?(:steam_token => auth.uid)
           User.create(:username => auth.info['nickname'],:steam_username => auth.info.values[4].values[0].split('id/')[1].split('/')[0],:avatar => auth.extra.raw_info['avatarfull'],:steam_token => auth.uid,:background => 'deafult.png', :social1 => '', :social2 => '', :social3 => '')
           session[:user_id] = User.where(:steam_token => auth.uid)[0].id
+          cookies.encrypted[:user_id]=User.where(:steam_token => auth.uid)[0].id
           redirect_to editProfileOauth_path
         else
           session[:user_id] = User.where(:steam_token => auth.uid)[0].id
+          cookies.encrypted[:user_id]=User.where(:steam_token => auth.uid)[0].id
           redirect_to homepage_path  
         end
       else

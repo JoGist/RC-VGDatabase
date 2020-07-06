@@ -148,13 +148,16 @@
             </div>
         </div>
     </div>
-
+    <script>
+$("#new_message").bind("ajax:complete", function(event, xhr, status) {
+        $('#message_content').val('');
+    })</script>
 <div class="d-none" data-role="message-template">
     <div class="mb-3 mr-1">
         <div class="comment">
-            <p class="mb-1" data-role="message-text"></p>
+            <p class="from-them-text" data-role="message-text"></p>
             <div class="text-right">
-                <small class="text-muted" data-role="message-date"></small>
+                <small class="from-them-date" data-role="message-date"></small>
             </div>
         </div>
     </div>

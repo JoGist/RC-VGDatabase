@@ -1,3 +1,4 @@
+var lastmessage = '';
 $(function() {
   $('[data-channel-subscribe="room"]').each(function(index, element) {
     var $element = $(element),
@@ -13,11 +14,13 @@ $(function() {
       },
       {
         received: function(data) {
-          var content = messageTemplate.children().clone(true, true);
-          content.find('[data-role="message-text"]').text(data.message);
-          content.find('[data-role="message-date"]').text(data.updated_at);
-          $element.append(content);
-          $element.animate({ scrollTop: $element.prop("scrollHeight")}, 1000);
+          if (data!=lastmessage){
+            var content = messageTemplate.children().clone(true, true);
+            content.find('[data-role="message-text"]').text(data.message);
+            content.find('[data-role="message-date"]').text(data.updated_at);
+            $element.append(content);
+            $element.animate({ scrollTop: $element.prop("scrollHeight")}, 1000);
+            lastmessage=data;}
         }
       }
     );

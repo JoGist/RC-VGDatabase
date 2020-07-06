@@ -35,6 +35,7 @@ def create
             redirect_to settings_path
         elsif @users.username == name && @users.password == password
             session[:user_id]=@users.id
+            cookies.encrypted[:user_id]=@users.id
             redirect_to homepage_path
         else
             redirect_to login_error_path

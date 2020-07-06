@@ -9,9 +9,11 @@ class GooglesController < ApplicationController
             if !User.exists?(:google_token => auth.uid)
                 User.create(:username => info.name ,:google_username => info.name , :avatar => info.image, :google_token => auth.uid, :email => info.email,:background => 'deafult.png', :social1 => '', :social2 => '', :social3 => '')
                 session[:user_id] = User.where(:google_token => auth.uid)[0].id
+                cookies.encrypted[:user_id]=User.where(:google_token => auth.uid)[0].id
                 redirect_to editProfileOauth_path
             else
                 session[:user_id] = User.where(:google_token => auth.uid)[0].id
+                cookies.encrypted[:user_id]=User.where(:google_token => auth.uid)[0].id
                 redirect_to homepage_path  
             end
         else
