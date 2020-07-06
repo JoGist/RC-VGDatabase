@@ -144,7 +144,12 @@ This project also includes four test cases to test the main functions of the sit
 3. Delete an user by admin
 4. Delete a review by admin
 
-* To launch them, run:
+* To launch them all at once, run:
+  ```sh
+  bundle exec rspec ./spec/*_spec.rb
+  ```
+  
+  * To launch them individually, run:
   ```sh
   bundle exec rspec ./spec/1_addUser_spec.rb
   bundle exec rspec ./spec/2_addFriend_spec.rb
