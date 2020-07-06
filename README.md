@@ -3,6 +3,7 @@
 
 The site consists of a video game collection / sale platform. For each game you can view different information such as genre, developer, release date, score and reviews written by other users registered on the site, and an additional external link for purchase. Each game can be added to its collection, and possibly sell it, specifying its condition and price. The platform also offers a search function for games by title or genre, and a search for users. Finally, there is a chat function between users, to get in touch. The site is updated periodically, always showing the most popular games on the homepage at the moment. Each registered user therefore owns his own collection of owned games, games for sale and a list of friends (and a sub-list of favorite friends). Enjoy!
 
+**The site is now live, [check it out](https://vgdatabase-rc.herokuapp.com/)!**
 
 ## Authors
 
@@ -120,7 +121,7 @@ After the first setup, execute these commmands to start the server and deploy th
   
   
 ## REST API
-This Rails server also provides some REST API method, the documentation can be found here. For some methods, an API KEY is needed in order to increase security and prevent. For this project, the API KEY is a proof-of-concept, in the future it will be fully implemented with a request form and a key generation method. Any method listed here is fully functional and implemented, and in the future we'll plan to add every other API method, in order to be able to create other client or apps that can work and can be integrated with the site. The default key is 2345678.
+This Rails server also provides some REST API method, the documentation can be found here. For some methods, an API KEY is needed in order to increase security and prevent. For this project, the API KEY is a proof-of-concept, in the future it will be fully implemented with a request form and a key generation method. Any method listed here is fully functional and implemented, and in the future we'll plan to add every other API method, in order to be able to create other client or apps that can work and can be integrated with the site. The default key is '123456789'.
 
 *   Search game by title
 *   Search user by user_id, user_email, user_username
