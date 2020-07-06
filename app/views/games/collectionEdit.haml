@@ -45,9 +45,8 @@
     %br/
     %h1 Editing my library
     %div.page-content
-
       %a.editText{:href => collection_path, "data-method" => "get"}
-        %span Save changes
+        %span Save
         %i.mdi.mdi-content-save
       - @mylibrary.each do |game|
         - if (game.user_id == @user.id) 

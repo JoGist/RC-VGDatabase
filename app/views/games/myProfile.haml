@@ -76,25 +76,24 @@
                   %a{:href => "https://steamcommunity.com/id/"+@user.steam_username, :target => "_blank"}
                     %span.mdi.mdi-steam
                     %span #{@user.steam_username} 
-                    %br
-                    %br
                 -if @user.social1!=''
+                  %br
+                  %br
                   %a{:href => @user.social1, :target => "_blank"}  
                     %span.mdi.mdi-youtube
                     %span Youtube channel
-                    %br
-                    %br
                 -if @user.social2!=''
+                  %br
+                  %br
                   %a{:href => @user.social2, :target => "_blank"}  
                     %span.mdi.mdi-twitch
                     %span Twitch channel
-                    %br
-                    %br
                 -if @user.social3!=''
+                  %br
+                  %br
                   %a{:href => @user.social3, :target => "_blank"}  
                     %span.mdi.mdi-facebook
                     %span Facebook profile
-                %br   
           .account-grid-item-3-alt
             .grid-item-details
               %span Friends
