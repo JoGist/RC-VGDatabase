@@ -1,0 +1,589 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "VGDatabase REST API set",
+    "version" : "1.0.4",
+    "title" : "VGDatabase",
+    "contact" : {
+      "name" : "VGDatabase",
+      "url" : "https://github.com/JoGist/RC-VGDatabase"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host" : "vgdatabase-rc.herokuapp.com",
+  "tags" : [ {
+    "name" : "developers",
+    "description" : "Operations available only to developers, an API key is needed"
+  } ],
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/api_games" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "searches games by title",
+        "description" : "By passing in a valid title, you can search for existing games in our database.\n",
+        "operationId" : "searchGamesByID",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "key",
+          "in" : "query",
+          "description" : "developer key",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "title",
+          "in" : "query",
+          "description" : "title of games to search",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Search results matching criteria",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Game"
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized key"
+          }
+        }
+      }
+    },
+    "/api_userInfo" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "get user info by id, username or email",
+        "description" : "By passing in an id, a username or an email, you can get user info for registered users in our db\n",
+        "operationId" : "getUserInfo",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "key",
+          "in" : "query",
+          "description" : "developer key",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "id",
+          "in" : "query",
+          "description" : "id of the user to find",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "username",
+          "in" : "query",
+          "description" : "username of the user to find",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "email",
+          "in" : "query",
+          "description" : "email of the user to find",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Search results matching criteria",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/User"
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized key"
+          },
+          "404" : {
+            "description" : "user not found"
+          }
+        }
+      }
+    },
+    "/api_review" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "get all reviews of an user or game by user_id or game_id",
+        "description" : "By passing in an user_id or game_id, you can get all the reviews of a game or an user\n",
+        "operationId" : "getReviewByIDs",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "key",
+          "in" : "query",
+          "description" : "developer key",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "game_id",
+          "in" : "query",
+          "description" : "id of the game to find",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "user_id",
+          "in" : "query",
+          "description" : "id of the user to find",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Search results matching criteria",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Review"
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized key"
+          },
+          "404" : {
+            "description" : "user not found"
+          }
+        }
+      }
+    },
+    "/api_friends" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "get an user friendlist by user_id",
+        "description" : "By passing in an user_id you can get the friendlist of an user\n",
+        "operationId" : "getFriendsByID",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "key",
+          "in" : "query",
+          "description" : "developer key",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "user_id",
+          "in" : "query",
+          "description" : "id of the user to find",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Search results matching criteria",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Friend"
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized key"
+          }
+        }
+      }
+    },
+    "/api_collection" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "get an user games collection by user_id",
+        "description" : "By passing in an user_id you can get the games collection of an user\n",
+        "operationId" : "getCollectionByID",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "key",
+          "in" : "query",
+          "description" : "developer key",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "user_id",
+          "in" : "query",
+          "description" : "id of the user to find",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Search results matching criteria",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Collection"
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized key"
+          }
+        }
+      }
+    },
+    "/api_createUser" : {
+      "post" : {
+        "tags" : [ "developers" ],
+        "summary" : "create a new user",
+        "description" : "By passing in a valid username, an email and a password, you can create a new user for the website\n",
+        "operationId" : "createNewUser",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "key",
+          "in" : "query",
+          "description" : "developer key",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "username",
+          "in" : "query",
+          "description" : "username of the user to create",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "email",
+          "in" : "query",
+          "description" : "email of the user to create",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "password",
+          "in" : "query",
+          "description" : "password of the user to create",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "User created",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/UserDetails"
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized key"
+          },
+          "409" : {
+            "description" : "User already exists"
+          }
+        }
+      }
+    },
+    "/api_deleteUser" : {
+      "delete" : {
+        "tags" : [ "developers" ],
+        "summary" : "delete an existing user",
+        "description" : "By passing in a valid username, you can delete an existing user from the db\n",
+        "operationId" : "deleteUser",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "key",
+          "in" : "query",
+          "description" : "developer key",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "username",
+          "in" : "query",
+          "description" : "username of the user to create",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "User deleted"
+          },
+          "401" : {
+            "description" : "Unauthorized key"
+          },
+          "404" : {
+            "description" : "User not found"
+          }
+        }
+      }
+    },
+    "/api_editUser" : {
+      "put" : {
+        "tags" : [ "developers" ],
+        "summary" : "edit user info",
+        "description" : "By passing in the current username and password, you can edit the username of an existing user\n",
+        "operationId" : "editUserInfo",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "key",
+          "in" : "query",
+          "description" : "developer key",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "usernameold",
+          "in" : "query",
+          "description" : "current username of the user to edit",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "usernamenew",
+          "in" : "query",
+          "description" : "new username of the user to edit",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "password",
+          "in" : "query",
+          "description" : "password of the user to edit",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "User details updated",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/UserDetails"
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized key"
+          },
+          "404" : {
+            "description" : "User not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Game" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "example" : 2
+        },
+        "title" : {
+          "type" : "string",
+          "example" : "Monster Hunter: World - Iceborne"
+        },
+        "serial" : {
+          "type" : "integer",
+          "example" : 113344
+        },
+        "developer" : {
+          "type" : "string",
+          "example" : "Capcom"
+        },
+        "platform" : {
+          "type" : "string",
+          "example" : "PC (Microsoft Windows)"
+        },
+        "score" : {
+          "type" : "integer",
+          "example" : "3.8"
+        },
+        "release_date" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2019-09-06T00:00:00.000Z"
+        },
+        "cover" : {
+          "type" : "string",
+          "example" : "//images.igdb.com/igdb/image/upload/t_cover_big/co1pds.jpg"
+        },
+        "genre" : {
+          "type" : "string",
+          "example" : "Adventure"
+        }
+      }
+    },
+    "User" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "example" : 6
+        },
+        "email" : {
+          "type" : "string",
+          "example" : "roma.1808340@studenti.uniroma1.it"
+        },
+        "username" : {
+          "type" : "string",
+          "example" : "Nidran"
+        },
+        "avatar" : {
+          "type" : "string",
+          "example" : "https://lh3.googleusercontent.com/a-/AOh14GizWI--2HWYvZx2HikzfCrBIA6ttQo3_YF2OoNm"
+        },
+        "background" : {
+          "type" : "string",
+          "example" : "deafult.png"
+        },
+        "social1" : {
+          "type" : "string",
+          "example" : "https://www.youtube.com/channel/UCKIIComahaQJwdkI11I7I1w"
+        },
+        "social2" : {
+          "type" : "string",
+          "example" : "https://www.twitch.tv/nidran_x"
+        },
+        "social3" : {
+          "type" : "string",
+          "example" : "https://www.facebook.com/jewvanny"
+        },
+        "google_token" : {
+          "type" : "string",
+          "example" : "109264044758746447077.0"
+        },
+        "steam_token" : {
+          "type" : "string",
+          "example" : "26839478765"
+        }
+      }
+    },
+    "UserDetails" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "example" : 6
+        },
+        "email" : {
+          "type" : "string",
+          "example" : "testemail@gmail.com"
+        },
+        "username" : {
+          "type" : "string",
+          "example" : "testuser"
+        },
+        "password" : {
+          "type" : "string",
+          "example" : "testpassword"
+        },
+        "avatar" : {
+          "type" : "string",
+          "example" : "Avatars/avatar_0"
+        },
+        "background" : {
+          "type" : "string",
+          "example" : "deafult.png"
+        },
+        "location" : {
+          "type" : "string"
+        },
+        "social1" : {
+          "type" : "string",
+          "example" : ""
+        },
+        "social2" : {
+          "type" : "string",
+          "example" : ""
+        },
+        "social3" : {
+          "type" : "string",
+          "example" : ""
+        },
+        "latitude" : {
+          "type" : "integer"
+        },
+        "longitude" : {
+          "type" : "integer"
+        },
+        "google_token" : {
+          "type" : "string"
+        },
+        "google_username" : {
+          "type" : "string"
+        },
+        "steam_username" : {
+          "type" : "string"
+        },
+        "steam_token" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Review" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "example" : 1
+        },
+        "user_id" : {
+          "type" : "integer",
+          "example" : 6
+        },
+        "game_id" : {
+          "type" : "integer",
+          "example" : 2
+        },
+        "score" : {
+          "type" : "integer",
+          "example" : 4
+        },
+        "comments" : {
+          "type" : "string",
+          "example" : "Great game, everyone should play it!"
+        }
+      }
+    },
+    "Friend" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "example" : 4
+        },
+        "user_id" : {
+          "type" : "integer",
+          "example" : 13
+        },
+        "friend_id" : {
+          "type" : "integer",
+          "example" : 1
+        },
+        "favorite" : {
+          "type" : "string",
+          "example" : "false"
+        }
+      }
+    },
+    "Collection" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "example" : 2
+        },
+        "game_id" : {
+          "type" : "integer",
+          "example" : 8
+        },
+        "user_id" : {
+          "type" : "integer",
+          "example" : 6
+        },
+        "selling" : {
+          "type" : "string",
+          "example" : "true"
+        },
+        "condition" : {
+          "type" : "string",
+          "example" : "Used"
+        },
+        "price" : {
+          "type" : "integer",
+          "example" : 25
+        }
+      }
+    }
+  }
+}
