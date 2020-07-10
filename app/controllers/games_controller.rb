@@ -92,8 +92,20 @@ skip_before_action :verify_authenticity_token
         @review = Review.where(:user_id => @user)
         @friends = Friend.where(:user_id => @user.id,:favorite => 'true')
         @friends1 = Friend.where(:user_id => @user.id,:favorite => 'false')
-        @room = Room.where(:user1 => @user.username)
-        @room1 = Room.where(:user => @user.username)
+        @roomv1 = Room.where(:user1 => @user.username)
+        @roomv2 = []
+        @roomv1.each do |room|
+            if RoomMessage.exists?(:room_id => room.id)
+                @roomv2.push(room)
+            end
+        end
+        @room1v1 = Room.where(:user => @user.username)
+        @room1v2 = []
+        @room1v1.each do |room|
+            if RoomMessage.exists?(:room_id => room.id)
+                @room1v2.push(room)
+            end
+        end
     end
 
     def editProfile
@@ -218,6 +230,8 @@ skip_before_action :verify_authenticity_token
         @review = Review.where(:user_id => @user)
         @friends = Friend.where(:user_id => @user.id)
     end
+
+
 
     def show
         id = params[:id]

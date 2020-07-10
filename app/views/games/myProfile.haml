@@ -115,11 +115,11 @@
           .account-grid-item-4
             .grid-item-details
               %span Chat
-            -if @room.length==0 && @room1.length==0
+            -if @roomv2.length==0 && @room1v2.length==0
               .grid-item-detailsImg
                 %span You don't have active chats
             -else 
-              - @room.each do |room|
+              - @roomv2.each do |room|
                 .grid-item-detailsImgAlt
                   =image_tag (User.where(:username => room.user)[0].avatar) ,class: "reviewImg"
                   %a{:href => room_path(Room.where(:user => room.user,:user1 => room.user1)[0].id), "data-method" => "get"} #{User.where(:username => room.user)[0].username}
@@ -134,7 +134,7 @@
                         %h6 #{RoomMessage.where(:room_id => room.id).last.message.slice(0..17)}...
                       -else
                         %h6 #{RoomMessage.where(:room_id => room.id).last.message}
-              - @room1.each do |room1|
+              - @room1v2.each do |room1|
                 .grid-item-detailsImgAlt
                   =image_tag (User.where(:username => room1.user1)[0].avatar) ,class: "reviewImg"
                   %a{:href => room_path(Room.where(:user1 => room1.user1,:user => room1.user)[0].id), "data-method" => "get"} #{User.where(:username => room1.user1)[0].username}
