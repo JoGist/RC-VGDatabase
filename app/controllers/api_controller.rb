@@ -15,17 +15,9 @@ class ApiController < ApplicationController
     def apiRest2 #Mostra utente tramite id/email/username get
         key = params[:key]
         id = params[:id]
-        username = params[:username]
-        email = params[:email]
         if key=='123456789'
             if id.length!=0 && User.exists?(:id => id)
                 @user = User.select(:id,:username,:email,:google_token,:steam_token,:background,:avatar,:social1,:social2,:social3).where(:id => id)[0]
-                render json: @user
-            elsif username!=nil && User.exists?(:username => username)
-                @user = User.select(:id,:username,:email,:google_token,:steam_token,:background,:avatar,:social1,:social2,:social3).where(:username => username)[0]
-                render json: @user
-            elsif email!=nil && User.exists?(:email => email)
-                @user = User.select(:id,:username,:email,:google_token,:steam_token,:background,:avatar,:social1,:social2,:social3).where(:email => email)[0]
                 render json: @user
             else
                 render json: 404
