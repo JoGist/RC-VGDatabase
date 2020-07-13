@@ -240,7 +240,7 @@
                   <% @users = User.where(:id => review.user_id)[0] %>
                   <div class="reviewUser">
                     <%= image_tag (User.find(@users.id).avatar) ,class: "reviewImg" %>
-                    <a data-method="get" href="<%= myProfile_path(@users.id) %>">Your review</a>
+                    <a data-method="get" href="<%= visit_profile_path(@users.id) %>">@users.username</a>
                     <% if (review.score==1) %>
                       <i class="mdi mdi-star reviewStar right4"></i>
                     <% elsif (review.score==2) %>
